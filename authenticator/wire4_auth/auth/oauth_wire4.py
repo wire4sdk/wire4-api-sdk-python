@@ -26,8 +26,8 @@ from wire4_client import ApiClient
 from wire4_client.configuration import Configuration
 from wire4_client.rest import ApiException
 
-from authenticator.wire4_auth.core import CachedToken
-from authenticator.wire4_auth.core import EnvironmentEnum
+from wire4_auth.core import CachedToken
+from wire4_auth.core import EnvironmentEnum
 
 
 class OAuthWire4:

@@ -16,5 +16,5 @@
 """
 from __future__ import absolute_import
 
-from authenticator.wire4_auth.core.environment_enum import EnvironmentEnum
-from authenticator.wire4_auth.core.cached_token import CachedToken
+from wire4_auth.core.environment_enum import EnvironmentEnum
+from wire4_auth.core.cached_token import CachedToken

@@ -16,5 +16,4 @@
 """
 from __future__ import absolute_import
 
-from authenticator.wire4_auth.auth.oauth_wire4 import OAuthWire4
-
+from wire4_auth.auth.oauth_wire4 import OAuthWire4

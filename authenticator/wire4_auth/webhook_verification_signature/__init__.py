@@ -16,4 +16,4 @@
 """
 from __future__ import absolute_import
 
-from authenticator.wire4_auth.webhook_verification_signature.utils_compute import UtilsCompute
+from wire4_auth.webhook_verification_signature.utils_compute import UtilsCompute

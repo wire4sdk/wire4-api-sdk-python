@@ -27,8 +27,8 @@ from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, Comproba
     Billing, FacturasApi, WebhookRequest, TransactionOutgoingSpid, TransactionsOutgoingRegister, TransactionOutgoing
 from wire4_client.rest import ApiException
 
-from authenticator.mx.wire4.auth.oauth_wire4 import OAuthWire4
-from authenticator.mx.wire4.core.environment_enum import EnvironmentEnum
+from wire4_auth.auth.oauth_wire4 import OAuthWire4
+from wire4_auth.core.environment_enum import EnvironmentEnum
 
 
 class TestAccount(unittest.TestCase):
@@ -883,7 +883,7 @@ class TestAccount(unittest.TestCase):
         api_instance = FacturasApi(OAuthWire4.get_default_api_client(oauth_token_app))
 
         try:
-            response: list = api_instance.billings_report_by_id_using_get(id="834BA74A-BBBB-43C4-8400-A4528153C2BD")
+            response: Billing = api_instance.billings_report_by_id_using_get(id="834BA74A-BBBB-43C4-8400-A4528153C2BD")
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
