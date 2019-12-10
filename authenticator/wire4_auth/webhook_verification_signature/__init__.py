@@ -14,5 +14,6 @@
      author: Saintiago García
      version: 1.0
 """
-from authenticator.mx.wire4.core.environment_enum import EnvironmentEnum
-from authenticator.mx.wire4.core.cached_token import CachedToken
+from __future__ import absolute_import
+
+from authenticator.wire4_auth.webhook_verification_signature.utils_compute import UtilsCompute

@@ -14,4 +14,14 @@
      author: Saintiago García
      version: 1.0
 """
-from authenticator.mx.wire4.auth.oauth_wire4 import OAuthWire4
+from __future__ import absolute_import
+
+# import oauth2 components
+from authenticator.wire4_auth.auth.oauth_wire4 import OAuthWire4
+
+# import core components
+from authenticator.wire4_auth.core.environment_enum import EnvironmentEnum
+from authenticator.wire4_auth.core.cached_token import CachedToken
+
+# import webHook verification signature components
+from authenticator.wire4_auth.webhook_verification_signature.utils_compute import UtilsCompute
