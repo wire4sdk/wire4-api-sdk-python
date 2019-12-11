@@ -31,7 +31,9 @@ Then import the package:
 import wire4_client 
 ```
 
-```python 2.7
+For python 2.7
+
+```python
 import wire4_auth_p27 
 ```
 
