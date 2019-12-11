@@ -8,7 +8,7 @@ This Python package is make and sopported by Wire4:
 
 ## Requirements.
 
-Python 3.4+
+Python 2.7 and 3.4+
 
 ## Installation & Usage
 ### pip install
@@ -20,10 +20,21 @@ pip install git+https://github.com/wire4/wire4-api-sdk-python#subdirectory=authe
 ```
 (you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
+For python 2.7 you need install an additional package to get compatibility: 
+
+```sh
+pip install enum34
+```
+
 Then import the package:
 ```python
 import wire4_client 
 ```
+
+```python 2.7
+import wire4_auth_p27 
+```
+
 
 ### Setuptools
 
