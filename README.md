@@ -68,6 +68,8 @@ import wire4_auth_p27
 Primero debes seguir la guía de [instalación](#installation) y ejecutar el siguiente código de ejemplo:
 ```python
 # Importar los paquetes
+import sys
+
 from wire4_client import CepSearchBanxico, ComprobanteElectrnicoDePagoCEPApi, CepResponse
 from wire4_client.rest import ApiException
 
@@ -88,7 +90,7 @@ try:
 except ApiException as ex:
     print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
     # Optional manage exception in access token flow
-    return
+    sys.exit(-100)
 
 # create an instance of the API class and add the bearer token to request
 api_instance = ComprobanteElectrnicoDePagoCEPApi(OAuthWire4.get_default_api_client(oauth_token_app))
@@ -104,7 +106,7 @@ try:
 except ApiException as ex:
     print("Exception when calling the API %s\n" % ex, file=sys.stderr)
     # Optional manage exception in access token flow
-    return
+    sys.exit(-100)
 ```
 
 
