@@ -16,7 +16,7 @@ Python 2.7 and 3.4+
 ## <a name="installation"></a>Instalación y Uso
 ### Instalación con 'pip'
 
-Los paquetes de Python está alojado en Github, puedes instalarlo directamente de Github
+Los paquetes de Python están alojados en Github, puedes instalarlo directamente de Github
 
 ```sh
 pip install git+https://github.com/wire4/wire4-api-sdk-python#subdirectory=sdk-client
@@ -67,7 +67,7 @@ import wire4_auth_p27
 
 Primero debes seguir la guía de [instalación](#installation) y ejecutar el siguiente código de ejemplo:
 ```phyton
-# Load the gems
+# Importar los paquetes
 from wire4_client import CepSearchBanxico, ComprobanteElectrnicoDePagoCEPApi, CepResponse
 from wire4_client.rest import ApiException
 
