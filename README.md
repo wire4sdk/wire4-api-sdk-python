@@ -66,7 +66,7 @@ import wire4_auth_p27
 ## Para comenzar a usar
 
 Primero debes seguir la guía de [instalación](#installation) y ejecutar el siguiente código de ejemplo:
-```phyton
+```python
 # Importar los paquetes
 from wire4_client import CepSearchBanxico, ComprobanteElectrnicoDePagoCEPApi, CepResponse
 from wire4_client.rest import ApiException
