@@ -42,6 +42,13 @@ class TestTransferenciasSPEIApi(unittest.TestCase):
         """
         pass
 
+    def test_out_comming_spei_request_id_transactions_report_using_get(self):
+        """Test case for out_comming_spei_request_id_transactions_report_using_get
+
+        Consulta de transferencias de salida por identificador de petición  # noqa: E501
+        """
+        pass
+
     def test_outgoing_spei_transactions_report_using_get(self):
         """Test case for outgoing_spei_transactions_report_using_get
 

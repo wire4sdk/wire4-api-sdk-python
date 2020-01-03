@@ -44,6 +44,7 @@ from wire4_client.models.message_payment import MessagePayment
 from wire4_client.models.message_subscription import MessageSubscription
 from wire4_client.models.message_web_hook import MessageWebHook
 from wire4_client.models.payment import Payment
+from wire4_client.models.payments_request_id import PaymentsRequestId
 from wire4_client.models.person import Person
 from wire4_client.models.pre_enrollment_data import PreEnrollmentData
 from wire4_client.models.pre_enrollment_response import PreEnrollmentResponse

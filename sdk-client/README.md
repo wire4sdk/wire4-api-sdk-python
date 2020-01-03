@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *SuscripcionesApi* | [**remove_subscription_pending_status_using_delete**](docs/SuscripcionesApi.md#remove_subscription_pending_status_using_delete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimna una pre-suscripción
 *TransferenciasSPEIApi* | [**drop_transactions_pending_using_delete**](docs/TransferenciasSPEIApi.md#drop_transactions_pending_using_delete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 *TransferenciasSPEIApi* | [**incoming_spei_transactions_report_using_get**](docs/TransferenciasSPEIApi.md#incoming_spei_transactions_report_using_get) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
+*TransferenciasSPEIApi* | [**out_comming_spei_request_id_transactions_report_using_get**](docs/TransferenciasSPEIApi.md#out_comming_spei_request_id_transactions_report_using_get) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
 *TransferenciasSPEIApi* | [**outgoing_spei_transactions_report_using_get**](docs/TransferenciasSPEIApi.md#outgoing_spei_transactions_report_using_get) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
 *TransferenciasSPEIApi* | [**register_outgoing_spei_transaction_using_post**](docs/TransferenciasSPEIApi.md#register_outgoing_spei_transaction_using_post) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
 *TransferenciasSPIDApi* | [**get_spid_classifications_using_get**](docs/TransferenciasSPIDApi.md#get_spid_classifications_using_get) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta las clasificaciones para operaciones con SPID
@@ -133,6 +134,7 @@ Class | Method | HTTP request | Description
  - [MessageSubscription](docs/MessageSubscription.md)
  - [MessageWebHook](docs/MessageWebHook.md)
  - [Payment](docs/Payment.md)
+ - [PaymentsRequestId](docs/PaymentsRequestId.md)
  - [Person](docs/Person.md)
  - [PreEnrollmentData](docs/PreEnrollmentData.md)
  - [PreEnrollmentResponse](docs/PreEnrollmentResponse.md)

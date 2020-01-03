@@ -226,6 +226,109 @@ class TransferenciasSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def out_comming_spei_request_id_transactions_report_using_get(self, request_id, subscription, **kwargs):  # noqa: E501
+        """Consulta de transferencias de salida por identificador de petición  # noqa: E501
+
+        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.out_comming_spei_request_id_transactions_report_using_get(request_id, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str request_id: Identificador de la petición a buscar (required)
+        :param str subscription: El identificador de la suscripción a esta API (required)
+        :return: PaymentsRequestId
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.out_comming_spei_request_id_transactions_report_using_get_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+        else:
+            (data) = self.out_comming_spei_request_id_transactions_report_using_get_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+            return data
+
+    def out_comming_spei_request_id_transactions_report_using_get_with_http_info(self, request_id, subscription, **kwargs):  # noqa: E501
+        """Consulta de transferencias de salida por identificador de petición  # noqa: E501
+
+        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.out_comming_spei_request_id_transactions_report_using_get_with_http_info(request_id, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str request_id: Identificador de la petición a buscar (required)
+        :param str subscription: El identificador de la suscripción a esta API (required)
+        :return: PaymentsRequestId
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['request_id', 'subscription']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method out_comming_spei_request_id_transactions_report_using_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'request_id' is set
+        if ('request_id' not in params or
+                params['request_id'] is None):
+            raise ValueError("Missing the required parameter `request_id` when calling `out_comming_spei_request_id_transactions_report_using_get`")  # noqa: E501
+        # verify the required parameter 'subscription' is set
+        if ('subscription' not in params or
+                params['subscription'] is None):
+            raise ValueError("Missing the required parameter `subscription` when calling `out_comming_spei_request_id_transactions_report_using_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'request_id' in params:
+            path_params['requestId'] = params['request_id']  # noqa: E501
+        if 'subscription' in params:
+            path_params['subscription'] = params['subscription']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/subscriptions/{subscription}/transactions/outcoming/spei/{requestId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PaymentsRequestId',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def outgoing_spei_transactions_report_using_get(self, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias realizadas  # noqa: E501
 
