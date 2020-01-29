@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**update_amount_limit_account_using_put**](CuentasDeBeneficiariosSPEIApi.md#update_amount_limit_account_using_put) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
 
 # **delete_account_using_delete**
-> delete_account_using_delete(account, subscription)
+> delete_account_using_delete(authorization, account, subscription)
 
 Elimina la cuenta del beneficiario
 
@@ -26,18 +26,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 account = 'account_example' # str | La cuenta del beneciario que será eliminada
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Elimina la cuenta del beneficiario
-    api_instance.delete_account_using_delete(account, subscription)
+    api_instance.delete_account_using_delete(authorization, account, subscription)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->delete_account_using_delete: %s\n" % e)
 ```
@@ -46,6 +43,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **account** | **str**| La cuenta del beneciario que será eliminada | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
@@ -55,7 +53,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -65,7 +63,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_available_relationships_monex_using_get**
-> RelationshipsResponse get_available_relationships_monex_using_get(subscription)
+> RelationshipsResponse get_available_relationships_monex_using_get(authorization, subscription)
 
 Consulta de relaciones
 
@@ -79,17 +77,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | Identificador de la suscripción a esta API
 
 try:
     # Consulta de relaciones
-    api_response = api_instance.get_available_relationships_monex_using_get(subscription)
+    api_response = api_instance.get_available_relationships_monex_using_get(authorization, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->get_available_relationships_monex_using_get: %s\n" % e)
@@ -99,6 +94,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| Identificador de la suscripción a esta API | 
 
 ### Return type
@@ -107,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -117,7 +113,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_beneficiaries_for_account_using_get**
-> BeneficiariesResponse get_beneficiaries_for_account_using_get(subscription, rfc=rfc)
+> BeneficiariesResponse get_beneficiaries_for_account_using_get(authorization, subscription, account=account, rfc=rfc)
 
 Consulta los beneficiarios registrados
 
@@ -131,18 +127,16 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
+account = 'account_example' # str | Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
 rfc = 'rfc_example' # str | RFC del beneficiario (optional)
 
 try:
     # Consulta los beneficiarios registrados
-    api_response = api_instance.get_beneficiaries_for_account_using_get(subscription, rfc=rfc)
+    api_response = api_instance.get_beneficiaries_for_account_using_get(authorization, subscription, account=account, rfc=rfc)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->get_beneficiaries_for_account_using_get: %s\n" % e)
@@ -152,7 +146,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
+ **account** | **str**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional] 
  **rfc** | **str**| RFC del beneficiario | [optional] 
 
 ### Return type
@@ -161,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -171,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pre_register_accounts_using_post**
-> TokenRequiredResponse pre_register_accounts_using_post(body, subscription)
+> TokenRequiredResponse pre_register_accounts_using_post(body, authorization, subscription)
 
 Pre-registro de cuentas de beneficiarios.
 
@@ -185,18 +181,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi()
 body = wire4_client.AccountRequest() # AccountRequest | Información de la cuenta del beneficiario
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Pre-registro de cuentas de beneficiarios.
-    api_response = api_instance.pre_register_accounts_using_post(body, subscription)
+    api_response = api_instance.pre_register_accounts_using_post(body, authorization, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->pre_register_accounts_using_post: %s\n" % e)
@@ -207,6 +200,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**AccountRequest**](AccountRequest.md)| Información de la cuenta del beneficiario | 
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -215,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -225,7 +219,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_beneficiaries_pending_using_delete**
-> remove_beneficiaries_pending_using_delete(request_id, subscription)
+> remove_beneficiaries_pending_using_delete(authorization, request_id, subscription)
 
 Eliminación de beneficiarios SPEI® sin confirmar
 
@@ -239,18 +233,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 request_id = 'request_id_example' # str | Identificador de los beneficiarios a eliminar
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Eliminación de beneficiarios SPEI® sin confirmar
-    api_instance.remove_beneficiaries_pending_using_delete(request_id, subscription)
+    api_instance.remove_beneficiaries_pending_using_delete(authorization, request_id, subscription)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->remove_beneficiaries_pending_using_delete: %s\n" % e)
 ```
@@ -259,6 +250,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **request_id** | **str**| Identificador de los beneficiarios a eliminar | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
@@ -268,7 +260,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -278,7 +270,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_amount_limit_account_using_put**
-> update_amount_limit_account_using_put(body, account, subscription)
+> update_amount_limit_account_using_put(body, authorization, account, subscription)
 
 Actualiza el monto límite
 
@@ -292,19 +284,16 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.CuentasDeBeneficiariosSPEIApi()
 body = wire4_client.AmountRequest() # AmountRequest | Información de la cuenta y el monto límite a actualizar
+authorization = 'authorization_example' # str | Header para token
 account = 'account_example' # str | Cuenta a actualizar
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Actualiza el monto límite
-    api_instance.update_amount_limit_account_using_put(body, account, subscription)
+    api_instance.update_amount_limit_account_using_put(body, authorization, account, subscription)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->update_amount_limit_account_using_put: %s\n" % e)
 ```
@@ -314,6 +303,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**AmountRequest**](AmountRequest.md)| Información de la cuenta y el monto límite a actualizar | 
+ **authorization** | **str**| Header para token | 
  **account** | **str**| Cuenta a actualizar | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
@@ -323,7 +313,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

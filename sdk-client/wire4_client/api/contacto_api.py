@@ -32,45 +32,47 @@ class ContactoApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def send_contact_using_post(self, body, **kwargs):  # noqa: E501
+    def send_contact_using_post(self, body, authorization, **kwargs):  # noqa: E501
         """Solicitud de contacto  # noqa: E501
 
         Notifica a un asesor Monex para que se ponga en contacto con un posible cliente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.send_contact_using_post(body, async_req=True)
+        >>> thread = api.send_contact_using_post(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param ContactRequest body: Información del contacto (required)
+        :param str authorization: Header para token (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.send_contact_using_post_with_http_info(body, **kwargs)  # noqa: E501
+            return self.send_contact_using_post_with_http_info(body, authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.send_contact_using_post_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.send_contact_using_post_with_http_info(body, authorization, **kwargs)  # noqa: E501
             return data
 
-    def send_contact_using_post_with_http_info(self, body, **kwargs):  # noqa: E501
+    def send_contact_using_post_with_http_info(self, body, authorization, **kwargs):  # noqa: E501
         """Solicitud de contacto  # noqa: E501
 
         Notifica a un asesor Monex para que se ponga en contacto con un posible cliente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.send_contact_using_post_with_http_info(body, async_req=True)
+        >>> thread = api.send_contact_using_post_with_http_info(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param ContactRequest body: Información del contacto (required)
+        :param str authorization: Header para token (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['body', 'authorization']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -89,6 +91,10 @@ class ContactoApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `send_contact_using_post`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `send_contact_using_post`")  # noqa: E501
 
         collection_formats = {}
 
@@ -97,6 +103,8 @@ class ContactoApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -113,7 +121,7 @@ class ContactoApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/contact', 'POST',

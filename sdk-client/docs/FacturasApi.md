@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**billings_report_using_get**](FacturasApi.md#billings_report_using_get) | **GET** /billings | Consulta de facturas
 
 # **billings_report_by_id_using_get**
-> Billing billings_report_by_id_using_get(id)
+> Billing billings_report_by_id_using_get(authorization, id)
 
 Consulta de facturas por identificador
 
@@ -22,17 +22,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.FacturasApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.FacturasApi()
+authorization = 'authorization_example' # str | Header para token
 id = 'id_example' # str | Identificador de la factura
 
 try:
     # Consulta de facturas por identificador
-    api_response = api_instance.billings_report_by_id_using_get(id)
+    api_response = api_instance.billings_report_by_id_using_get(authorization, id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FacturasApi->billings_report_by_id_using_get: %s\n" % e)
@@ -42,6 +39,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **id** | **str**| Identificador de la factura | 
 
 ### Return type
@@ -50,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 
@@ -60,7 +58,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billings_report_using_get**
-> list[Billing] billings_report_using_get(period=period)
+> list[Billing] billings_report_using_get(authorization, period=period)
 
 Consulta de facturas
 
@@ -74,17 +72,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.FacturasApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.FacturasApi()
+authorization = 'authorization_example' # str | Header para token
 period = 'period_example' # str | Filtro de fecha yyyy-MM (optional)
 
 try:
     # Consulta de facturas
-    api_response = api_instance.billings_report_using_get(period=period)
+    api_response = api_instance.billings_report_using_get(authorization, period=period)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FacturasApi->billings_report_using_get: %s\n" % e)
@@ -94,6 +89,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **period** | **str**| Filtro de fecha yyyy-MM | [optional] 
 
 ### Return type
@@ -102,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

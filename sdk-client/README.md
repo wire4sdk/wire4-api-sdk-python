@@ -17,7 +17,7 @@ Python 2.7 and 3.4+
 If the python package is hosted on Github, you can install directly from Github
 
 ```sh
-pip install git+https://github.com/wire4/wire4-api-sdk-python#subdirectory=sdk-client
+pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 ```
 (you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
@@ -51,17 +51,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
 api_instance = wire4_client.ComprobanteElectrnicoDePagoCEPApi(wire4_client.ApiClient(configuration))
 body = wire4_client.CepSearchBanxico() # CepSearchBanxico | Información para buscar un CEP
+authorization = 'authorization_example' # str | Header para token
 
 try:
     # Consulta de CEP
-    api_response = api_instance.obtain_transaction_cep_using_post(body)
+    api_response = api_instance.obtain_transaction_cep_using_post(body, authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ComprobanteElectrnicoDePagoCEPApi->obtain_transaction_cep_using_post: %s\n" % e)
@@ -81,6 +78,7 @@ Class | Method | HTTP request | Description
 *CuentasDeBeneficiariosSPEIApi* | [**pre_register_accounts_using_post**](docs/CuentasDeBeneficiariosSPEIApi.md#pre_register_accounts_using_post) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
 *CuentasDeBeneficiariosSPEIApi* | [**remove_beneficiaries_pending_using_delete**](docs/CuentasDeBeneficiariosSPEIApi.md#remove_beneficiaries_pending_using_delete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
 *CuentasDeBeneficiariosSPEIApi* | [**update_amount_limit_account_using_put**](docs/CuentasDeBeneficiariosSPEIApi.md#update_amount_limit_account_using_put) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
+*CuentasDeBeneficiariosSPIDApi* | [**get_spid_beneficiaries_for_account**](docs/CuentasDeBeneficiariosSPIDApi.md#get_spid_beneficiaries_for_account) | **GET** /subscriptions/{subscription}/beneficiaries/spid | Consulta los beneficiarios SPID registrados
 *CuentasDeBeneficiariosSPIDApi* | [**pre_register_accounts_using_post1**](docs/CuentasDeBeneficiariosSPIDApi.md#pre_register_accounts_using_post1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
 *DepositantesApi* | [**get_depositants_using_get**](docs/DepositantesApi.md#get_depositants_using_get) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
 *DepositantesApi* | [**register_depositants_using_post**](docs/DepositantesApi.md#register_depositants_using_post) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
@@ -140,6 +138,8 @@ Class | Method | HTTP request | Description
  - [PreEnrollmentResponse](docs/PreEnrollmentResponse.md)
  - [Relationship](docs/Relationship.md)
  - [RelationshipsResponse](docs/RelationshipsResponse.md)
+ - [SpidBeneficiariesResponse](docs/SpidBeneficiariesResponse.md)
+ - [SpidBeneficiaryResponse](docs/SpidBeneficiaryResponse.md)
  - [SpidClassificationDTO](docs/SpidClassificationDTO.md)
  - [SpidClassificationsResponseDTO](docs/SpidClassificationsResponseDTO.md)
  - [Timestamp](docs/Timestamp.md)
@@ -153,30 +153,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
-
-## wire4_aut_app
-
-- **Type**: OAuth
-- **Flow**: application
-- **Authorization URL**: 
-- **Scopes**: 
- - ****: 
-
-## wire4_aut_app_user_spei
-
-- **Type**: OAuth
-- **Flow**: password
-- **Authorization URL**: 
-- **Scopes**: 
- - ****: 
-
-## wire4_aut_app_user_spid
-
-- **Type**: OAuth
-- **Flow**: password
-- **Authorization URL**: 
-- **Scopes**: 
- - ****: 
+ All endpoints do not require authorization.
 
 
 ## Author

@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**obtain_transaction_cep_using_post**](ComprobanteElectrnicoDePagoCEPApi.md#obtain_transaction_cep_using_post) | **POST** /ceps | Consulta de CEP
 
 # **obtain_transaction_cep_using_post**
-> CepResponse obtain_transaction_cep_using_post(body)
+> CepResponse obtain_transaction_cep_using_post(body, authorization)
 
 Consulta de CEP
 
@@ -21,17 +21,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.ComprobanteElectrnicoDePagoCEPApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.ComprobanteElectrnicoDePagoCEPApi()
 body = wire4_client.CepSearchBanxico() # CepSearchBanxico | Información para buscar un CEP
+authorization = 'authorization_example' # str | Header para token
 
 try:
     # Consulta de CEP
-    api_response = api_instance.obtain_transaction_cep_using_post(body)
+    api_response = api_instance.obtain_transaction_cep_using_post(body, authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ComprobanteElectrnicoDePagoCEPApi->obtain_transaction_cep_using_post: %s\n" % e)
@@ -42,6 +39,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CepSearchBanxico**](CepSearchBanxico.md)| Información para buscar un CEP | 
+ **authorization** | **str**| Header para token | 
 
 ### Return type
 
@@ -49,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

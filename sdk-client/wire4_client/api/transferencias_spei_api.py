@@ -32,16 +32,17 @@ class TransferenciasSPEIApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def drop_transactions_pending_using_delete(self, request_id, subscription, **kwargs):  # noqa: E501
+    def drop_transactions_pending_using_delete(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Eliminación de transferencias SPEI® pendientes  # noqa: E501
 
         Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.drop_transactions_pending_using_delete(request_id, subscription, async_req=True)
+        >>> thread = api.drop_transactions_pending_using_delete(authorization, request_id, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str request_id: Identificador de las transferencias a eliminar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -50,21 +51,22 @@ class TransferenciasSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.drop_transactions_pending_using_delete_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+            return self.drop_transactions_pending_using_delete_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.drop_transactions_pending_using_delete_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+            (data) = self.drop_transactions_pending_using_delete_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
             return data
 
-    def drop_transactions_pending_using_delete_with_http_info(self, request_id, subscription, **kwargs):  # noqa: E501
+    def drop_transactions_pending_using_delete_with_http_info(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Eliminación de transferencias SPEI® pendientes  # noqa: E501
 
         Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.drop_transactions_pending_using_delete_with_http_info(request_id, subscription, async_req=True)
+        >>> thread = api.drop_transactions_pending_using_delete_with_http_info(authorization, request_id, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str request_id: Identificador de las transferencias a eliminar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -72,7 +74,7 @@ class TransferenciasSPEIApi(object):
                  returns the request thread.
         """
 
-        all_params = ['request_id', 'subscription']  # noqa: E501
+        all_params = ['authorization', 'request_id', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -87,6 +89,10 @@ class TransferenciasSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `drop_transactions_pending_using_delete`")  # noqa: E501
         # verify the required parameter 'request_id' is set
         if ('request_id' not in params or
                 params['request_id'] is None):
@@ -107,13 +113,15 @@ class TransferenciasSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
 
         body_params = None
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId}', 'DELETE',
@@ -131,16 +139,17 @@ class TransferenciasSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def incoming_spei_transactions_report_using_get(self, subscription, **kwargs):  # noqa: E501
+    def incoming_spei_transactions_report_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias recibidas  # noqa: E501
 
         Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.incoming_spei_transactions_report_using_get(subscription, async_req=True)
+        >>> thread = api.incoming_spei_transactions_report_using_get(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: list[Deposit]
                  If the method is called asynchronously,
@@ -148,28 +157,29 @@ class TransferenciasSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.incoming_spei_transactions_report_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.incoming_spei_transactions_report_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.incoming_spei_transactions_report_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.incoming_spei_transactions_report_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def incoming_spei_transactions_report_using_get_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def incoming_spei_transactions_report_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias recibidas  # noqa: E501
 
         Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.incoming_spei_transactions_report_using_get_with_http_info(subscription, async_req=True)
+        >>> thread = api.incoming_spei_transactions_report_using_get_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: list[Deposit]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription']  # noqa: E501
+        all_params = ['authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -184,6 +194,10 @@ class TransferenciasSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `incoming_spei_transactions_report_using_get`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -198,6 +212,8 @@ class TransferenciasSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -208,7 +224,7 @@ class TransferenciasSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/transactions/incoming/spei', 'GET',
@@ -226,16 +242,17 @@ class TransferenciasSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def out_comming_spei_request_id_transactions_report_using_get(self, request_id, subscription, **kwargs):  # noqa: E501
+    def out_comming_spei_request_id_transactions_report_using_get(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias de salida por identificador de petición  # noqa: E501
 
         Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.out_comming_spei_request_id_transactions_report_using_get(request_id, subscription, async_req=True)
+        >>> thread = api.out_comming_spei_request_id_transactions_report_using_get(authorization, request_id, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str request_id: Identificador de la petición a buscar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: PaymentsRequestId
@@ -244,21 +261,22 @@ class TransferenciasSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.out_comming_spei_request_id_transactions_report_using_get_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+            return self.out_comming_spei_request_id_transactions_report_using_get_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.out_comming_spei_request_id_transactions_report_using_get_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+            (data) = self.out_comming_spei_request_id_transactions_report_using_get_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
             return data
 
-    def out_comming_spei_request_id_transactions_report_using_get_with_http_info(self, request_id, subscription, **kwargs):  # noqa: E501
+    def out_comming_spei_request_id_transactions_report_using_get_with_http_info(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias de salida por identificador de petición  # noqa: E501
 
         Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.out_comming_spei_request_id_transactions_report_using_get_with_http_info(request_id, subscription, async_req=True)
+        >>> thread = api.out_comming_spei_request_id_transactions_report_using_get_with_http_info(authorization, request_id, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str request_id: Identificador de la petición a buscar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: PaymentsRequestId
@@ -266,7 +284,7 @@ class TransferenciasSPEIApi(object):
                  returns the request thread.
         """
 
-        all_params = ['request_id', 'subscription']  # noqa: E501
+        all_params = ['authorization', 'request_id', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -281,6 +299,10 @@ class TransferenciasSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `out_comming_spei_request_id_transactions_report_using_get`")  # noqa: E501
         # verify the required parameter 'request_id' is set
         if ('request_id' not in params or
                 params['request_id'] is None):
@@ -301,6 +323,8 @@ class TransferenciasSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -311,7 +335,7 @@ class TransferenciasSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/transactions/outcoming/spei/{requestId}', 'GET',
@@ -329,16 +353,17 @@ class TransferenciasSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def outgoing_spei_transactions_report_using_get(self, subscription, **kwargs):  # noqa: E501
+    def outgoing_spei_transactions_report_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias realizadas  # noqa: E501
 
         Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.<br>Se pueden realizar consultas por <strong>order_id</strong> al realizar este tipo de consultas no importa el día en el que se realizó la transferencia  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.outgoing_spei_transactions_report_using_get(subscription, async_req=True)
+        >>> thread = api.outgoing_spei_transactions_report_using_get(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :param str order_id: Identificador de la orden a buscar
         :return: list[Payment]
@@ -347,21 +372,22 @@ class TransferenciasSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.outgoing_spei_transactions_report_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.outgoing_spei_transactions_report_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.outgoing_spei_transactions_report_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.outgoing_spei_transactions_report_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def outgoing_spei_transactions_report_using_get_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def outgoing_spei_transactions_report_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias realizadas  # noqa: E501
 
         Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.<br>Se pueden realizar consultas por <strong>order_id</strong> al realizar este tipo de consultas no importa el día en el que se realizó la transferencia  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.outgoing_spei_transactions_report_using_get_with_http_info(subscription, async_req=True)
+        >>> thread = api.outgoing_spei_transactions_report_using_get_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :param str order_id: Identificador de la orden a buscar
         :return: list[Payment]
@@ -369,7 +395,7 @@ class TransferenciasSPEIApi(object):
                  returns the request thread.
         """
 
-        all_params = ['subscription', 'order_id']  # noqa: E501
+        all_params = ['authorization', 'subscription', 'order_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -384,6 +410,10 @@ class TransferenciasSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `outgoing_spei_transactions_report_using_get`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -400,6 +430,8 @@ class TransferenciasSPEIApi(object):
             query_params.append(('order_id', params['order_id']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -410,7 +442,7 @@ class TransferenciasSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/transactions/outcoming/spei', 'GET',
@@ -428,17 +460,18 @@ class TransferenciasSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def register_outgoing_spei_transaction_using_post(self, body, subscription, **kwargs):  # noqa: E501
+    def register_outgoing_spei_transaction_using_post(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Registro de transferencias  # noqa: E501
 
         Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.register_outgoing_spei_transaction_using_post(body, subscription, async_req=True)
+        >>> thread = api.register_outgoing_spei_transaction_using_post(body, authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param TransactionsOutgoingRegister body: Información de las transferencias SPEI de salida (required)
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: TokenRequiredResponse
                  If the method is called asynchronously,
@@ -446,29 +479,30 @@ class TransferenciasSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.register_outgoing_spei_transaction_using_post_with_http_info(body, subscription, **kwargs)  # noqa: E501
+            return self.register_outgoing_spei_transaction_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.register_outgoing_spei_transaction_using_post_with_http_info(body, subscription, **kwargs)  # noqa: E501
+            (data) = self.register_outgoing_spei_transaction_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def register_outgoing_spei_transaction_using_post_with_http_info(self, body, subscription, **kwargs):  # noqa: E501
+    def register_outgoing_spei_transaction_using_post_with_http_info(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Registro de transferencias  # noqa: E501
 
         Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.register_outgoing_spei_transaction_using_post_with_http_info(body, subscription, async_req=True)
+        >>> thread = api.register_outgoing_spei_transaction_using_post_with_http_info(body, authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param TransactionsOutgoingRegister body: Información de las transferencias SPEI de salida (required)
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: TokenRequiredResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'subscription']  # noqa: E501
+        all_params = ['body', 'authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -487,6 +521,10 @@ class TransferenciasSPEIApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `register_outgoing_spei_transaction_using_post`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `register_outgoing_spei_transaction_using_post`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -501,6 +539,8 @@ class TransferenciasSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -517,7 +557,7 @@ class TransferenciasSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/transactions/outcoming/spei', 'POST',

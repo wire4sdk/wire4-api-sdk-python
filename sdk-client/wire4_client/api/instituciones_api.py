@@ -32,41 +32,43 @@ class InstitucionesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_all_institutions_using_get(self, **kwargs):  # noqa: E501
+    def get_all_institutions_using_get(self, authorization, **kwargs):  # noqa: E501
         """Información de instituciones bancarias.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_all_institutions_using_get(async_req=True)
+        >>> thread = api.get_all_institutions_using_get(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :return: InstitutionsList
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_all_institutions_using_get_with_http_info(**kwargs)  # noqa: E501
+            return self.get_all_institutions_using_get_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_all_institutions_using_get_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_all_institutions_using_get_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def get_all_institutions_using_get_with_http_info(self, **kwargs):  # noqa: E501
+    def get_all_institutions_using_get_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Información de instituciones bancarias.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_all_institutions_using_get_with_http_info(async_req=True)
+        >>> thread = api.get_all_institutions_using_get_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :return: InstitutionsList
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -81,6 +83,10 @@ class InstitucionesApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_all_institutions_using_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -89,6 +95,8 @@ class InstitucionesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -99,7 +107,7 @@ class InstitucionesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/institutions', 'GET',

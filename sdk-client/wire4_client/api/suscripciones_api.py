@@ -32,45 +32,47 @@ class SuscripcionesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def pre_enrollment_monex_user_using_post(self, body, **kwargs):  # noqa: E501
+    def pre_enrollment_monex_user_using_post(self, body, authorization, **kwargs):  # noqa: E501
         """registra una pre-suscripción  # noqa: E501
 
         Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.<br/>Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pre_enrollment_monex_user_using_post(body, async_req=True)
+        >>> thread = api.pre_enrollment_monex_user_using_post(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param PreEnrollmentData body: Información para el enrolamiento (required)
+        :param str authorization: Header para token (required)
         :return: PreEnrollmentResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.pre_enrollment_monex_user_using_post_with_http_info(body, **kwargs)  # noqa: E501
+            return self.pre_enrollment_monex_user_using_post_with_http_info(body, authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.pre_enrollment_monex_user_using_post_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.pre_enrollment_monex_user_using_post_with_http_info(body, authorization, **kwargs)  # noqa: E501
             return data
 
-    def pre_enrollment_monex_user_using_post_with_http_info(self, body, **kwargs):  # noqa: E501
+    def pre_enrollment_monex_user_using_post_with_http_info(self, body, authorization, **kwargs):  # noqa: E501
         """registra una pre-suscripción  # noqa: E501
 
         Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.<br/>Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pre_enrollment_monex_user_using_post_with_http_info(body, async_req=True)
+        >>> thread = api.pre_enrollment_monex_user_using_post_with_http_info(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param PreEnrollmentData body: Información para el enrolamiento (required)
+        :param str authorization: Header para token (required)
         :return: PreEnrollmentResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['body', 'authorization']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -89,6 +91,10 @@ class SuscripcionesApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `pre_enrollment_monex_user_using_post`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `pre_enrollment_monex_user_using_post`")  # noqa: E501
 
         collection_formats = {}
 
@@ -97,6 +103,8 @@ class SuscripcionesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -113,7 +121,7 @@ class SuscripcionesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/pre-subscription', 'POST',
@@ -131,16 +139,17 @@ class SuscripcionesApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_enrollment_user_using_delete(self, subscription, **kwargs):  # noqa: E501
+    def remove_enrollment_user_using_delete(self, authorization, subscription, **kwargs):  # noqa: E501
         """Elimna una suscripción por id  # noqa: E501
 
         Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_enrollment_user_using_delete(subscription, async_req=True)
+        >>> thread = api.remove_enrollment_user_using_delete(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
                  If the method is called asynchronously,
@@ -148,28 +157,29 @@ class SuscripcionesApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.remove_enrollment_user_using_delete_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.remove_enrollment_user_using_delete_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.remove_enrollment_user_using_delete_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.remove_enrollment_user_using_delete_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def remove_enrollment_user_using_delete_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def remove_enrollment_user_using_delete_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Elimna una suscripción por id  # noqa: E501
 
         Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_enrollment_user_using_delete_with_http_info(subscription, async_req=True)
+        >>> thread = api.remove_enrollment_user_using_delete_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription']  # noqa: E501
+        all_params = ['authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -184,6 +194,10 @@ class SuscripcionesApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `remove_enrollment_user_using_delete`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -198,13 +212,15 @@ class SuscripcionesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
 
         body_params = None
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}', 'DELETE',
@@ -222,16 +238,17 @@ class SuscripcionesApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_subscription_pending_status_using_delete(self, subscription, **kwargs):  # noqa: E501
+    def remove_subscription_pending_status_using_delete(self, authorization, subscription, **kwargs):  # noqa: E501
         """Elimna una pre-suscripción  # noqa: E501
 
         Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_subscription_pending_status_using_delete(subscription, async_req=True)
+        >>> thread = api.remove_subscription_pending_status_using_delete(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
                  If the method is called asynchronously,
@@ -239,28 +256,29 @@ class SuscripcionesApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.remove_subscription_pending_status_using_delete_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.remove_subscription_pending_status_using_delete_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.remove_subscription_pending_status_using_delete_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.remove_subscription_pending_status_using_delete_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def remove_subscription_pending_status_using_delete_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def remove_subscription_pending_status_using_delete_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Elimna una pre-suscripción  # noqa: E501
 
         Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_subscription_pending_status_using_delete_with_http_info(subscription, async_req=True)
+        >>> thread = api.remove_subscription_pending_status_using_delete_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription']  # noqa: E501
+        all_params = ['authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -275,6 +293,10 @@ class SuscripcionesApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `remove_subscription_pending_status_using_delete`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -289,13 +311,15 @@ class SuscripcionesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
 
         body_params = None
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/pre-subscription/{subscription}', 'DELETE',

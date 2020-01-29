@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**get_balance_using_get**](SaldoApi.md#get_balance_using_get) | **GET** /subscriptions/{subscription}/balance | Consulta los saldo de una cuenta
 
 # **get_balance_using_get**
-> BalanceListResponse get_balance_using_get(subscription)
+> BalanceListResponse get_balance_using_get(authorization, subscription)
 
 Consulta los saldo de una cuenta
 
@@ -21,17 +21,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.SaldoApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.SaldoApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Consulta los saldo de una cuenta
-    api_response = api_instance.get_balance_using_get(subscription)
+    api_response = api_instance.get_balance_using_get(authorization, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SaldoApi->get_balance_using_get: %s\n" % e)
@@ -41,6 +38,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -49,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

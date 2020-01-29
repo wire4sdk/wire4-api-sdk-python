@@ -32,16 +32,17 @@ class FacturasApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def billings_report_by_id_using_get(self, id, **kwargs):  # noqa: E501
+    def billings_report_by_id_using_get(self, authorization, id, **kwargs):  # noqa: E501
         """Consulta de facturas por identificador  # noqa: E501
 
         Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.billings_report_by_id_using_get(id, async_req=True)
+        >>> thread = api.billings_report_by_id_using_get(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str id: Identificador de la factura (required)
         :return: Billing
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class FacturasApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.billings_report_by_id_using_get_with_http_info(id, **kwargs)  # noqa: E501
+            return self.billings_report_by_id_using_get_with_http_info(authorization, id, **kwargs)  # noqa: E501
         else:
-            (data) = self.billings_report_by_id_using_get_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.billings_report_by_id_using_get_with_http_info(authorization, id, **kwargs)  # noqa: E501
             return data
 
-    def billings_report_by_id_using_get_with_http_info(self, id, **kwargs):  # noqa: E501
+    def billings_report_by_id_using_get_with_http_info(self, authorization, id, **kwargs):  # noqa: E501
         """Consulta de facturas por identificador  # noqa: E501
 
         Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.billings_report_by_id_using_get_with_http_info(id, async_req=True)
+        >>> thread = api.billings_report_by_id_using_get_with_http_info(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str id: Identificador de la factura (required)
         :return: Billing
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']  # noqa: E501
+        all_params = ['authorization', 'id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class FacturasApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `billings_report_by_id_using_get`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -99,6 +105,8 @@ class FacturasApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -109,7 +117,7 @@ class FacturasApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/billings/{id}', 'GET',
@@ -127,16 +135,17 @@ class FacturasApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def billings_report_using_get(self, **kwargs):  # noqa: E501
+    def billings_report_using_get(self, authorization, **kwargs):  # noqa: E501
         """Consulta de facturas  # noqa: E501
 
         Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.billings_report_using_get(async_req=True)
+        >>> thread = api.billings_report_using_get(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str period: Filtro de fecha yyyy-MM
         :return: list[Billing]
                  If the method is called asynchronously,
@@ -144,28 +153,29 @@ class FacturasApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.billings_report_using_get_with_http_info(**kwargs)  # noqa: E501
+            return self.billings_report_using_get_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.billings_report_using_get_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.billings_report_using_get_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def billings_report_using_get_with_http_info(self, **kwargs):  # noqa: E501
+    def billings_report_using_get_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Consulta de facturas  # noqa: E501
 
         Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.billings_report_using_get_with_http_info(async_req=True)
+        >>> thread = api.billings_report_using_get_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str period: Filtro de fecha yyyy-MM
         :return: list[Billing]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['period']  # noqa: E501
+        all_params = ['authorization', 'period']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -180,6 +190,10 @@ class FacturasApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `billings_report_using_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -190,6 +204,8 @@ class FacturasApi(object):
             query_params.append(('period', params['period']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -200,7 +216,7 @@ class FacturasApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/billings', 'GET',

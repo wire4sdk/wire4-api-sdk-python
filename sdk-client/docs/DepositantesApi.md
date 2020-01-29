@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**register_depositants_using_post**](DepositantesApi.md#register_depositants_using_post) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
 
 # **get_depositants_using_get**
-> GetDepositants get_depositants_using_get(subscription)
+> GetDepositants get_depositants_using_get(authorization, subscription)
 
 Consulta de cuentas de depositantes
 
@@ -22,17 +22,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.DepositantesApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.DepositantesApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Consulta de cuentas de depositantes
-    api_response = api_instance.get_depositants_using_get(subscription)
+    api_response = api_instance.get_depositants_using_get(authorization, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DepositantesApi->get_depositants_using_get: %s\n" % e)
@@ -42,6 +39,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -50,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -60,7 +58,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **register_depositants_using_post**
-> DepositantsResponse register_depositants_using_post(body, subscription)
+> DepositantsResponse register_depositants_using_post(body, authorization, subscription)
 
 Registra un nuevo depositante
 
@@ -74,18 +72,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.DepositantesApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.DepositantesApi()
 body = wire4_client.DepositantsRegister() # DepositantsRegister | Depositant info
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Registra un nuevo depositante
-    api_response = api_instance.register_depositants_using_post(body, subscription)
+    api_response = api_instance.register_depositants_using_post(body, authorization, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DepositantesApi->register_depositants_using_post: %s\n" % e)
@@ -96,6 +91,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**DepositantsRegister**](DepositantsRegister.md)| Depositant info | 
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -104,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

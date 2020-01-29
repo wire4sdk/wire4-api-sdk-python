@@ -32,16 +32,17 @@ class TransferenciasSPIDApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_spid_classifications_using_get(self, subscription, **kwargs):  # noqa: E501
+    def get_spid_classifications_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta las clasificaciones para operaciones con SPID  # noqa: E501
 
         Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.<br/>Este recurso se debe invocar previo al realizar una operación SPID.<br/>Se requiere que el token de autenticación se genere con scope spid_admin.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_spid_classifications_using_get(subscription, async_req=True)
+        >>> thread = api.get_spid_classifications_using_get(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: SpidClassificationsResponseDTO
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class TransferenciasSPIDApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_spid_classifications_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.get_spid_classifications_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_spid_classifications_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.get_spid_classifications_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def get_spid_classifications_using_get_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def get_spid_classifications_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta las clasificaciones para operaciones con SPID  # noqa: E501
 
         Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.<br/>Este recurso se debe invocar previo al realizar una operación SPID.<br/>Se requiere que el token de autenticación se genere con scope spid_admin.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_spid_classifications_using_get_with_http_info(subscription, async_req=True)
+        >>> thread = api.get_spid_classifications_using_get_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: SpidClassificationsResponseDTO
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription']  # noqa: E501
+        all_params = ['authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class TransferenciasSPIDApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_spid_classifications_using_get`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -99,6 +105,8 @@ class TransferenciasSPIDApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -109,7 +117,7 @@ class TransferenciasSPIDApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spid']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/beneficiaries/spid/classifications', 'GET',
@@ -127,17 +135,18 @@ class TransferenciasSPIDApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def register_outgoing_spid_transaction_using_post(self, body, subscription, **kwargs):  # noqa: E501
+    def register_outgoing_spid_transaction_using_post(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Registro de transferencias SPID  # noqa: E501
 
         Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.register_outgoing_spid_transaction_using_post(body, subscription, async_req=True)
+        >>> thread = api.register_outgoing_spid_transaction_using_post(body, authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param TransactionOutgoingSpid body: Información de las transferencias SPID de salida (required)
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: TokenRequiredResponse
                  If the method is called asynchronously,
@@ -145,29 +154,30 @@ class TransferenciasSPIDApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.register_outgoing_spid_transaction_using_post_with_http_info(body, subscription, **kwargs)  # noqa: E501
+            return self.register_outgoing_spid_transaction_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.register_outgoing_spid_transaction_using_post_with_http_info(body, subscription, **kwargs)  # noqa: E501
+            (data) = self.register_outgoing_spid_transaction_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def register_outgoing_spid_transaction_using_post_with_http_info(self, body, subscription, **kwargs):  # noqa: E501
+    def register_outgoing_spid_transaction_using_post_with_http_info(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Registro de transferencias SPID  # noqa: E501
 
         Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.register_outgoing_spid_transaction_using_post_with_http_info(body, subscription, async_req=True)
+        >>> thread = api.register_outgoing_spid_transaction_using_post_with_http_info(body, authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param TransactionOutgoingSpid body: Información de las transferencias SPID de salida (required)
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: TokenRequiredResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'subscription']  # noqa: E501
+        all_params = ['body', 'authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -186,6 +196,10 @@ class TransferenciasSPIDApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `register_outgoing_spid_transaction_using_post`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `register_outgoing_spid_transaction_using_post`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -200,6 +214,8 @@ class TransferenciasSPIDApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -216,7 +232,7 @@ class TransferenciasSPIDApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spid']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/transactions/outcoming/spid', 'POST',

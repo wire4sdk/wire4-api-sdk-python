@@ -32,45 +32,47 @@ class ComprobanteElectrnicoDePagoCEPApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def obtain_transaction_cep_using_post(self, body, **kwargs):  # noqa: E501
+    def obtain_transaction_cep_using_post(self, body, authorization, **kwargs):  # noqa: E501
         """Consulta de CEP  # noqa: E501
 
         Consulta el CEP de un pago realizado a través del SPEI, si es que este se encuentra disponible en BANXICO.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.obtain_transaction_cep_using_post(body, async_req=True)
+        >>> thread = api.obtain_transaction_cep_using_post(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param CepSearchBanxico body: Información para buscar un CEP (required)
+        :param str authorization: Header para token (required)
         :return: CepResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.obtain_transaction_cep_using_post_with_http_info(body, **kwargs)  # noqa: E501
+            return self.obtain_transaction_cep_using_post_with_http_info(body, authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.obtain_transaction_cep_using_post_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.obtain_transaction_cep_using_post_with_http_info(body, authorization, **kwargs)  # noqa: E501
             return data
 
-    def obtain_transaction_cep_using_post_with_http_info(self, body, **kwargs):  # noqa: E501
+    def obtain_transaction_cep_using_post_with_http_info(self, body, authorization, **kwargs):  # noqa: E501
         """Consulta de CEP  # noqa: E501
 
         Consulta el CEP de un pago realizado a través del SPEI, si es que este se encuentra disponible en BANXICO.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.obtain_transaction_cep_using_post_with_http_info(body, async_req=True)
+        >>> thread = api.obtain_transaction_cep_using_post_with_http_info(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param CepSearchBanxico body: Información para buscar un CEP (required)
+        :param str authorization: Header para token (required)
         :return: CepResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['body', 'authorization']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -89,6 +91,10 @@ class ComprobanteElectrnicoDePagoCEPApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `obtain_transaction_cep_using_post`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `obtain_transaction_cep_using_post`")  # noqa: E501
 
         collection_formats = {}
 
@@ -97,6 +103,8 @@ class ComprobanteElectrnicoDePagoCEPApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -113,7 +121,7 @@ class ComprobanteElectrnicoDePagoCEPApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/ceps', 'POST',

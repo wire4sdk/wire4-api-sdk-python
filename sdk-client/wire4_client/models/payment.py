@@ -14,8 +14,8 @@ import pprint
 import re  # noqa: F401
 
 import six
+from wire4_client.models.institution import Institution  # noqa: F401,E501
 from wire4_client.models.message_cep import MessageCEP  # noqa: F401,E501
-from wire4_client.models.message_institution import MessageInstitution  # noqa: F401,E501
 
 
 class Payment(object):
@@ -34,7 +34,7 @@ class Payment(object):
         'account': 'str',
         'amount': 'float',
         'beneficiary_account': 'str',
-        'beneficiary_bank': 'MessageInstitution',
+        'beneficiary_bank': 'Institution',
         'beneficiary_name': 'str',
         'cep': 'MessageCEP',
         'clave_rastreo': 'str',
@@ -200,7 +200,7 @@ class Payment(object):
 
 
         :return: The beneficiary_bank of this Payment.  # noqa: E501
-        :rtype: MessageInstitution
+        :rtype: Institution
         """
         return self._beneficiary_bank
 
@@ -210,7 +210,7 @@ class Payment(object):
 
 
         :param beneficiary_bank: The beneficiary_bank of this Payment.  # noqa: E501
-        :type: MessageInstitution
+        :type: Institution
         """
 
         self._beneficiary_bank = beneficiary_bank

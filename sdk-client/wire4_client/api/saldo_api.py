@@ -32,16 +32,17 @@ class SaldoApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_balance_using_get(self, subscription, **kwargs):  # noqa: E501
+    def get_balance_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta los saldo de una cuenta  # noqa: E501
 
         Obtiene el de las divisas que se manejen en el contrato.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_balance_using_get(subscription, async_req=True)
+        >>> thread = api.get_balance_using_get(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: BalanceListResponse
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class SaldoApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_balance_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.get_balance_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_balance_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.get_balance_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def get_balance_using_get_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def get_balance_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta los saldo de una cuenta  # noqa: E501
 
         Obtiene el de las divisas que se manejen en el contrato.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_balance_using_get_with_http_info(subscription, async_req=True)
+        >>> thread = api.get_balance_using_get_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: BalanceListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription']  # noqa: E501
+        all_params = ['authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class SaldoApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_balance_using_get`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -99,6 +105,8 @@ class SaldoApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -109,7 +117,7 @@ class SaldoApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/balance', 'GET',

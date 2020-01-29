@@ -30,6 +30,7 @@ class MessageSubscription(object):
     """
     swagger_types = {
         'contract': 'str',
+        'masked_contract': 'str',
         'subscription': 'str',
         'user': 'str',
         'user_key': 'str',
@@ -38,15 +39,17 @@ class MessageSubscription(object):
 
     attribute_map = {
         'contract': 'contract',
+        'masked_contract': 'masked_contract',
         'subscription': 'subscription',
         'user': 'user',
         'user_key': 'user_key',
         'user_secret': 'user_secret'
     }
 
-    def __init__(self, contract=None, subscription=None, user=None, user_key=None, user_secret=None):  # noqa: E501
+    def __init__(self, contract=None, masked_contract=None, subscription=None, user=None, user_key=None, user_secret=None):  # noqa: E501
         """MessageSubscription - a model defined in Swagger"""  # noqa: E501
         self._contract = None
+        self._masked_contract = None
         self._subscription = None
         self._user = None
         self._user_key = None
@@ -54,6 +57,8 @@ class MessageSubscription(object):
         self.discriminator = None
         if contract is not None:
             self.contract = contract
+        if masked_contract is not None:
+            self.masked_contract = masked_contract
         if subscription is not None:
             self.subscription = subscription
         if user is not None:
@@ -85,6 +90,29 @@ class MessageSubscription(object):
         """
 
         self._contract = contract
+
+    @property
+    def masked_contract(self):
+        """Gets the masked_contract of this MessageSubscription.  # noqa: E501
+
+        Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+
+        :return: The masked_contract of this MessageSubscription.  # noqa: E501
+        :rtype: str
+        """
+        return self._masked_contract
+
+    @masked_contract.setter
+    def masked_contract(self, masked_contract):
+        """Sets the masked_contract of this MessageSubscription.
+
+        Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+
+        :param masked_contract: The masked_contract of this MessageSubscription.  # noqa: E501
+        :type: str
+        """
+
+        self._masked_contract = masked_contract
 
     @property
     def subscription(self):

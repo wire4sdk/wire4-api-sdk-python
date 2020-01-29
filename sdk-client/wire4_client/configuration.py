@@ -59,12 +59,6 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.username = ""
         # Password for HTTP basic authentication
         self.password = ""
-        # access token for OAuth
-        self.access_token = ""
-        # access token for OAuth
-        self.access_token = ""
-        # access token for OAuth
-        self.access_token = ""
         # Logging Settings
         self.logger = {}
         self.logger["package_logger"] = logging.getLogger("wire4_client")
@@ -228,27 +222,6 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         :return: The Auth Settings information dict.
         """
         return {
-            'wire4_aut_app':
-                {
-                    'type': 'oauth2',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
-                },
-            'wire4_aut_app_user_spei':
-                {
-                    'type': 'oauth2',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
-                },
-            'wire4_aut_app_user_spid':
-                {
-                    'type': 'oauth2',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
-                },
         }
 
     def to_debug_report(self):

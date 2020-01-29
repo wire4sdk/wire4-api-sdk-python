@@ -28,6 +28,13 @@ class TestCuentasDeBeneficiariosSPIDApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_get_spid_beneficiaries_for_account(self):
+        """Test case for get_spid_beneficiaries_for_account
+
+        Consulta los beneficiarios SPID registrados  # noqa: E501
+        """
+        pass
+
     def test_pre_register_accounts_using_post1(self):
         """Test case for pre_register_accounts_using_post1
 

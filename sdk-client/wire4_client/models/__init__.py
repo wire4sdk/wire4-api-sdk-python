@@ -50,6 +50,8 @@ from wire4_client.models.pre_enrollment_data import PreEnrollmentData
 from wire4_client.models.pre_enrollment_response import PreEnrollmentResponse
 from wire4_client.models.relationship import Relationship
 from wire4_client.models.relationships_response import RelationshipsResponse
+from wire4_client.models.spid_beneficiaries_response import SpidBeneficiariesResponse
+from wire4_client.models.spid_beneficiary_response import SpidBeneficiaryResponse
 from wire4_client.models.spid_classification_dto import SpidClassificationDTO
 from wire4_client.models.spid_classifications_response_dto import SpidClassificationsResponseDTO
 from wire4_client.models.timestamp import Timestamp

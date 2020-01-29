@@ -32,16 +32,17 @@ class CuentasDeBeneficiariosSPEIApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def delete_account_using_delete(self, account, subscription, **kwargs):  # noqa: E501
+    def delete_account_using_delete(self, authorization, account, subscription, **kwargs):  # noqa: E501
         """Elimina la cuenta del beneficiario  # noqa: E501
 
         Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_account_using_delete(account, subscription, async_req=True)
+        >>> thread = api.delete_account_using_delete(authorization, account, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str account: La cuenta del beneciario que será eliminada (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -50,21 +51,22 @@ class CuentasDeBeneficiariosSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.delete_account_using_delete_with_http_info(account, subscription, **kwargs)  # noqa: E501
+            return self.delete_account_using_delete_with_http_info(authorization, account, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_account_using_delete_with_http_info(account, subscription, **kwargs)  # noqa: E501
+            (data) = self.delete_account_using_delete_with_http_info(authorization, account, subscription, **kwargs)  # noqa: E501
             return data
 
-    def delete_account_using_delete_with_http_info(self, account, subscription, **kwargs):  # noqa: E501
+    def delete_account_using_delete_with_http_info(self, authorization, account, subscription, **kwargs):  # noqa: E501
         """Elimina la cuenta del beneficiario  # noqa: E501
 
         Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_account_using_delete_with_http_info(account, subscription, async_req=True)
+        >>> thread = api.delete_account_using_delete_with_http_info(authorization, account, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str account: La cuenta del beneciario que será eliminada (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -72,7 +74,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
                  returns the request thread.
         """
 
-        all_params = ['account', 'subscription']  # noqa: E501
+        all_params = ['authorization', 'account', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -87,6 +89,10 @@ class CuentasDeBeneficiariosSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `delete_account_using_delete`")  # noqa: E501
         # verify the required parameter 'account' is set
         if ('account' not in params or
                 params['account'] is None):
@@ -107,13 +113,15 @@ class CuentasDeBeneficiariosSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
 
         body_params = None
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/beneficiaries/spei/{account}', 'DELETE',
@@ -131,16 +139,17 @@ class CuentasDeBeneficiariosSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_available_relationships_monex_using_get(self, subscription, **kwargs):  # noqa: E501
+    def get_available_relationships_monex_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de relaciones  # noqa: E501
 
         Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_available_relationships_monex_using_get(subscription, async_req=True)
+        >>> thread = api.get_available_relationships_monex_using_get(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: Identificador de la suscripción a esta API (required)
         :return: RelationshipsResponse
                  If the method is called asynchronously,
@@ -148,28 +157,29 @@ class CuentasDeBeneficiariosSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_available_relationships_monex_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.get_available_relationships_monex_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_available_relationships_monex_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.get_available_relationships_monex_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def get_available_relationships_monex_using_get_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def get_available_relationships_monex_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de relaciones  # noqa: E501
 
         Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_available_relationships_monex_using_get_with_http_info(subscription, async_req=True)
+        >>> thread = api.get_available_relationships_monex_using_get_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: Identificador de la suscripción a esta API (required)
         :return: RelationshipsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription']  # noqa: E501
+        all_params = ['authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -184,6 +194,10 @@ class CuentasDeBeneficiariosSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_available_relationships_monex_using_get`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -198,6 +212,8 @@ class CuentasDeBeneficiariosSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -208,7 +224,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/beneficiaries/relationships', 'GET',
@@ -226,17 +242,19 @@ class CuentasDeBeneficiariosSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_beneficiaries_for_account_using_get(self, subscription, **kwargs):  # noqa: E501
+    def get_beneficiaries_for_account_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta los beneficiarios registrados  # noqa: E501
 
         Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_beneficiaries_for_account_using_get(subscription, async_req=True)
+        >>> thread = api.get_beneficiaries_for_account_using_get(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
+        :param str account: Cuenta del beneficiario, puede ser Clabe, TDD o Celular
         :param str rfc: RFC del beneficiario
         :return: BeneficiariesResponse
                  If the method is called asynchronously,
@@ -244,29 +262,31 @@ class CuentasDeBeneficiariosSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_beneficiaries_for_account_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            return self.get_beneficiaries_for_account_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_beneficiaries_for_account_using_get_with_http_info(subscription, **kwargs)  # noqa: E501
+            (data) = self.get_beneficiaries_for_account_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def get_beneficiaries_for_account_using_get_with_http_info(self, subscription, **kwargs):  # noqa: E501
+    def get_beneficiaries_for_account_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta los beneficiarios registrados  # noqa: E501
 
         Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_beneficiaries_for_account_using_get_with_http_info(subscription, async_req=True)
+        >>> thread = api.get_beneficiaries_for_account_using_get_with_http_info(authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
+        :param str account: Cuenta del beneficiario, puede ser Clabe, TDD o Celular
         :param str rfc: RFC del beneficiario
         :return: BeneficiariesResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription', 'rfc']  # noqa: E501
+        all_params = ['authorization', 'subscription', 'account', 'rfc']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -281,6 +301,10 @@ class CuentasDeBeneficiariosSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_beneficiaries_for_account_using_get`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -293,10 +317,14 @@ class CuentasDeBeneficiariosSPEIApi(object):
             path_params['subscription'] = params['subscription']  # noqa: E501
 
         query_params = []
+        if 'account' in params:
+            query_params.append(('account', params['account']))  # noqa: E501
         if 'rfc' in params:
             query_params.append(('rfc', params['rfc']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -307,7 +335,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/beneficiaries/spei', 'GET',
@@ -325,17 +353,18 @@ class CuentasDeBeneficiariosSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def pre_register_accounts_using_post(self, body, subscription, **kwargs):  # noqa: E501
+    def pre_register_accounts_using_post(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Pre-registro de cuentas de beneficiarios.  # noqa: E501
 
         Pre-registra una o más cuentas de beneficiario en la plataforma, proporcionando una URL donde el cuentahabiente Monex debe ingresar un valor de su llave digital para confirmar el alta de las cuentas de beneficiarios.<br/>Los posibles valores de <i>relationship</i> y <i>kind_of_relationship</i> se deben  obtener de /subscriptions/{subscription}/beneficiaries/relationships.<br/><br/>La confirmación de registro en Monex se realiza a través de una llamada a los webhooks registrados con el evento ACCOUNT.CREATED.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pre_register_accounts_using_post(body, subscription, async_req=True)
+        >>> thread = api.pre_register_accounts_using_post(body, authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param AccountRequest body: Información de la cuenta del beneficiario (required)
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: TokenRequiredResponse
                  If the method is called asynchronously,
@@ -343,29 +372,30 @@ class CuentasDeBeneficiariosSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.pre_register_accounts_using_post_with_http_info(body, subscription, **kwargs)  # noqa: E501
+            return self.pre_register_accounts_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.pre_register_accounts_using_post_with_http_info(body, subscription, **kwargs)  # noqa: E501
+            (data) = self.pre_register_accounts_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
             return data
 
-    def pre_register_accounts_using_post_with_http_info(self, body, subscription, **kwargs):  # noqa: E501
+    def pre_register_accounts_using_post_with_http_info(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Pre-registro de cuentas de beneficiarios.  # noqa: E501
 
         Pre-registra una o más cuentas de beneficiario en la plataforma, proporcionando una URL donde el cuentahabiente Monex debe ingresar un valor de su llave digital para confirmar el alta de las cuentas de beneficiarios.<br/>Los posibles valores de <i>relationship</i> y <i>kind_of_relationship</i> se deben  obtener de /subscriptions/{subscription}/beneficiaries/relationships.<br/><br/>La confirmación de registro en Monex se realiza a través de una llamada a los webhooks registrados con el evento ACCOUNT.CREATED.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pre_register_accounts_using_post_with_http_info(body, subscription, async_req=True)
+        >>> thread = api.pre_register_accounts_using_post_with_http_info(body, authorization, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param AccountRequest body: Información de la cuenta del beneficiario (required)
+        :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: TokenRequiredResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'subscription']  # noqa: E501
+        all_params = ['body', 'authorization', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -384,6 +414,10 @@ class CuentasDeBeneficiariosSPEIApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `pre_register_accounts_using_post`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `pre_register_accounts_using_post`")  # noqa: E501
         # verify the required parameter 'subscription' is set
         if ('subscription' not in params or
                 params['subscription'] is None):
@@ -398,6 +432,8 @@ class CuentasDeBeneficiariosSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -414,7 +450,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/beneficiaries/spei', 'POST',
@@ -432,16 +468,17 @@ class CuentasDeBeneficiariosSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_beneficiaries_pending_using_delete(self, request_id, subscription, **kwargs):  # noqa: E501
+    def remove_beneficiaries_pending_using_delete(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Eliminación de beneficiarios SPEI® sin confirmar  # noqa: E501
 
         Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_beneficiaries_pending_using_delete(request_id, subscription, async_req=True)
+        >>> thread = api.remove_beneficiaries_pending_using_delete(authorization, request_id, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str request_id: Identificador de los beneficiarios a eliminar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -450,21 +487,22 @@ class CuentasDeBeneficiariosSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.remove_beneficiaries_pending_using_delete_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+            return self.remove_beneficiaries_pending_using_delete_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.remove_beneficiaries_pending_using_delete_with_http_info(request_id, subscription, **kwargs)  # noqa: E501
+            (data) = self.remove_beneficiaries_pending_using_delete_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
             return data
 
-    def remove_beneficiaries_pending_using_delete_with_http_info(self, request_id, subscription, **kwargs):  # noqa: E501
+    def remove_beneficiaries_pending_using_delete_with_http_info(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Eliminación de beneficiarios SPEI® sin confirmar  # noqa: E501
 
         Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_beneficiaries_pending_using_delete_with_http_info(request_id, subscription, async_req=True)
+        >>> thread = api.remove_beneficiaries_pending_using_delete_with_http_info(authorization, request_id, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str request_id: Identificador de los beneficiarios a eliminar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -472,7 +510,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
                  returns the request thread.
         """
 
-        all_params = ['request_id', 'subscription']  # noqa: E501
+        all_params = ['authorization', 'request_id', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -487,6 +525,10 @@ class CuentasDeBeneficiariosSPEIApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `remove_beneficiaries_pending_using_delete`")  # noqa: E501
         # verify the required parameter 'request_id' is set
         if ('request_id' not in params or
                 params['request_id'] is None):
@@ -507,13 +549,15 @@ class CuentasDeBeneficiariosSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
 
         body_params = None
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/beneficiaries/spei/request/{requestId}', 'DELETE',
@@ -531,17 +575,18 @@ class CuentasDeBeneficiariosSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_amount_limit_account_using_put(self, body, account, subscription, **kwargs):  # noqa: E501
+    def update_amount_limit_account_using_put(self, body, authorization, account, subscription, **kwargs):  # noqa: E501
         """Actualiza el monto límite  # noqa: E501
 
         Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_amount_limit_account_using_put(body, account, subscription, async_req=True)
+        >>> thread = api.update_amount_limit_account_using_put(body, authorization, account, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param AmountRequest body: Información de la cuenta y el monto límite a actualizar (required)
+        :param str authorization: Header para token (required)
         :param str account: Cuenta a actualizar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -550,22 +595,23 @@ class CuentasDeBeneficiariosSPEIApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.update_amount_limit_account_using_put_with_http_info(body, account, subscription, **kwargs)  # noqa: E501
+            return self.update_amount_limit_account_using_put_with_http_info(body, authorization, account, subscription, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_amount_limit_account_using_put_with_http_info(body, account, subscription, **kwargs)  # noqa: E501
+            (data) = self.update_amount_limit_account_using_put_with_http_info(body, authorization, account, subscription, **kwargs)  # noqa: E501
             return data
 
-    def update_amount_limit_account_using_put_with_http_info(self, body, account, subscription, **kwargs):  # noqa: E501
+    def update_amount_limit_account_using_put_with_http_info(self, body, authorization, account, subscription, **kwargs):  # noqa: E501
         """Actualiza el monto límite  # noqa: E501
 
         Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_amount_limit_account_using_put_with_http_info(body, account, subscription, async_req=True)
+        >>> thread = api.update_amount_limit_account_using_put_with_http_info(body, authorization, account, subscription, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param AmountRequest body: Información de la cuenta y el monto límite a actualizar (required)
+        :param str authorization: Header para token (required)
         :param str account: Cuenta a actualizar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :return: None
@@ -573,7 +619,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body', 'account', 'subscription']  # noqa: E501
+        all_params = ['body', 'authorization', 'account', 'subscription']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -592,6 +638,10 @@ class CuentasDeBeneficiariosSPEIApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `update_amount_limit_account_using_put`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `update_amount_limit_account_using_put`")  # noqa: E501
         # verify the required parameter 'account' is set
         if ('account' not in params or
                 params['account'] is None):
@@ -612,6 +662,8 @@ class CuentasDeBeneficiariosSPEIApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -624,7 +676,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app_user_spei']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/beneficiaries/spei/{account}', 'PUT',

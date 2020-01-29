@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**remove_subscription_pending_status_using_delete**](SuscripcionesApi.md#remove_subscription_pending_status_using_delete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimna una pre-suscripción
 
 # **pre_enrollment_monex_user_using_post**
-> PreEnrollmentResponse pre_enrollment_monex_user_using_post(body)
+> PreEnrollmentResponse pre_enrollment_monex_user_using_post(body, authorization)
 
 registra una pre-suscripción
 
@@ -23,17 +23,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.SuscripcionesApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.SuscripcionesApi()
 body = wire4_client.PreEnrollmentData() # PreEnrollmentData | Información para el enrolamiento
+authorization = 'authorization_example' # str | Header para token
 
 try:
     # registra una pre-suscripción
-    api_response = api_instance.pre_enrollment_monex_user_using_post(body)
+    api_response = api_instance.pre_enrollment_monex_user_using_post(body, authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SuscripcionesApi->pre_enrollment_monex_user_using_post: %s\n" % e)
@@ -44,6 +41,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**PreEnrollmentData**](PreEnrollmentData.md)| Información para el enrolamiento | 
+ **authorization** | **str**| Header para token | 
 
 ### Return type
 
@@ -51,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 
@@ -61,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_enrollment_user_using_delete**
-> remove_enrollment_user_using_delete(subscription)
+> remove_enrollment_user_using_delete(authorization, subscription)
 
 Elimna una suscripción por id
 
@@ -75,17 +73,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.SuscripcionesApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.SuscripcionesApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Elimna una suscripción por id
-    api_instance.remove_enrollment_user_using_delete(subscription)
+    api_instance.remove_enrollment_user_using_delete(authorization, subscription)
 except ApiException as e:
     print("Exception when calling SuscripcionesApi->remove_enrollment_user_using_delete: %s\n" % e)
 ```
@@ -94,6 +89,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -102,7 +98,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -112,7 +108,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_subscription_pending_status_using_delete**
-> remove_subscription_pending_status_using_delete(subscription)
+> remove_subscription_pending_status_using_delete(authorization, subscription)
 
 Elimna una pre-suscripción
 
@@ -126,17 +122,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.SuscripcionesApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.SuscripcionesApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Elimna una pre-suscripción
-    api_instance.remove_subscription_pending_status_using_delete(subscription)
+    api_instance.remove_subscription_pending_status_using_delete(authorization, subscription)
 except ApiException as e:
     print("Exception when calling SuscripcionesApi->remove_subscription_pending_status_using_delete: %s\n" % e)
 ```
@@ -145,6 +138,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -153,7 +147,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

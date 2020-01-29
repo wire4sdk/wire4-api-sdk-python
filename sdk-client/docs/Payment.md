@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **account** | **str** | Cuenta emisora | [optional] 
 **amount** | **float** | Monto de la transferencia | [optional] 
 **beneficiary_account** | **str** | Cuenta del beneficiario | [optional] 
-**beneficiary_bank** | [**MessageInstitution**](MessageInstitution.md) |  | [optional] 
+**beneficiary_bank** | [**Institution**](Institution.md) |  | [optional] 
 **beneficiary_name** | **str** | Nombre del Beneficiario | [optional] 
 **cep** | [**MessageCEP**](MessageCEP.md) |  | [optional] 
 **clave_rastreo** | **str** | Clave de rastreo de la transferencia | [optional] 

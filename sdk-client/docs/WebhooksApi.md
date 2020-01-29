@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**register_webhook**](WebhooksApi.md#register_webhook) | **POST** /webhooks | Alta de Webhook
 
 # **get_webhook**
-> WebhookResponse get_webhook(id)
+> WebhookResponse get_webhook(authorization, id)
 
 Consulta de Webhook
 
@@ -23,17 +23,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.WebhooksApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.WebhooksApi()
+authorization = 'authorization_example' # str | Header para token
 id = 'id_example' # str | Identificador del webhook
 
 try:
     # Consulta de Webhook
-    api_response = api_instance.get_webhook(id)
+    api_response = api_instance.get_webhook(authorization, id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling WebhooksApi->get_webhook: %s\n" % e)
@@ -43,6 +40,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **id** | **str**| Identificador del webhook | 
 
 ### Return type
@@ -51,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 
@@ -61,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_webhooks**
-> WebhooksList get_webhooks()
+> WebhooksList get_webhooks(authorization)
 
 Consulta de Webhooks
 
@@ -75,23 +73,23 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.WebhooksApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.WebhooksApi()
+authorization = 'authorization_example' # str | Header para token
 
 try:
     # Consulta de Webhooks
-    api_response = api_instance.get_webhooks()
+    api_response = api_instance.get_webhooks(authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling WebhooksApi->get_webhooks: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
 
 ### Return type
 
@@ -99,7 +97,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 
@@ -109,7 +107,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **register_webhook**
-> WebhookResponse register_webhook(body)
+> WebhookResponse register_webhook(body, authorization)
 
 Alta de Webhook
 
@@ -123,17 +121,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.WebhooksApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.WebhooksApi()
 body = wire4_client.WebhookRequest() # WebhookRequest | Información para registrar un Webhook
+authorization = 'authorization_example' # str | Header para token
 
 try:
     # Alta de Webhook
-    api_response = api_instance.register_webhook(body)
+    api_response = api_instance.register_webhook(body, authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling WebhooksApi->register_webhook: %s\n" % e)
@@ -144,6 +139,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**WebhookRequest**](WebhookRequest.md)| Información para registrar un Webhook | 
+ **authorization** | **str**| Header para token | 
 
 ### Return type
 
@@ -151,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

@@ -32,16 +32,17 @@ class WebhooksApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_webhook(self, id, **kwargs):  # noqa: E501
+    def get_webhook(self, authorization, id, **kwargs):  # noqa: E501
         """Consulta de Webhook  # noqa: E501
 
         Obtiene un webhook registrado en la plataforma mediante su identificador.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_webhook(id, async_req=True)
+        >>> thread = api.get_webhook(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str id: Identificador del webhook (required)
         :return: WebhookResponse
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class WebhooksApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_webhook_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_webhook_with_http_info(authorization, id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_webhook_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_webhook_with_http_info(authorization, id, **kwargs)  # noqa: E501
             return data
 
-    def get_webhook_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_webhook_with_http_info(self, authorization, id, **kwargs):  # noqa: E501
         """Consulta de Webhook  # noqa: E501
 
         Obtiene un webhook registrado en la plataforma mediante su identificador.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_webhook_with_http_info(id, async_req=True)
+        >>> thread = api.get_webhook_with_http_info(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :param str id: Identificador del webhook (required)
         :return: WebhookResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']  # noqa: E501
+        all_params = ['authorization', 'id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class WebhooksApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_webhook`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -99,6 +105,8 @@ class WebhooksApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -109,7 +117,7 @@ class WebhooksApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/webhooks/{id}', 'GET',
@@ -127,43 +135,45 @@ class WebhooksApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_webhooks(self, **kwargs):  # noqa: E501
+    def get_webhooks(self, authorization, **kwargs):  # noqa: E501
         """Consulta de Webhooks  # noqa: E501
 
         Obtiene los webhooks registrados en la plataforma que tengan estatus 'ACTIVE' e 'INACTIVE'.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_webhooks(async_req=True)
+        >>> thread = api.get_webhooks(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :return: WebhooksList
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_webhooks_with_http_info(**kwargs)  # noqa: E501
+            return self.get_webhooks_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_webhooks_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_webhooks_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def get_webhooks_with_http_info(self, **kwargs):  # noqa: E501
+    def get_webhooks_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Consulta de Webhooks  # noqa: E501
 
         Obtiene los webhooks registrados en la plataforma que tengan estatus 'ACTIVE' e 'INACTIVE'.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_webhooks_with_http_info(async_req=True)
+        >>> thread = api.get_webhooks_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Header para token (required)
         :return: WebhooksList
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -178,6 +188,10 @@ class WebhooksApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_webhooks`")  # noqa: E501
 
         collection_formats = {}
 
@@ -186,6 +200,8 @@ class WebhooksApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -196,7 +212,7 @@ class WebhooksApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/webhooks', 'GET',
@@ -214,45 +230,47 @@ class WebhooksApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def register_webhook(self, body, **kwargs):  # noqa: E501
+    def register_webhook(self, body, authorization, **kwargs):  # noqa: E501
         """Alta de Webhook  # noqa: E501
 
         Registra un webhook en la plataforma para su uso como notificador de eventos cuando estos ocurran.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.register_webhook(body, async_req=True)
+        >>> thread = api.register_webhook(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param WebhookRequest body: Información para registrar un Webhook (required)
+        :param str authorization: Header para token (required)
         :return: WebhookResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.register_webhook_with_http_info(body, **kwargs)  # noqa: E501
+            return self.register_webhook_with_http_info(body, authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.register_webhook_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.register_webhook_with_http_info(body, authorization, **kwargs)  # noqa: E501
             return data
 
-    def register_webhook_with_http_info(self, body, **kwargs):  # noqa: E501
+    def register_webhook_with_http_info(self, body, authorization, **kwargs):  # noqa: E501
         """Alta de Webhook  # noqa: E501
 
         Registra un webhook en la plataforma para su uso como notificador de eventos cuando estos ocurran.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.register_webhook_with_http_info(body, async_req=True)
+        >>> thread = api.register_webhook_with_http_info(body, authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param WebhookRequest body: Información para registrar un Webhook (required)
+        :param str authorization: Header para token (required)
         :return: WebhookResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['body', 'authorization']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -271,6 +289,10 @@ class WebhooksApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `register_webhook`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `register_webhook`")  # noqa: E501
 
         collection_formats = {}
 
@@ -279,6 +301,8 @@ class WebhooksApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -295,7 +319,7 @@ class WebhooksApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['wire4_aut_app']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/webhooks', 'POST',

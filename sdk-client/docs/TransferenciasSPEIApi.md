@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**register_outgoing_spei_transaction_using_post**](TransferenciasSPEIApi.md#register_outgoing_spei_transaction_using_post) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
 
 # **drop_transactions_pending_using_delete**
-> drop_transactions_pending_using_delete(request_id, subscription)
+> drop_transactions_pending_using_delete(authorization, request_id, subscription)
 
 Eliminación de transferencias SPEI® pendientes
 
@@ -25,18 +25,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.TransferenciasSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.TransferenciasSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 request_id = 'request_id_example' # str | Identificador de las transferencias a eliminar
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Eliminación de transferencias SPEI® pendientes
-    api_instance.drop_transactions_pending_using_delete(request_id, subscription)
+    api_instance.drop_transactions_pending_using_delete(authorization, request_id, subscription)
 except ApiException as e:
     print("Exception when calling TransferenciasSPEIApi->drop_transactions_pending_using_delete: %s\n" % e)
 ```
@@ -45,6 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **request_id** | **str**| Identificador de las transferencias a eliminar | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
@@ -54,7 +52,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -64,7 +62,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **incoming_spei_transactions_report_using_get**
-> list[Deposit] incoming_spei_transactions_report_using_get(subscription)
+> list[Deposit] incoming_spei_transactions_report_using_get(authorization, subscription)
 
 Consulta de transferencias recibidas
 
@@ -78,17 +76,14 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.TransferenciasSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.TransferenciasSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Consulta de transferencias recibidas
-    api_response = api_instance.incoming_spei_transactions_report_using_get(subscription)
+    api_response = api_instance.incoming_spei_transactions_report_using_get(authorization, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TransferenciasSPEIApi->incoming_spei_transactions_report_using_get: %s\n" % e)
@@ -98,6 +93,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -106,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -116,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **out_comming_spei_request_id_transactions_report_using_get**
-> PaymentsRequestId out_comming_spei_request_id_transactions_report_using_get(request_id, subscription)
+> PaymentsRequestId out_comming_spei_request_id_transactions_report_using_get(authorization, request_id, subscription)
 
 Consulta de transferencias de salida por identificador de petición
 
@@ -130,18 +126,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.TransferenciasSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.TransferenciasSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 request_id = 'request_id_example' # str | Identificador de la petición a buscar
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Consulta de transferencias de salida por identificador de petición
-    api_response = api_instance.out_comming_spei_request_id_transactions_report_using_get(request_id, subscription)
+    api_response = api_instance.out_comming_spei_request_id_transactions_report_using_get(authorization, request_id, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TransferenciasSPEIApi->out_comming_spei_request_id_transactions_report_using_get: %s\n" % e)
@@ -151,6 +144,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **request_id** | **str**| Identificador de la petición a buscar | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
@@ -160,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -170,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **outgoing_spei_transactions_report_using_get**
-> list[Payment] outgoing_spei_transactions_report_using_get(subscription, order_id=order_id)
+> list[Payment] outgoing_spei_transactions_report_using_get(authorization, subscription, order_id=order_id)
 
 Consulta de transferencias realizadas
 
@@ -184,18 +178,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.TransferenciasSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.TransferenciasSPEIApi()
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 order_id = 'order_id_example' # str | Identificador de la orden a buscar (optional)
 
 try:
     # Consulta de transferencias realizadas
-    api_response = api_instance.outgoing_spei_transactions_report_using_get(subscription, order_id=order_id)
+    api_response = api_instance.outgoing_spei_transactions_report_using_get(authorization, subscription, order_id=order_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TransferenciasSPEIApi->outgoing_spei_transactions_report_using_get: %s\n" % e)
@@ -205,6 +196,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
  **order_id** | **str**| Identificador de la orden a buscar | [optional] 
 
@@ -214,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -224,7 +216,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **register_outgoing_spei_transaction_using_post**
-> TokenRequiredResponse register_outgoing_spei_transaction_using_post(body, subscription)
+> TokenRequiredResponse register_outgoing_spei_transaction_using_post(body, authorization, subscription)
 
 Registro de transferencias
 
@@ -238,18 +230,15 @@ import wire4_client
 from wire4_client.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-configuration = wire4_client.Configuration()
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
 # create an instance of the API class
-api_instance = wire4_client.TransferenciasSPEIApi(wire4_client.ApiClient(configuration))
+api_instance = wire4_client.TransferenciasSPEIApi()
 body = wire4_client.TransactionsOutgoingRegister() # TransactionsOutgoingRegister | Información de las transferencias SPEI de salida
+authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 
 try:
     # Registro de transferencias
-    api_response = api_instance.register_outgoing_spei_transaction_using_post(body, subscription)
+    api_response = api_instance.register_outgoing_spei_transaction_using_post(body, authorization, subscription)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TransferenciasSPEIApi->register_outgoing_spei_transaction_using_post: %s\n" % e)
@@ -260,6 +249,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TransactionsOutgoingRegister**](TransactionsOutgoingRegister.md)| Información de las transferencias SPEI de salida | 
+ **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -268,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
