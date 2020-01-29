@@ -43,3 +43,6 @@ class CachedToken:
     @token.setter
     def token(self, token: OAuth2Token):
         self._token = token
+
+    def __str__(self) -> str:
+        return "user_key: " + self.user_key + ", user_secret: " + self.user_secret + ", token: " + str(self.token)
