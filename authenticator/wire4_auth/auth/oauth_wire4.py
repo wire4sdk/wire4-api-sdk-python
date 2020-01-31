@@ -44,6 +44,8 @@ class OAuthWire4:
         if self._environment is None:
             self._environment = EnvironmentEnum.SANDBOX
 
+        self._client_auth = HTTPBasicAuth(self._client_id, self._client_secret)
+
         # noinspection PyTypeChecker
         self._token_cached_app = CachedToken(None, None, None)
         self._tokens_cached_app_user = OrderedDict()
@@ -57,7 +59,7 @@ class OAuthWire4:
             return self.__format_to_header(self._token_cached_app.token.get("access_token"))
 
         try:
-            auth = HTTPBasicAuth(self._client_id, self._client_secret)
+            auth = self.__build_http_basic()
             scopes = [scope]
             client = BackendApplicationClient(client_id=self._client_id, scope=scopes)
 
@@ -80,7 +82,7 @@ class OAuthWire4:
             return self.__format_to_header(token_cached.token.get("access_token"))
 
         try:
-            auth = HTTPBasicAuth(self._client_id, self._client_secret)
+            auth = self.__build_http_basic()
             scopes = [scope]
             client = LegacyApplicationClient(client_id=self._client_id)
 
@@ -102,7 +104,7 @@ class OAuthWire4:
     def regenerate_access_token_app(self, scope="general") -> str:
 
         try:
-            auth = HTTPBasicAuth(self._client_id, self._client_secret)
+            auth = self.__build_http_basic()
             scopes = [scope]
             client = BackendApplicationClient(client_id=self._client_id, scope=scopes)
 
@@ -116,9 +118,8 @@ class OAuthWire4:
 
     def regenerate_access_token_app_user(self, user_key: str, secret_key: str, scope="spei_admin") -> str:
 
-        key_search = user_key + scope
         try:
-            auth = HTTPBasicAuth(self._client_id, self._client_secret)
+            auth = self.__build_http_basic()
             scopes = [scope]
             client = LegacyApplicationClient(client_id=self._client_id)
 
@@ -126,7 +127,9 @@ class OAuthWire4:
             token = oauth.fetch_token(token_url=self._environment.token_url, username=user_key,
                                       password=secret_key, auth=auth, scope=scopes)
 
-            if len(self._tokens_cached_app_user) + 1 > self.MAX_APP_USER_SIZE_CACHED:
+            key_search = user_key + scope
+            token_cached = self._tokens_cached_app_user.get(key_search)
+            if token_cached is None and len(self._tokens_cached_app_user) + 1 > self.MAX_APP_USER_SIZE_CACHED:
                 for key in self._tokens_cached_app_user:
                     self._tokens_cached_app_user.pop(key)
                     break
@@ -136,6 +139,10 @@ class OAuthWire4:
             return self.__format_to_header(token.get("access_token"))
         except Exception as ex:
             raise ApiException(reason="error to obtain token app user: {0}".format(ex))
+
+    def __build_http_basic(self) -> HTTPBasicAuth:
+
+        return HTTPBasicAuth(self._client_id, self._client_secret) if self._client_auth is None else self._client_auth
 
     def __is_expired(self, expires_at: float) -> bool:
 
