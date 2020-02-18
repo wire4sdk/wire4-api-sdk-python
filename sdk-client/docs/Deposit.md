@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **beneficiary_account** | **str** | La cuenta del beneficiario | [optional] 
 **beneficiary_name** | **str** | El nombre del beneficiario | [optional] 
 **beneficiary_rfc** | **str** | El RFC del beneficiario | [optional] 
+**cep** | [**MessageCEP**](MessageCEP.md) |  | [optional] 
 **clave_rastreo** | **str** | La clave de rastreo de la transferencia | [optional] 
 **confirm_date** | **datetime** | Fecha de confirmación del deposito | [optional] 
 **currency_code** | **str** | Código de moneda de la transferencia | [optional] 

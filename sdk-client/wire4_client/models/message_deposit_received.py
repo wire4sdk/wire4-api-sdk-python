@@ -14,6 +14,7 @@ import pprint
 import re  # noqa: F401
 
 import six
+from wire4_client.models.message_cep import MessageCEP  # noqa: F401,E501
 from wire4_client.models.message_institution import MessageInstitution  # noqa: F401,E501
 
 
@@ -34,6 +35,7 @@ class MessageDepositReceived(object):
         'beneficiary_account': 'str',
         'beneficiary_name': 'str',
         'beneficiary_rfc': 'str',
+        'cep': 'MessageCEP',
         'clave_rastreo': 'str',
         'confirm_date': 'datetime',
         'currency_code': 'str',
@@ -57,6 +59,7 @@ class MessageDepositReceived(object):
         'beneficiary_account': 'beneficiary_account',
         'beneficiary_name': 'beneficiary_name',
         'beneficiary_rfc': 'beneficiary_rfc',
+        'cep': 'cep',
         'clave_rastreo': 'clave_rastreo',
         'confirm_date': 'confirm_date',
         'currency_code': 'currency_code',
@@ -75,12 +78,13 @@ class MessageDepositReceived(object):
         'sender_rfc': 'sender_rfc'
     }
 
-    def __init__(self, amount=None, beneficiary_account=None, beneficiary_name=None, beneficiary_rfc=None, clave_rastreo=None, confirm_date=None, currency_code=None, deposit_date=None, depositant=None, depositant_clabe=None, depositant_email=None, depositant_rfc=None, description=None, monex_description=None, monex_transaction_id=None, reference=None, sender_account=None, sender_bank=None, sender_name=None, sender_rfc=None):  # noqa: E501
+    def __init__(self, amount=None, beneficiary_account=None, beneficiary_name=None, beneficiary_rfc=None, cep=None, clave_rastreo=None, confirm_date=None, currency_code=None, deposit_date=None, depositant=None, depositant_clabe=None, depositant_email=None, depositant_rfc=None, description=None, monex_description=None, monex_transaction_id=None, reference=None, sender_account=None, sender_bank=None, sender_name=None, sender_rfc=None):  # noqa: E501
         """MessageDepositReceived - a model defined in Swagger"""  # noqa: E501
         self._amount = None
         self._beneficiary_account = None
         self._beneficiary_name = None
         self._beneficiary_rfc = None
+        self._cep = None
         self._clave_rastreo = None
         self._confirm_date = None
         self._currency_code = None
@@ -106,6 +110,8 @@ class MessageDepositReceived(object):
             self.beneficiary_name = beneficiary_name
         if beneficiary_rfc is not None:
             self.beneficiary_rfc = beneficiary_rfc
+        if cep is not None:
+            self.cep = cep
         if clave_rastreo is not None:
             self.clave_rastreo = clave_rastreo
         if confirm_date is not None:
@@ -230,6 +236,27 @@ class MessageDepositReceived(object):
         """
 
         self._beneficiary_rfc = beneficiary_rfc
+
+    @property
+    def cep(self):
+        """Gets the cep of this MessageDepositReceived.  # noqa: E501
+
+
+        :return: The cep of this MessageDepositReceived.  # noqa: E501
+        :rtype: MessageCEP
+        """
+        return self._cep
+
+    @cep.setter
+    def cep(self, cep):
+        """Sets the cep of this MessageDepositReceived.
+
+
+        :param cep: The cep of this MessageDepositReceived.  # noqa: E501
+        :type: MessageCEP
+        """
+
+        self._cep = cep
 
     @property
     def clave_rastreo(self):

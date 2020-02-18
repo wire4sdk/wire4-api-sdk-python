@@ -245,7 +245,7 @@ class TransferenciasSPEIApi(object):
     def out_comming_spei_request_id_transactions_report_using_get(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias de salida por identificador de petición  # noqa: E501
 
-        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
+        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.out_comming_spei_request_id_transactions_report_using_get(authorization, request_id, subscription, async_req=True)
@@ -269,7 +269,7 @@ class TransferenciasSPEIApi(object):
     def out_comming_spei_request_id_transactions_report_using_get_with_http_info(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias de salida por identificador de petición  # noqa: E501
 
-        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
+        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.out_comming_spei_request_id_transactions_report_using_get_with_http_info(authorization, request_id, subscription, async_req=True)
