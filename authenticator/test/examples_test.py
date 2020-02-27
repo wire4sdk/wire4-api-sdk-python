@@ -33,7 +33,6 @@ from wire4_auth.core.environment_enum import EnvironmentEnum
 
 # noinspection DuplicatedCode
 class TestAccount(unittest.TestCase):
-    # OAuthWire4("kIinyEIYWUIF3pflFxhRdKft2_ga", "gca6FwUE_9Dk23UhWoM81pZkNgEa", EnvironmentEnum.DEVELOPMENT)
 
     CLIENT_ID: str = "FxUWmqYGZuv8O1qjxstvIyJothMa"
 
@@ -348,6 +347,39 @@ class TestAccount(unittest.TestCase):
             #       rfc="RFCE010980AR3", account="112680000156896531")
             response: BeneficiariesResponse = api_instance.get_beneficiaries_for_account_using_get(
                 oauth_token_user, subscription)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        pass
+
+    def testObtainBeneficiariesByRequestId(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = CuentasDeBeneficiariosSPEIApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+        subscription: str = self.SUBSCRIPTION
+        request_id: str = "0726a947-deaf-4bdc-a411-dc40192c78d9"
+
+        try:
+            # authorization, request_id, subscription
+            response: BeneficiariesResponse = api_instance.get_beneficiaries_by_request_id(
+                oauth_token_user, request_id, subscription)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
@@ -797,6 +829,38 @@ class TestAccount(unittest.TestCase):
             return
 
         pass
+
+    def testOutCommingSpeiReportByRequestID(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # Obtain an access token use password flow and scope "spei_admin"
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = TransferenciasSPEIApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+        request_id = '4d633b1d-1b36-425a-8758-2bebcb657e98'  # str | Identificador de la petición a buscar
+        subscription = self.SUBSCRIPTION  # str | El identificador de la suscripción a esta API
+
+        try:
+            api_response = api_instance.out_comming_spei_request_id_transactions_report_using_get(oauth_token_user,
+                                                                                                  request_id,
+                                                                                                  subscription)
+            print(api_response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in request
+            return
 
     def testDeleteOutgoingPendingSpeiTransaction(self):
         # Create the authenticator to obtain access token
