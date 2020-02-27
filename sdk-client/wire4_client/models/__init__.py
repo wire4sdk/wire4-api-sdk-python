@@ -42,6 +42,7 @@ from wire4_client.models.message_cep import MessageCEP
 from wire4_client.models.message_deposit_received import MessageDepositReceived
 from wire4_client.models.message_institution import MessageInstitution
 from wire4_client.models.message_payment import MessagePayment
+from wire4_client.models.message_request_changed import MessageRequestChanged
 from wire4_client.models.message_subscription import MessageSubscription
 from wire4_client.models.message_web_hook import MessageWebHook
 from wire4_client.models.payment import Payment
@@ -51,7 +52,6 @@ from wire4_client.models.pre_enrollment_data import PreEnrollmentData
 from wire4_client.models.pre_enrollment_response import PreEnrollmentResponse
 from wire4_client.models.relationship import Relationship
 from wire4_client.models.relationships_response import RelationshipsResponse
-from wire4_client.models.request_changed_message import RequestChangedMessage
 from wire4_client.models.spid_beneficiaries_response import SpidBeneficiariesResponse
 from wire4_client.models.spid_beneficiary_response import SpidBeneficiaryResponse
 from wire4_client.models.spid_classification_dto import SpidClassificationDTO

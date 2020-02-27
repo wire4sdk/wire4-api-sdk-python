@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.request_changed_message import RequestChangedMessage  # noqa: E501
+from models.message_request_changed import MessageRequestChanged  # noqa: E501
 from wire4_client.rest import ApiException
 
 
-class TestRequestChangedMessage(unittest.TestCase):
-    """RequestChangedMessage unit test stubs"""
+class TestMessageRequestChanged(unittest.TestCase):
+    """MessageRequestChanged unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestRequestChangedMessage(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testRequestChangedMessage(self):
-        """Test RequestChangedMessage"""
+    def testMessageRequestChanged(self):
+        """Test MessageRequestChanged"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = wire4_client.models.request_changed_message.RequestChangedMessage()  # noqa: E501
+        # model = wire4_client.models.message_request_changed.MessageRequestChanged()  # noqa: E501
         pass
 
 
