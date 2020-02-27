@@ -38,6 +38,7 @@ from wire4_client.models.account_spid import AccountSpid
 from wire4_client.models.amount_request import AmountRequest
 from wire4_client.models.balance import Balance
 from wire4_client.models.balance_list_response import BalanceListResponse
+from wire4_client.models.beneficiaries_query_register_status import BeneficiariesQueryRegisterStatus
 from wire4_client.models.beneficiaries_response import BeneficiariesResponse
 from wire4_client.models.beneficiary_institution import BeneficiaryInstitution
 from wire4_client.models.billing import Billing
@@ -58,6 +59,7 @@ from wire4_client.models.message_cep import MessageCEP
 from wire4_client.models.message_deposit_received import MessageDepositReceived
 from wire4_client.models.message_institution import MessageInstitution
 from wire4_client.models.message_payment import MessagePayment
+from wire4_client.models.message_request_changed import MessageRequestChanged
 from wire4_client.models.message_subscription import MessageSubscription
 from wire4_client.models.message_web_hook import MessageWebHook
 from wire4_client.models.payment import Payment
