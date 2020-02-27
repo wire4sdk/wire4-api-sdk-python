@@ -42,6 +42,13 @@ class TestCuentasDeBeneficiariosSPEIApi(unittest.TestCase):
         """
         pass
 
+    def test_get_beneficiaries_by_request_id(self):
+        """Test case for get_beneficiaries_by_request_id
+
+        Consulta los beneficiarios por el identificador de la petición de registro  # noqa: E501
+        """
+        pass
+
     def test_get_beneficiaries_for_account_using_get(self):
         """Test case for get_beneficiaries_for_account_using_get
 

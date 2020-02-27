@@ -42,7 +42,8 @@ class AccountResponse(object):
         'payment_concept_spei': 'str',
         'person': 'Person',
         'relationship': 'str',
-        'rfc': 'str'
+        'rfc': 'str',
+        'status': 'str'
     }
 
     attribute_map = {
@@ -56,10 +57,11 @@ class AccountResponse(object):
         'payment_concept_spei': 'payment_concept_spei',
         'person': 'person',
         'relationship': 'relationship',
-        'rfc': 'rfc'
+        'rfc': 'rfc',
+        'status': 'status'
     }
 
-    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spei=None, payment_concept_spei=None, person=None, relationship=None, rfc=None):  # noqa: E501
+    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spei=None, payment_concept_spei=None, person=None, relationship=None, rfc=None, status=None):  # noqa: E501
         """AccountResponse - a model defined in Swagger"""  # noqa: E501
         self._amount_limit = None
         self._bank = None
@@ -72,6 +74,7 @@ class AccountResponse(object):
         self._person = None
         self._relationship = None
         self._rfc = None
+        self._status = None
         self.discriminator = None
         self.amount_limit = amount_limit
         if bank is not None:
@@ -90,6 +93,8 @@ class AccountResponse(object):
             self.person = person
         self.relationship = relationship
         self.rfc = rfc
+        if status is not None:
+            self.status = status
 
     @property
     def amount_limit(self):
@@ -347,6 +352,29 @@ class AccountResponse(object):
             raise ValueError("Invalid value for `rfc`, must not be `None`")  # noqa: E501
 
         self._rfc = rfc
+
+    @property
+    def status(self):
+        """Gets the status of this AccountResponse.  # noqa: E501
+
+        El estado (status) en el que se encuentra el registro del beneficiario  # noqa: E501
+
+        :return: The status of this AccountResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this AccountResponse.
+
+        El estado (status) en el que se encuentra el registro del beneficiario  # noqa: E501
+
+        :param status: The status of this AccountResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._status = status
 
     def to_dict(self):
         """Returns the model properties as a dict"""
