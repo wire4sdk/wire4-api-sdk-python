@@ -18,7 +18,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "wire4-auth"
-VERSION = "1.0.0"
+VERSION = "1.0.3"
 # To install the library, run the following
 #
 # python setup.py install
