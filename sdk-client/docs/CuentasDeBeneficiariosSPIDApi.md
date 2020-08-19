@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**pre_register_accounts_using_post1**](CuentasDeBeneficiariosSPIDApi.md#pre_register_accounts_using_post1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
 
 # **get_spid_beneficiaries_for_account**
-> SpidBeneficiariesResponse get_spid_beneficiaries_for_account(authorization, subscription, account=account, rfc=rfc)
+> SpidBeneficiariesResponse get_spid_beneficiaries_for_account(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, rfc=rfc, status=status)
 
 Consulta los beneficiarios SPID registrados
 
@@ -27,11 +27,16 @@ api_instance = wire4_client.CuentasDeBeneficiariosSPIDApi()
 authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
 account = 'account_example' # str | Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+beneficiary_bank = 'beneficiary_bank_example' # str | Clave del banco beneficiario (optional)
+beneficiary_name = 'beneficiary_name_example' # str | Nombre del beneficiario (optional)
+end_date = 'end_date_example' # str | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+init_date = 'init_date_example' # str | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
 rfc = 'rfc_example' # str | RFC del beneficiario (optional)
+status = 'status_example' # str | Estatus de la cuenta (optional)
 
 try:
     # Consulta los beneficiarios SPID registrados
-    api_response = api_instance.get_spid_beneficiaries_for_account(authorization, subscription, account=account, rfc=rfc)
+    api_response = api_instance.get_spid_beneficiaries_for_account(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, rfc=rfc, status=status)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPIDApi->get_spid_beneficiaries_for_account: %s\n" % e)
@@ -44,7 +49,12 @@ Name | Type | Description  | Notes
  **authorization** | **str**| Header para token | 
  **subscription** | **str**| El identificador de la suscripción a esta API | 
  **account** | **str**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional] 
+ **beneficiary_bank** | **str**| Clave del banco beneficiario | [optional] 
+ **beneficiary_name** | **str**| Nombre del beneficiario | [optional] 
+ **end_date** | **str**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional] 
+ **init_date** | **str**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional] 
  **rfc** | **str**| RFC del beneficiario | [optional] 
+ **status** | **str**| Estatus de la cuenta | [optional] 
 
 ### Return type
 

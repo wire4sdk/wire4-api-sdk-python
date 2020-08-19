@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account** | **str** | Cuenta del beneficiario | [optional] 
+**account** | **str** | Cuenta del beneficiario registrado | [optional] 
 **error_message** | **str** | Mensaje de error en caso de existir, el valor de este atributo contiene el mensaje | [optional] 
-**request_id** | **str** | El identificador, en esta API, de la petición de registro de la cuenta del beneficiario | [optional] 
+**request_id** | **str** | El identificador en esta API, de la petición de registro de la cuenta del beneficiario | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
