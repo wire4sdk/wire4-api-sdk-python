@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.message_account_beneficiary import MessageAccountBeneficiary  # noqa: E501
+from models.message_user_authorized import MessageUserAuthorized  # noqa: E501
 from wire4_client.rest import ApiException
 
 
-class TestMessageAccountBeneficiary(unittest.TestCase):
-    """MessageAccountBeneficiary unit test stubs"""
+class TestMessageUserAuthorized(unittest.TestCase):
+    """MessageUserAuthorized unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestMessageAccountBeneficiary(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testMessageAccountBeneficiary(self):
-        """Test MessageAccountBeneficiary"""
+    def testMessageUserAuthorized(self):
+        """Test MessageUserAuthorized"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = wire4_client.models.message_account_beneficiary.MessageAccountBeneficiary()  # noqa: E501
+        # model = wire4_client.models.message_user_authorized.MessageUserAuthorized()  # noqa: E501
         pass
 
 

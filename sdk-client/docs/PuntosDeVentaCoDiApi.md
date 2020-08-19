@@ -4,11 +4,11 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_sales_point**](PuntosDeVentaCoDiApi.md#create_sales_point) | **POST** /codi/companies/{company_id}/salespoint | Registra un punto de venta asociado a una empresa
-[**obtain_sale_points**](PuntosDeVentaCoDiApi.md#obtain_sale_points) | **GET** /codi/companies/{company_id}/salespoint | Obtiene los puntos de venta asociados a una empresa
+[**create_sales_point**](PuntosDeVentaCoDiApi.md#create_sales_point) | **POST** /codi/companies/salespoint | Registra un punto de venta asociado a una empresa
+[**obtain_sale_points**](PuntosDeVentaCoDiApi.md#obtain_sale_points) | **GET** /codi/companies/salespoint | Obtiene los puntos de venta asociados a una empresa
 
 # **create_sales_point**
-> SalesPointRespose create_sales_point(body, authorization, company_id, name=name)
+> SalesPointRespose create_sales_point(body, authorization, company_id)
 
 Registra un punto de venta asociado a una empresa
 
@@ -24,14 +24,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = wire4_client.PuntosDeVentaCoDiApi()
-body = wire4_client.SalesPointRequest() # SalesPointRequest | salesPointRequest
+body = wire4_client.SalesPointRequest() # SalesPointRequest | Información del punto de venta CODI®
 authorization = 'authorization_example' # str | Header para token
-company_id = 'company_id_example' # str | company_id
-name = 'name_example' # str |  (optional)
+company_id = 'company_id_example' # str | El identificador de la empresa
 
 try:
     # Registra un punto de venta asociado a una empresa
-    api_response = api_instance.create_sales_point(body, authorization, company_id, name=name)
+    api_response = api_instance.create_sales_point(body, authorization, company_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PuntosDeVentaCoDiApi->create_sales_point: %s\n" % e)
@@ -41,10 +40,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SalesPointRequest**](SalesPointRequest.md)| salesPointRequest | 
+ **body** | [**SalesPointRequest**](SalesPointRequest.md)| Información del punto de venta CODI® | 
  **authorization** | **str**| Header para token | 
- **company_id** | **str**| company_id | 
- **name** | **str**|  | [optional] 
+ **company_id** | **str**| El identificador de la empresa | 
 
 ### Return type
 

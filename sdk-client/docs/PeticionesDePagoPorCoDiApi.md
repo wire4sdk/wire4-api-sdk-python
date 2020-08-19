@@ -4,8 +4,8 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**consult_codi_request_by_order_id**](PeticionesDePagoPorCoDiApi.md#consult_codi_request_by_order_id) | **GET** /codi/sales-point/{sales_point_id}/charges/{order_id} | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
-[**generate_codi_code_qr**](PeticionesDePagoPorCoDiApi.md#generate_codi_code_qr) | **POST** /codi/sales-point/{salesPointId}/charges | Genera un código QR para un pago mediante CODI®
+[**consult_codi_request_by_order_id**](PeticionesDePagoPorCoDiApi.md#consult_codi_request_by_order_id) | **GET** /codi/sales-point/charges | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+[**generate_codi_code_qr**](PeticionesDePagoPorCoDiApi.md#generate_codi_code_qr) | **POST** /codi/sales-point/charges | Genera un código QR para un pago mediante CODI®
 
 # **consult_codi_request_by_order_id**
 > PaymentRequestCodiResponseDTO consult_codi_request_by_order_id(authorization, order_id, sales_point_id)
@@ -25,7 +25,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = wire4_client.PeticionesDePagoPorCoDiApi()
 authorization = 'authorization_example' # str | Header para token
-order_id = 'order_id_example' # str | OrderId
+order_id = 'order_id_example' # str | Identificador del pago CODI®
 sales_point_id = 'sales_point_id_example' # str | Identificador del punto de venta
 
 try:
@@ -41,7 +41,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
- **order_id** | **str**| OrderId | 
+ **order_id** | **str**| Identificador del pago CODI® | 
  **sales_point_id** | **str**| Identificador del punto de venta | 
 
 ### Return type
