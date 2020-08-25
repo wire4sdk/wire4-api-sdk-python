@@ -14,7 +14,7 @@ import pprint
 import re  # noqa: F401
 
 import six
-from wire4_client.models.payment_request_codi_response_dto import PaymentRequestCodiResponseDTO  # noqa: F401,E501
+from wire4_client.models.codi_operation_response_dto import CodiOperationResponseDTO  # noqa: F401,E501
 
 
 class PaymentRequestCodiResponseDTO(object):
@@ -36,14 +36,10 @@ class PaymentRequestCodiResponseDTO(object):
         'concept': 'str',
         'creation_date': 'datetime',
         'due_date': 'datetime',
-        'id': 'str',
-        'operation_date': 'datetime',
-        'operations': 'list[PaymentRequestCodiResponseDTO]',
+        'operations': 'list[CodiOperationResponseDTO]',
         'order_id': 'str',
-        'payment_type': 'str',
         'phone_number': 'str',
         'status': 'str',
-        'transaction_id': 'str',
         'type': 'str'
     }
 
@@ -54,18 +50,14 @@ class PaymentRequestCodiResponseDTO(object):
         'concept': 'concept',
         'creation_date': 'creation_date',
         'due_date': 'due_date',
-        'id': 'id',
-        'operation_date': 'operation_date',
         'operations': 'operations',
         'order_id': 'order_id',
-        'payment_type': 'payment_type',
         'phone_number': 'phone_number',
         'status': 'status',
-        'transaction_id': 'transaction_id',
         'type': 'type'
     }
 
-    def __init__(self, amount=None, barcode_base64=None, barcode_url=None, concept=None, creation_date=None, due_date=None, id=None, operation_date=None, operations=None, order_id=None, payment_type=None, phone_number=None, status=None, transaction_id=None, type=None):  # noqa: E501
+    def __init__(self, amount=None, barcode_base64=None, barcode_url=None, concept=None, creation_date=None, due_date=None, operations=None, order_id=None, phone_number=None, status=None, type=None):  # noqa: E501
         """PaymentRequestCodiResponseDTO - a model defined in Swagger"""  # noqa: E501
         self._amount = None
         self._barcode_base64 = None
@@ -73,14 +65,10 @@ class PaymentRequestCodiResponseDTO(object):
         self._concept = None
         self._creation_date = None
         self._due_date = None
-        self._id = None
-        self._operation_date = None
         self._operations = None
         self._order_id = None
-        self._payment_type = None
         self._phone_number = None
         self._status = None
-        self._transaction_id = None
         self._type = None
         self.discriminator = None
         if amount is not None:
@@ -95,22 +83,14 @@ class PaymentRequestCodiResponseDTO(object):
             self.creation_date = creation_date
         if due_date is not None:
             self.due_date = due_date
-        if id is not None:
-            self.id = id
-        if operation_date is not None:
-            self.operation_date = operation_date
         if operations is not None:
             self.operations = operations
         if order_id is not None:
             self.order_id = order_id
-        if payment_type is not None:
-            self.payment_type = payment_type
         if phone_number is not None:
             self.phone_number = phone_number
         if status is not None:
             self.status = status
-        if transaction_id is not None:
-            self.transaction_id = transaction_id
         if type is not None:
             self.type = type
 
@@ -253,59 +233,13 @@ class PaymentRequestCodiResponseDTO(object):
         self._due_date = due_date
 
     @property
-    def id(self):
-        """Gets the id of this PaymentRequestCodiResponseDTO.  # noqa: E501
-
-        Identificador de la operacion.  # noqa: E501
-
-        :return: The id of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentRequestCodiResponseDTO.
-
-        Identificador de la operacion.  # noqa: E501
-
-        :param id: The id of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :type: str
-        """
-
-        self._id = id
-
-    @property
-    def operation_date(self):
-        """Gets the operation_date of this PaymentRequestCodiResponseDTO.  # noqa: E501
-
-        Fecha de la operacion.  # noqa: E501
-
-        :return: The operation_date of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._operation_date
-
-    @operation_date.setter
-    def operation_date(self, operation_date):
-        """Sets the operation_date of this PaymentRequestCodiResponseDTO.
-
-        Fecha de la operacion.  # noqa: E501
-
-        :param operation_date: The operation_date of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :type: datetime
-        """
-
-        self._operation_date = operation_date
-
-    @property
     def operations(self):
         """Gets the operations of this PaymentRequestCodiResponseDTO.  # noqa: E501
 
         Listado de pagos realizados sobre la petición.  # noqa: E501
 
         :return: The operations of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :rtype: list[PaymentRequestCodiResponseDTO]
+        :rtype: list[CodiOperationResponseDTO]
         """
         return self._operations
 
@@ -316,7 +250,7 @@ class PaymentRequestCodiResponseDTO(object):
         Listado de pagos realizados sobre la petición.  # noqa: E501
 
         :param operations: The operations of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :type: list[PaymentRequestCodiResponseDTO]
+        :type: list[CodiOperationResponseDTO]
         """
 
         self._operations = operations
@@ -343,29 +277,6 @@ class PaymentRequestCodiResponseDTO(object):
         """
 
         self._order_id = order_id
-
-    @property
-    def payment_type(self):
-        """Gets the payment_type of this PaymentRequestCodiResponseDTO.  # noqa: E501
-
-        Tipo de pago.  # noqa: E501
-
-        :return: The payment_type of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :rtype: str
-        """
-        return self._payment_type
-
-    @payment_type.setter
-    def payment_type(self, payment_type):
-        """Sets the payment_type of this PaymentRequestCodiResponseDTO.
-
-        Tipo de pago.  # noqa: E501
-
-        :param payment_type: The payment_type of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :type: str
-        """
-
-        self._payment_type = payment_type
 
     @property
     def phone_number(self):
@@ -412,29 +323,6 @@ class PaymentRequestCodiResponseDTO(object):
         """
 
         self._status = status
-
-    @property
-    def transaction_id(self):
-        """Gets the transaction_id of this PaymentRequestCodiResponseDTO.  # noqa: E501
-
-        Identificador de la transacción.  # noqa: E501
-
-        :return: The transaction_id of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :rtype: str
-        """
-        return self._transaction_id
-
-    @transaction_id.setter
-    def transaction_id(self, transaction_id):
-        """Sets the transaction_id of this PaymentRequestCodiResponseDTO.
-
-        Identificador de la transacción.  # noqa: E501
-
-        :param transaction_id: The transaction_id of this PaymentRequestCodiResponseDTO.  # noqa: E501
-        :type: str
-        """
-
-        self._transaction_id = transaction_id
 
     @property
     def type(self):

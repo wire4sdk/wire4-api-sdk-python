@@ -59,6 +59,7 @@ from wire4_client.models.cep_search_banxico import CepSearchBanxico
 from wire4_client.models.certificate_request import CertificateRequest
 from wire4_client.models.codi_code_qr_response_dto import CodiCodeQrResponseDTO
 from wire4_client.models.codi_code_request_dto import CodiCodeRequestDTO
+from wire4_client.models.codi_operation_response_dto import CodiOperationResponseDTO
 from wire4_client.models.codi_operations_filters_request_dto import CodiOperationsFiltersRequestDTO
 from wire4_client.models.company_registered import CompanyRegistered
 from wire4_client.models.company_requested import CompanyRequested
