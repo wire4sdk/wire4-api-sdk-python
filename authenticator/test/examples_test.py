@@ -39,20 +39,15 @@ from wire4_auth.core.environment_enum import EnvironmentEnum
 # noinspection DuplicatedCode
 class TestAccount(unittest.TestCase):
 
-    #CLIENT_ID: str = "FxUWmqYGZuv8O1qjxstvIyJothMa"
-    CLIENT_ID: str = "6PqWzT6DgbEyLNu7d4YItJyuT2Ea"
+    CLIENT_ID: str = "FxUWmqYGZuv8O1qjxstvIyJothMa"
 
-    #CLIENT_SECRET: str = "kjwbkrPVgXsnaUGzthj55dsFhx4a"
-    CLIENT_SECRET: str = "00cRaDHZimyDENOJOQbA5psoVNoa"
+    CLIENT_SECRET: str = "kjwbkrPVgXsnaUGzthj55dsFhx4a"
 
-    #SUBSCRIPTION: str = "f1504fea-3a8f-475a-a50a-90d3c40efc59"
-    SUBSCRIPTION: str = "73be6d4e-fa70-4732-8eab-a47b2b798a83"
+    SUBSCRIPTION: str = "f1504fea-3a8f-475a-a50a-90d3c40efc59"
 
-    #USER_KEY: str = "071e2b59b354186b3a0158de493536@sandbox.wire4.mx"
-    USER_KEY: str = "9548042dccc4790a43c36d919fb677@develop.wire4.mx"
+    USER_KEY: str = "071e2b59b354186b3a0158de493536@sandbox.wire4.mx"
 
-    #SECRET_KEY: str = "0d1e33e94604f01b4e00d2fcb6b48f"
-    SECRET_KEY: str = "e9c24e4aa064a34bd6357400fab7c0"
+    SECRET_KEY: str = "0d1e33e94604f01b4e00d2fcb6b48f"
 
     SALES_POINT_ID='58b8365c-80a1-4c5c-88cd-b3ec9f2b1383'
 
