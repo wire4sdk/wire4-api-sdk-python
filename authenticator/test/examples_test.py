@@ -1,3 +1,4 @@
+# coding: utf-8
 #    COPYRIGHT © 2017. TCPIP.
 #    PATENT PENDING. ALL RIGHTS RESERVED.
 #    SPEI GATEWAY IS REGISTERED TRADEMARKS OF TCPIP.
@@ -6,7 +7,7 @@
 #    You shall not disclose such Confidential Information and shall use it only
 #    in accordance with the company policy.
 
-# coding: utf-8
+
 
 """
      <i>Fecha de creación: 6 de diciembre, 2019</i>
@@ -17,14 +18,18 @@
 import sys
 import unittest
 import warnings
+from datetime import timedelta
 
 from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, ComprobanteElectrnicoDePagoCEPApi, \
     CepResponse, SuscripcionesApi, PreEnrollmentData, PreEnrollmentResponse, CuentasDeBeneficiariosSPEIApi, \
-    RelationshipsResponse, AccountRequest, Account, Person, TokenRequiredResponse, BeneficiariesResponse,\
+    RelationshipsResponse, AccountRequest, Account, Person, TokenRequiredResponse, BeneficiariesResponse, \
     AmountRequest, InstitucionesApi, InstitutionsList, SaldoApi, BalanceListResponse, CuentasDeBeneficiariosSPIDApi, \
     SpidClassificationsResponseDTO, TransferenciasSPIDApi, AccountSpid, BeneficiaryInstitution, DepositantesApi, \
     DepositantsRegister, DepositantsResponse, TransferenciasSPEIApi, WebhooksApi, WebhooksList, WebhookResponse, \
-    Billing, FacturasApi, WebhookRequest, TransactionOutgoingSpid, TransactionsOutgoingRegister, TransactionOutgoing
+    Billing, FacturasApi, WebhookRequest, TransactionOutgoingSpid, TransactionsOutgoingRegister, TransactionOutgoing, \
+    EmpresasCoDiApi, PuntosDeVentaCoDiApi, OperacionesCoDiApi, CompanyRequested, CertificateRequest, SalesPointRequest, \
+    PeticionesDePagoPorCoDiApi, CodiCodeRequestDTO, CodiOperationsFiltersRequestDTO, ContractsDetailsApi, \
+    ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup
 from wire4_client.rest import ApiException
 
 from wire4_auth.auth.oauth_wire4 import OAuthWire4
@@ -34,17 +39,28 @@ from wire4_auth.core.environment_enum import EnvironmentEnum
 # noinspection DuplicatedCode
 class TestAccount(unittest.TestCase):
 
-    CLIENT_ID: str = "FxUWmqYGZuv8O1qjxstvIyJothMa"
+    #CLIENT_ID: str = "FxUWmqYGZuv8O1qjxstvIyJothMa"
+    CLIENT_ID: str = "6PqWzT6DgbEyLNu7d4YItJyuT2Ea"
 
-    CLIENT_SECRET: str = "kjwbkrPVgXsnaUGzthj55dsFhx4a"
+    #CLIENT_SECRET: str = "kjwbkrPVgXsnaUGzthj55dsFhx4a"
+    CLIENT_SECRET: str = "00cRaDHZimyDENOJOQbA5psoVNoa"
 
-    SUBSCRIPTION: str = "f1504fea-3a8f-475a-a50a-90d3c40efc59"
+    #SUBSCRIPTION: str = "f1504fea-3a8f-475a-a50a-90d3c40efc59"
+    SUBSCRIPTION: str = "73be6d4e-fa70-4732-8eab-a47b2b798a83"
 
-    USER_KEY: str = "071e2b59b354186b3a0158de493536@sandbox.wire4.mx"
+    #USER_KEY: str = "071e2b59b354186b3a0158de493536@sandbox.wire4.mx"
+    USER_KEY: str = "9548042dccc4790a43c36d919fb677@develop.wire4.mx"
 
-    SECRET_KEY: str = "0d1e33e94604f01b4e00d2fcb6b48f"
+    #SECRET_KEY: str = "0d1e33e94604f01b4e00d2fcb6b48f"
+    SECRET_KEY: str = "e9c24e4aa064a34bd6357400fab7c0"
 
-    AMBIENT: EnvironmentEnum = EnvironmentEnum.SANDBOX
+    SALES_POINT_ID='58b8365c-80a1-4c5c-88cd-b3ec9f2b1383'
+
+    SALES_POINT_USER_KEY='9add3923dbb4129be8c3be1fdbeaaf@develop.wire4.mx'
+
+    SALES_POINT_USER_SECRET = 'b7b2c43924f4612817261899eff42f'
+
+    AMBIENT: EnvironmentEnum = EnvironmentEnum.DEVELOPMENT
 
     def setUp(self):
         warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWarning)
@@ -1070,6 +1086,322 @@ class TestAccount(unittest.TestCase):
             # Optional manage exception in access token flow
             return
 
+        pass
+
+    def testAuthorizeAccountsPendingPUT(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use application flow and scope "spei_admin"
+
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            print(ex)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = CuentasDeBeneficiariosSPEIApi(oauth_wire.get_default_api_client())
+
+        try:
+            response: Billing = api_instance.authorize_accounts_pending_put(body=UrlsRedirect(cancel_return_url='https://patito.cafe/cancel/return',
+                                                                                              return_url='https://patito.cafe/return'),
+                                                                            authorization=oauth_token_user,
+                                                                            subscription=self.SUBSCRIPTION)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        pass
+
+    def testCreateAuthorizationTransactionsGroup(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use application flow and scope "spei_admin"
+
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            print(ex)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = TransferenciasSPEIApi(oauth_wire.get_default_api_client())
+
+        try:
+            request_body =AuthorizationTransactionGroup(redirect_urls=UrlsRedirect(cancel_return_url='http://patito.cafe/cancel/return',
+                                                                                   return_url='http://patito.cafe/return'),
+                                                        transactions=['dd919bdc-a71c-449d-82ff-5d0535b28984',
+                                                                      'dd919bdc-a71c-449d-82ff-5d0535b28984'])
+            response: Billing = api_instance.create_authorization_transactions_group(body=request_body,
+                                                                                     authorization=oauth_token_user,
+                                                                                     subscription=self.SUBSCRIPTION)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        pass
+
+    def testRegisterCompanyUsingPOST(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "codi_general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("codi_general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = EmpresasCoDiApi(oauth_wire.get_default_api_client())
+
+        try:
+            certificate = CertificateRequest("0000010000100002800", "0000010000100002800", 9,
+                               'koadklasjdlajlsldikaa5d4a5sd54a5sda2s1d5asd4a5sx1a5sd41as5d4as56d456g465gh45hjk46uy54h56df456sdf4s56df4s6df4s6d5f2xzc15sdf46sd4a654d2zxc1ds56')
+            companyRequest= CompanyRequested("Servicios especializados Patito Cafe",certificate , "Servicios Patito Cafe",
+                             'MAG041126GT8')
+            response = api_instance.register_company_using_post(companyRequest, oauth_token_app)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testObtainCompanies(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "codi_general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("codi_general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = EmpresasCoDiApi(oauth_wire.get_default_api_client())
+
+        try:
+            response = api_instance.obtain_companies(oauth_token_app)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testCreateSalesPoint(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "codi_general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("codi_general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = PuntosDeVentaCoDiApi(oauth_wire.get_default_api_client())
+
+        try:
+            access_ip = '198.168.0.1'
+            cable_account = '102211123456789141'
+            name = 'Sucursales Centro Sur'
+            notifications_url = 'https://patito.requestcatcher.com/'
+            body = SalesPointRequest(access_ip, cable_account, name, notifications_url)
+            company_id = '1d49fa2f-40f9-4d0b-8a7b-164df9d2a452'
+            response = api_instance.create_sales_point(body, oauth_token_app, company_id)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testObtainSalesPoints(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "codi_general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("codi_general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = PuntosDeVentaCoDiApi(oauth_wire.get_default_api_client())
+
+        try:
+            company_id = '1d49fa2f-40f9-4d0b-8a7b-164df9d2a452'
+            response = api_instance.obtain_sale_points(oauth_token_app,company_id)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testGenerateCodiCodeQR(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "codi_admin"
+            oauth_token_app_user: str = oauth_wire.obtain_access_token_app_user(self.SALES_POINT_USER_KEY, self.SALES_POINT_USER_SECRET, 'codi_admin')
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = PeticionesDePagoPorCoDiApi(oauth_wire.get_default_api_client())
+
+        try:
+
+            body = CodiCodeRequestDTO(amount=6500.00, concept='Pago de servicios mes anterior', due_date='2020-08-29T15:45:00',
+                                      order_id='order_num_12AA', phone_number='5500000001', type='PUSH_NOTIFICATION')
+            response = api_instance.generate_codi_code_qr(body,oauth_token_app_user,self.SALES_POINT_ID)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testConsultCodiRequestByOrderId(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "codi_admin"
+            oauth_token_app_user: str = oauth_wire.obtain_access_token_app_user(self.SALES_POINT_USER_KEY,
+                                                                                self.SALES_POINT_USER_SECRET,
+                                                                                'codi_admin')
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = PeticionesDePagoPorCoDiApi(oauth_wire.get_default_api_client())
+
+        try:
+            response = api_instance.consult_codi_request_by_order_id(authorization=oauth_token_app_user,
+                                                                     order_id='order_num_12AA',sales_point_id=self.SALES_POINT_ID)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testConsultCodiOperations(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "codi_report"
+            oauth_token_app_user: str = oauth_wire.obtain_access_token_app_user(self.SALES_POINT_USER_KEY,
+                                                                                self.SALES_POINT_USER_SECRET,
+                                                                                'codi_report')
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = OperacionesCoDiApi(oauth_wire.get_default_api_client())
+
+        try:
+            response = api_instance.consult_codi_operations(oauth_token_app_user, sales_point_id=self.SALES_POINT_ID,
+                                                            page=0, size=20, body=CodiOperationsFiltersRequestDTO())
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testObtainContractDetails(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = ContractsDetailsApi(oauth_wire.get_default_api_client())
+
+        try:
+            response = api_instance.obtain_contract_details(body=ContractDetailRequest(contract='32154',
+                                                                                       password='123Fake?',
+                                                                                       token_code='12345',
+                                                                                       user_name='dgonzalez'),
+                                                            authorization=oauth_token_app, x_access_key='123Fake?')
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testCreateAuthorization(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = ContractsDetailsApi(oauth_wire.get_default_api_client())
+
+        try:
+            response = api_instance.create_authorization(body=PreMonexAuthorization(business_name="Central Patito Cafe",
+                                                                                    cancel_return_url='https://patito.cafe/cancel',
+                                                                                    return_url='https://patito.cafe/return',
+                                                                                    rfc='VOC990129I26'),
+                                                         authorization=oauth_token_app)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testObtainAuthorizedUsers(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+        try:
+            # Obtain an access token use application flow and scope "general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        api_instance = ContractsDetailsApi(oauth_wire.get_default_api_client())
+
+        try:
+            response = api_instance.obtain_authorized_users(authorization=oauth_token_app,x_access_key='123Fake?',
+                                                            request_id='4a867c6d-3787-4987-bdd6-8018a97ed87d')
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
         pass
 
 
