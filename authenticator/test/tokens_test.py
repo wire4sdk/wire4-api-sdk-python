@@ -129,13 +129,13 @@ class TokensTest(unittest.TestCase):
         codi_general = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'codi_general')
         codi_report = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'codi_report')
         double_scope = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY,
-                                                               'codi_report, codi_general')
+                                                               'codi_report codi_general')
         spei_admin_second = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'spei_admin')
         spid_admin_second = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'spid_admin')
         codi_general_second = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'codi_general')
         codi_report_second = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'codi_report')
         double_scope_second = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY,
-                                                                      'codi_report, codi_general')
+                                                                      'codi_report codi_general')
         self.assertEqual(spei_admin, spei_admin_second, 'should be equals')
         self.assertEqual(spid_admin, spid_admin_second, 'should be equals')
         self.assertEqual(codi_general, codi_general_second, 'should be equals')
@@ -149,14 +149,14 @@ class TokensTest(unittest.TestCase):
         codi_general = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'codi_general')
         codi_report = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'codi_report')
         double_scope = oauth_wire.obtain_access_token_app_user(self.USER_KEY, self.SECRET_KEY,
-                                                               'codi_report, codi_general')
+                                                               'codi_report codi_general')
         spei_admin_second = oauth_wire.regenerate_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'spei_admin')
         spid_admin_second = oauth_wire.regenerate_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'spid_admin')
         codi_general_second = oauth_wire.regenerate_access_token_app_user(self.USER_KEY, self.SECRET_KEY,
                                                                           'codi_general')
         codi_report_second = oauth_wire.regenerate_access_token_app_user(self.USER_KEY, self.SECRET_KEY, 'codi_report')
         double_scope_second = oauth_wire.regenerate_access_token_app_user(self.USER_KEY, self.SECRET_KEY,
-                                                                          'codi_report, codi_general')
+                                                                          'codi_report codi_general')
         self.assertNotEqual(spei_admin, spei_admin_second, 'should be equals')
         self.assertNotEqual(spid_admin, spid_admin_second, 'should be equals')
         self.assertNotEqual(codi_general, codi_general_second, 'should be equals')
