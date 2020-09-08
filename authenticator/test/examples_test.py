@@ -420,11 +420,11 @@ class TestAccount(unittest.TestCase):
         subscription: str = self.SUBSCRIPTION
         account: str = "021680064490682994"
         body: AmountRequest = AmountRequest(amount_limit=20000.00, currency_code="MXP",
-                                            previous_amount_limit=10000.00)
+                                            previous_amount_limit=10000.00, return_url="https://your-app-url.mx/return",
+                                            cancel_return_url="https://your-app-url.mx/cancel",)
 
         try:
-            response = api_instance.update_amount_limit_account_using_put_with_http_info(body, oauth_token_user,
-                                                                                         account, subscription)
+            response = api_instance.update_amount_limit_account_using_put(body, oauth_token_user, account, subscription)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
