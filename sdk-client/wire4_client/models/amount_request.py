@@ -30,25 +30,33 @@ class AmountRequest(object):
     """
     swagger_types = {
         'amount_limit': 'float',
+        'cancel_return_url': 'str',
         'currency_code': 'str',
-        'previous_amount_limit': 'float'
+        'previous_amount_limit': 'float',
+        'return_url': 'str'
     }
 
     attribute_map = {
         'amount_limit': 'amount_limit',
+        'cancel_return_url': 'cancel_return_url',
         'currency_code': 'currency_code',
-        'previous_amount_limit': 'previous_amount_limit'
+        'previous_amount_limit': 'previous_amount_limit',
+        'return_url': 'return_url'
     }
 
-    def __init__(self, amount_limit=None, currency_code=None, previous_amount_limit=None):  # noqa: E501
+    def __init__(self, amount_limit=None, cancel_return_url=None, currency_code=None, previous_amount_limit=None, return_url=None):  # noqa: E501
         """AmountRequest - a model defined in Swagger"""  # noqa: E501
         self._amount_limit = None
+        self._cancel_return_url = None
         self._currency_code = None
         self._previous_amount_limit = None
+        self._return_url = None
         self.discriminator = None
         self.amount_limit = amount_limit
+        self.cancel_return_url = cancel_return_url
         self.currency_code = currency_code
         self.previous_amount_limit = previous_amount_limit
+        self.return_url = return_url
 
     @property
     def amount_limit(self):
@@ -74,6 +82,31 @@ class AmountRequest(object):
             raise ValueError("Invalid value for `amount_limit`, must not be `None`")  # noqa: E501
 
         self._amount_limit = amount_limit
+
+    @property
+    def cancel_return_url(self):
+        """Gets the cancel_return_url of this AmountRequest.  # noqa: E501
+
+        Url a la que se redirigirá en caso de que el cliente cancele el registro  # noqa: E501
+
+        :return: The cancel_return_url of this AmountRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._cancel_return_url
+
+    @cancel_return_url.setter
+    def cancel_return_url(self, cancel_return_url):
+        """Sets the cancel_return_url of this AmountRequest.
+
+        Url a la que se redirigirá en caso de que el cliente cancele el registro  # noqa: E501
+
+        :param cancel_return_url: The cancel_return_url of this AmountRequest.  # noqa: E501
+        :type: str
+        """
+        if cancel_return_url is None:
+            raise ValueError("Invalid value for `cancel_return_url`, must not be `None`")  # noqa: E501
+
+        self._cancel_return_url = cancel_return_url
 
     @property
     def currency_code(self):
@@ -124,6 +157,31 @@ class AmountRequest(object):
             raise ValueError("Invalid value for `previous_amount_limit`, must not be `None`")  # noqa: E501
 
         self._previous_amount_limit = previous_amount_limit
+
+    @property
+    def return_url(self):
+        """Gets the return_url of this AmountRequest.  # noqa: E501
+
+        Url a la que se redirigirá en caso de éxito  # noqa: E501
+
+        :return: The return_url of this AmountRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._return_url
+
+    @return_url.setter
+    def return_url(self, return_url):
+        """Sets the return_url of this AmountRequest.
+
+        Url a la que se redirigirá en caso de éxito  # noqa: E501
+
+        :param return_url: The return_url of this AmountRequest.  # noqa: E501
+        :type: str
+        """
+        if return_url is None:
+            raise ValueError("Invalid value for `return_url`, must not be `None`")  # noqa: E501
+
+        self._return_url = return_url
 
     def to_dict(self):
         """Returns the model properties as a dict"""

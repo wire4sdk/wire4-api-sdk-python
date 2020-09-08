@@ -32,6 +32,7 @@ class CodiCodeRequestDTO(object):
         'amount': 'float',
         'concept': 'str',
         'due_date': 'datetime',
+        'metadata': 'str',
         'order_id': 'str',
         'phone_number': 'str',
         'type': 'str'
@@ -41,16 +42,18 @@ class CodiCodeRequestDTO(object):
         'amount': 'amount',
         'concept': 'concept',
         'due_date': 'due_date',
+        'metadata': 'metadata',
         'order_id': 'order_id',
         'phone_number': 'phone_number',
         'type': 'type'
     }
 
-    def __init__(self, amount=None, concept=None, due_date=None, order_id=None, phone_number=None, type=None):  # noqa: E501
+    def __init__(self, amount=None, concept=None, due_date=None, metadata=None, order_id=None, phone_number=None, type=None):  # noqa: E501
         """CodiCodeRequestDTO - a model defined in Swagger"""  # noqa: E501
         self._amount = None
         self._concept = None
         self._due_date = None
+        self._metadata = None
         self._order_id = None
         self._phone_number = None
         self._type = None
@@ -59,6 +62,8 @@ class CodiCodeRequestDTO(object):
             self.amount = amount
         self.concept = concept
         self.due_date = due_date
+        if metadata is not None:
+            self.metadata = metadata
         self.order_id = order_id
         if phone_number is not None:
             self.phone_number = phone_number
@@ -136,6 +141,29 @@ class CodiCodeRequestDTO(object):
             raise ValueError("Invalid value for `due_date`, must not be `None`")  # noqa: E501
 
         self._due_date = due_date
+
+    @property
+    def metadata(self):
+        """Gets the metadata of this CodiCodeRequestDTO.  # noqa: E501
+
+        Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres  # noqa: E501
+
+        :return: The metadata of this CodiCodeRequestDTO.  # noqa: E501
+        :rtype: str
+        """
+        return self._metadata
+
+    @metadata.setter
+    def metadata(self, metadata):
+        """Sets the metadata of this CodiCodeRequestDTO.
+
+        Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres  # noqa: E501
+
+        :param metadata: The metadata of this CodiCodeRequestDTO.  # noqa: E501
+        :type: str
+        """
+
+        self._metadata = metadata
 
     @property
     def order_id(self):

@@ -386,7 +386,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_amount_limit_account_using_put**
-> update_amount_limit_account_using_put(body, authorization, account, subscription)
+> TokenRequiredResponse update_amount_limit_account_using_put(body, authorization, account, subscription)
 
 Actualiza el monto límite
 
@@ -409,7 +409,8 @@ subscription = 'subscription_example' # str | El identificador de la suscripció
 
 try:
     # Actualiza el monto límite
-    api_instance.update_amount_limit_account_using_put(body, authorization, account, subscription)
+    api_response = api_instance.update_amount_limit_account_using_put(body, authorization, account, subscription)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->update_amount_limit_account_using_put: %s\n" % e)
 ```
@@ -425,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**TokenRequiredResponse**](TokenRequiredResponse.md)
 
 ### Authorization
 
@@ -434,7 +435,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
