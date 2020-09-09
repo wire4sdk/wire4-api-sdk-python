@@ -77,11 +77,13 @@ from wire4_client.models.institution import Institution
 from wire4_client.models.institutions_list import InstitutionsList
 from wire4_client.models.message_account_beneficiary import MessageAccountBeneficiary
 from wire4_client.models.message_cep import MessageCEP
+from wire4_client.models.message_codi_action import MessageCodiAction
 from wire4_client.models.message_deposit_received import MessageDepositReceived
 from wire4_client.models.message_institution import MessageInstitution
 from wire4_client.models.message_payment import MessagePayment
 from wire4_client.models.message_payment_state_pending import MessagePaymentStatePending
 from wire4_client.models.message_request_changed import MessageRequestChanged
+from wire4_client.models.message_sales_point import MessageSalesPoint
 from wire4_client.models.message_subscription import MessageSubscription
 from wire4_client.models.message_user_authorized import MessageUserAuthorized
 from wire4_client.models.message_web_hook import MessageWebHook
