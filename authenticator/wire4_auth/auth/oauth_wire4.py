@@ -53,7 +53,7 @@ class OAuthWire4:
 
         key_search = self._client_id + scope
         token_cached = self._tokens_cached_app_user.get(key_search)
-        if token_cached is not None and self.__is_expired(token_cached.token.get("expires_at")) and \
+        if token_cached is not None and self.__is_valid(token_cached.token.get("expires_at")) and \
                 token_cached.token.get("access_token") is not None:
 
             return self.__format_to_header(token_cached.token.get("access_token"))
@@ -81,7 +81,7 @@ class OAuthWire4:
 
         key_search = user_key + scope
         token_cached = self._tokens_cached_app_user.get(key_search)
-        if token_cached is not None and self.__is_expired(token_cached.token.get("expires_at")) and\
+        if token_cached is not None and self.__is_valid(token_cached.token.get("expires_at")) and\
                 token_cached.token.get("access_token") is not None:
 
             return self.__format_to_header(token_cached.token.get("access_token"))
@@ -155,9 +155,9 @@ class OAuthWire4:
 
         return HTTPBasicAuth(self._client_id, self._client_secret) if self._client_auth is None else self._client_auth
 
-    def __is_expired(self, expires_at: float) -> bool:
+    def __is_valid(self, expires_at: float) -> bool:
 
-        return expires_at is not None and datetime.fromtimestamp(expires_at) > (datetime.now() - timedelta(minutes=5))
+        return expires_at is not None and datetime.fromtimestamp(expires_at) > (datetime.now() + timedelta(minutes=5))
 
     def __format_to_header(self, token: str) -> str:
 
