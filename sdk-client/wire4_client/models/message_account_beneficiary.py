@@ -57,7 +57,7 @@ class MessageAccountBeneficiary(object):
     def account(self):
         """Gets the account of this MessageAccountBeneficiary.  # noqa: E501
 
-        Cuenta del beneficiario  # noqa: E501
+        Cuenta del beneficiario registrado  # noqa: E501
 
         :return: The account of this MessageAccountBeneficiary.  # noqa: E501
         :rtype: str
@@ -68,7 +68,7 @@ class MessageAccountBeneficiary(object):
     def account(self, account):
         """Sets the account of this MessageAccountBeneficiary.
 
-        Cuenta del beneficiario  # noqa: E501
+        Cuenta del beneficiario registrado  # noqa: E501
 
         :param account: The account of this MessageAccountBeneficiary.  # noqa: E501
         :type: str
@@ -103,7 +103,7 @@ class MessageAccountBeneficiary(object):
     def request_id(self):
         """Gets the request_id of this MessageAccountBeneficiary.  # noqa: E501
 
-        El identificador, en esta API, de la petición de registro de la cuenta del beneficiario  # noqa: E501
+        El identificador en esta API, de la petición de registro de la cuenta del beneficiario  # noqa: E501
 
         :return: The request_id of this MessageAccountBeneficiary.  # noqa: E501
         :rtype: str
@@ -114,7 +114,7 @@ class MessageAccountBeneficiary(object):
     def request_id(self, request_id):
         """Sets the request_id of this MessageAccountBeneficiary.
 
-        El identificador, en esta API, de la petición de registro de la cuenta del beneficiario  # noqa: E501
+        El identificador en esta API, de la petición de registro de la cuenta del beneficiario  # noqa: E501
 
         :param request_id: The request_id of this MessageAccountBeneficiary.  # noqa: E501
         :type: str

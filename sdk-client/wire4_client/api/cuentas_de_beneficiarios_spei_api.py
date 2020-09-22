@@ -32,6 +32,121 @@ class CuentasDeBeneficiariosSPEIApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def authorize_accounts_pending_put(self, body, authorization, subscription, **kwargs):  # noqa: E501
+        """Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas  # noqa: E501
+
+        Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito<br/>  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.authorize_accounts_pending_put(body, authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param UrlsRedirect body: Información de la cuenta del beneficiario (required)
+        :param str authorization: Header para token (required)
+        :param str subscription: El identificador de la suscripción a esta API (required)
+        :return: AuthorizedBeneficiariesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.authorize_accounts_pending_put_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
+        else:
+            (data) = self.authorize_accounts_pending_put_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
+            return data
+
+    def authorize_accounts_pending_put_with_http_info(self, body, authorization, subscription, **kwargs):  # noqa: E501
+        """Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas  # noqa: E501
+
+        Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito<br/>  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.authorize_accounts_pending_put_with_http_info(body, authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param UrlsRedirect body: Información de la cuenta del beneficiario (required)
+        :param str authorization: Header para token (required)
+        :param str subscription: El identificador de la suscripción a esta API (required)
+        :return: AuthorizedBeneficiariesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body', 'authorization', 'subscription']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method authorize_accounts_pending_put" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `authorize_accounts_pending_put`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `authorize_accounts_pending_put`")  # noqa: E501
+        # verify the required parameter 'subscription' is set
+        if ('subscription' not in params or
+                params['subscription'] is None):
+            raise ValueError("Missing the required parameter `subscription` when calling `authorize_accounts_pending_put`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription' in params:
+            path_params['subscription'] = params['subscription']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/subscriptions/{subscription}/beneficiaries/pending', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AuthorizedBeneficiariesResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_account_using_delete(self, authorization, account, subscription, **kwargs):  # noqa: E501
         """Elimina la cuenta del beneficiario  # noqa: E501
 
@@ -366,7 +481,12 @@ class CuentasDeBeneficiariosSPEIApi(object):
         :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :param str account: Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+        :param str beneficiary_bank: Clave del banco beneficiario
+        :param str beneficiary_name: Nombre del beneficiario
+        :param str end_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+        :param str init_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
         :param str rfc: RFC del beneficiario
+        :param str status: Estatus de la cuenta
         :return: BeneficiariesResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -391,13 +511,18 @@ class CuentasDeBeneficiariosSPEIApi(object):
         :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :param str account: Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+        :param str beneficiary_bank: Clave del banco beneficiario
+        :param str beneficiary_name: Nombre del beneficiario
+        :param str end_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+        :param str init_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
         :param str rfc: RFC del beneficiario
+        :param str status: Estatus de la cuenta
         :return: BeneficiariesResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['authorization', 'subscription', 'account', 'rfc']  # noqa: E501
+        all_params = ['authorization', 'subscription', 'account', 'beneficiary_bank', 'beneficiary_name', 'end_date', 'init_date', 'rfc', 'status']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -430,8 +555,18 @@ class CuentasDeBeneficiariosSPEIApi(object):
         query_params = []
         if 'account' in params:
             query_params.append(('account', params['account']))  # noqa: E501
+        if 'beneficiary_bank' in params:
+            query_params.append(('beneficiary_bank', params['beneficiary_bank']))  # noqa: E501
+        if 'beneficiary_name' in params:
+            query_params.append(('beneficiary_name', params['beneficiary_name']))  # noqa: E501
+        if 'end_date' in params:
+            query_params.append(('end_date', params['end_date']))  # noqa: E501
+        if 'init_date' in params:
+            query_params.append(('init_date', params['init_date']))  # noqa: E501
         if 'rfc' in params:
             query_params.append(('rfc', params['rfc']))  # noqa: E501
+        if 'status' in params:
+            query_params.append(('status', params['status']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in params:
@@ -700,7 +835,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
         :param str authorization: Header para token (required)
         :param str account: Cuenta a actualizar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
-        :return: None
+        :return: TokenRequiredResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -725,7 +860,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
         :param str authorization: Header para token (required)
         :param str account: Cuenta a actualizar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
-        :return: None
+        :return: TokenRequiredResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -782,6 +917,10 @@ class CuentasDeBeneficiariosSPEIApi(object):
         body_params = None
         if 'body' in params:
             body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
@@ -797,7 +936,7 @@ class CuentasDeBeneficiariosSPEIApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='TokenRequiredResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

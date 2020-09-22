@@ -31,21 +31,21 @@ class TestSuscripcionesApi(unittest.TestCase):
     def test_pre_enrollment_monex_user_using_post(self):
         """Test case for pre_enrollment_monex_user_using_post
 
-        registra una pre-suscripción  # noqa: E501
+        Registra una pre-suscripción  # noqa: E501
         """
         pass
 
     def test_remove_enrollment_user_using_delete(self):
         """Test case for remove_enrollment_user_using_delete
 
-        Elimna una suscripción por id  # noqa: E501
+        Elimina una suscripción por el identificador de la suscripción  # noqa: E501
         """
         pass
 
     def test_remove_subscription_pending_status_using_delete(self):
         """Test case for remove_subscription_pending_status_using_delete
 
-        Elimna una pre-suscripción  # noqa: E501
+        Elimina una pre-suscripción  # noqa: E501
         """
         pass
 

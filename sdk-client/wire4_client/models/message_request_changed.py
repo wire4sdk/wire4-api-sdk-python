@@ -52,7 +52,7 @@ class MessageRequestChanged(object):
     def request_id(self):
         """Gets the request_id of this MessageRequestChanged.  # noqa: E501
 
-        Identificador de la petición realizada a está API  # noqa: E501
+        Identificador de la petición realizada a esta API  # noqa: E501
 
         :return: The request_id of this MessageRequestChanged.  # noqa: E501
         :rtype: str
@@ -63,7 +63,7 @@ class MessageRequestChanged(object):
     def request_id(self, request_id):
         """Sets the request_id of this MessageRequestChanged.
 
-        Identificador de la petición realizada a está API  # noqa: E501
+        Identificador de la petición realizada a esta API  # noqa: E501
 
         :param request_id: The request_id of this MessageRequestChanged.  # noqa: E501
         :type: str
@@ -75,7 +75,7 @@ class MessageRequestChanged(object):
     def status(self):
         """Gets the status of this MessageRequestChanged.  # noqa: E501
 
-        El cambio a informar en la procesamiento de la petición  # noqa: E501
+        El cambio a informar en la procesamiento/estado de la petición  # noqa: E501
 
         :return: The status of this MessageRequestChanged.  # noqa: E501
         :rtype: str
@@ -86,7 +86,7 @@ class MessageRequestChanged(object):
     def status(self, status):
         """Sets the status of this MessageRequestChanged.
 
-        El cambio a informar en la procesamiento de la petición  # noqa: E501
+        El cambio a informar en la procesamiento/estado de la petición  # noqa: E501
 
         :param status: The status of this MessageRequestChanged.  # noqa: E501
         :type: str

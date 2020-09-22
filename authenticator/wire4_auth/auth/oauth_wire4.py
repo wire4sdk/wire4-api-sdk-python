@@ -47,16 +47,16 @@ class OAuthWire4:
         self._client_auth = HTTPBasicAuth(self._client_id, self._client_secret)
 
         # noinspection PyTypeChecker
-        self._token_cached_app = CachedToken(None, None, None)
         self._tokens_cached_app_user = OrderedDict()
 
     def obtain_access_token_app(self, scope="general") -> str:
 
-        if self._token_cached_app.token is not None and scope in self._token_cached_app.token.get("scope") and \
-            self.__is_expired(self._token_cached_app.token.get("expires_at")) and \
-                self._token_cached_app.token.get("access_token") is not None:
+        key_search = self._client_id + scope
+        token_cached = self._tokens_cached_app_user.get(key_search)
+        if token_cached is not None and self.__is_valid(token_cached.token.get("expires_at")) and \
+                token_cached.token.get("access_token") is not None:
 
-            return self.__format_to_header(self._token_cached_app.token.get("access_token"))
+            return self.__format_to_header(token_cached.token.get("access_token"))
 
         try:
             auth = self.__build_http_basic()
@@ -65,7 +65,13 @@ class OAuthWire4:
 
             oauth = OAuth2Session(client=client)
             token = oauth.fetch_token(token_url=self._environment.token_url, auth=auth)
-            self._token_cached_app.token = token
+
+            if len(self._tokens_cached_app_user) + 1 > self.MAX_APP_USER_SIZE_CACHED:
+                for key in self._tokens_cached_app_user:
+                    self._tokens_cached_app_user.pop(key)
+                    break
+
+            self._tokens_cached_app_user[key_search] = CachedToken(self._client_id, self._client_secret, token)
 
             return self.__format_to_header(token.get("access_token"))
         except Exception as ex:
@@ -75,8 +81,7 @@ class OAuthWire4:
 
         key_search = user_key + scope
         token_cached = self._tokens_cached_app_user.get(key_search)
-        if token_cached is not None and scope in token_cached.token.get("scope") and \
-            self.__is_expired(token_cached.token.get("expires_at")) and\
+        if token_cached is not None and self.__is_valid(token_cached.token.get("expires_at")) and\
                 token_cached.token.get("access_token") is not None:
 
             return self.__format_to_header(token_cached.token.get("access_token"))
@@ -110,7 +115,13 @@ class OAuthWire4:
 
             oauth = OAuth2Session(client=client)
             token = oauth.fetch_token(token_url=self._environment.token_url, auth=auth)
-            self._token_cached_app.token = token
+            key_search = self._client_id + scope
+            token_cached = self._tokens_cached_app_user.get(key_search)
+            if token_cached is None and len(self._tokens_cached_app_user) + 1 > self.MAX_APP_USER_SIZE_CACHED:
+                for key in self._tokens_cached_app_user:
+                    self._tokens_cached_app_user.pop(key)
+                    break
+            self._tokens_cached_app_user[key_search] = CachedToken(self._client_id, self._client_secret, token)
 
             return self.__format_to_header(token.get("access_token"))
         except Exception as ex:
@@ -144,9 +155,9 @@ class OAuthWire4:
 
         return HTTPBasicAuth(self._client_id, self._client_secret) if self._client_auth is None else self._client_auth
 
-    def __is_expired(self, expires_at: float) -> bool:
+    def __is_valid(self, expires_at: float) -> bool:
 
-        return expires_at is not None and datetime.fromtimestamp(expires_at) > (datetime.now() - timedelta(minutes=5))
+        return expires_at is not None and datetime.fromtimestamp(expires_at) > (datetime.now() + timedelta(minutes=5))
 
     def __format_to_header(self, token: str) -> str:
 

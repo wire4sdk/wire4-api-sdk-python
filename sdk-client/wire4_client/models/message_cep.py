@@ -216,7 +216,7 @@ class MessageCEP(object):
     def available(self):
         """Gets the available of this MessageCEP.  # noqa: E501
 
-        Bander para saber si el cep esta disponible  # noqa: E501
+        Indica sí el CEP está disponible  # noqa: E501
 
         :return: The available of this MessageCEP.  # noqa: E501
         :rtype: bool
@@ -227,7 +227,7 @@ class MessageCEP(object):
     def available(self, available):
         """Sets the available of this MessageCEP.
 
-        Bander para saber si el cep esta disponible  # noqa: E501
+        Indica sí el CEP está disponible  # noqa: E501
 
         :param available: The available of this MessageCEP.  # noqa: E501
         :type: bool
@@ -262,7 +262,7 @@ class MessageCEP(object):
     def bank_sender(self):
         """Gets the bank_sender of this MessageCEP.  # noqa: E501
 
-        Clave del banco que envia la operación  # noqa: E501
+        Clave del banco que envía la operación  # noqa: E501
 
         :return: The bank_sender of this MessageCEP.  # noqa: E501
         :rtype: str
@@ -273,7 +273,7 @@ class MessageCEP(object):
     def bank_sender(self, bank_sender):
         """Sets the bank_sender of this MessageCEP.
 
-        Clave del banco que envia la operación  # noqa: E501
+        Clave del banco que envía la operación  # noqa: E501
 
         :param bank_sender: The bank_sender of this MessageCEP.  # noqa: E501
         :type: str
@@ -377,7 +377,7 @@ class MessageCEP(object):
     def certificate_serial_number(self):
         """Gets the certificate_serial_number of this MessageCEP.  # noqa: E501
 
-        Numero de serie emitido por el SAT  # noqa: E501
+        Número de serie emitido por el SAT  # noqa: E501
 
         :return: The certificate_serial_number of this MessageCEP.  # noqa: E501
         :rtype: str
@@ -388,7 +388,7 @@ class MessageCEP(object):
     def certificate_serial_number(self, certificate_serial_number):
         """Sets the certificate_serial_number of this MessageCEP.
 
-        Numero de serie emitido por el SAT  # noqa: E501
+        Número de serie emitido por el SAT  # noqa: E501
 
         :param certificate_serial_number: The certificate_serial_number of this MessageCEP.  # noqa: E501
         :type: str
@@ -446,7 +446,7 @@ class MessageCEP(object):
     def iva(self):
         """Gets the iva of this MessageCEP.  # noqa: E501
 
-        Iva de la operación  # noqa: E501
+        IVA de la operación  # noqa: E501
 
         :return: The iva of this MessageCEP.  # noqa: E501
         :rtype: float
@@ -457,7 +457,7 @@ class MessageCEP(object):
     def iva(self, iva):
         """Sets the iva of this MessageCEP.
 
-        Iva de la operación  # noqa: E501
+        IVA de la operación  # noqa: E501
 
         :param iva: The iva of this MessageCEP.  # noqa: E501
         :type: float
@@ -492,7 +492,7 @@ class MessageCEP(object):
     def operation_date_cep(self):
         """Gets the operation_date_cep of this MessageCEP.  # noqa: E501
 
-        Fecha en la que genera el cep  # noqa: E501
+        Fecha en la que genera el CEP  # noqa: E501
 
         :return: The operation_date_cep of this MessageCEP.  # noqa: E501
         :rtype: datetime
@@ -503,7 +503,7 @@ class MessageCEP(object):
     def operation_date_cep(self, operation_date_cep):
         """Sets the operation_date_cep of this MessageCEP.
 
-        Fecha en la que genera el cep  # noqa: E501
+        Fecha en la que genera el CEP  # noqa: E501
 
         :param operation_date_cep: The operation_date_cep of this MessageCEP.  # noqa: E501
         :type: datetime
@@ -538,7 +538,7 @@ class MessageCEP(object):
     def sender_name(self):
         """Gets the sender_name of this MessageCEP.  # noqa: E501
 
-        Nombre de quien envia la operación  # noqa: E501
+        Nombre de quién envía la operación  # noqa: E501
 
         :return: The sender_name of this MessageCEP.  # noqa: E501
         :rtype: str
@@ -549,7 +549,7 @@ class MessageCEP(object):
     def sender_name(self, sender_name):
         """Sets the sender_name of this MessageCEP.
 
-        Nombre de quien envia la operación  # noqa: E501
+        Nombre de quién envía la operación  # noqa: E501
 
         :param sender_name: The sender_name of this MessageCEP.  # noqa: E501
         :type: str
@@ -561,7 +561,7 @@ class MessageCEP(object):
     def sender_rfc(self):
         """Gets the sender_rfc of this MessageCEP.  # noqa: E501
 
-        RFC de quien envia la operación  # noqa: E501
+        RFC de quién envía la operación  # noqa: E501
 
         :return: The sender_rfc of this MessageCEP.  # noqa: E501
         :rtype: str
@@ -572,7 +572,7 @@ class MessageCEP(object):
     def sender_rfc(self, sender_rfc):
         """Sets the sender_rfc of this MessageCEP.
 
-        RFC de quien envia la operación  # noqa: E501
+        RFC de quién envía la operación  # noqa: E501
 
         :param sender_rfc: The sender_rfc of this MessageCEP.  # noqa: E501
         :type: str
@@ -584,7 +584,7 @@ class MessageCEP(object):
     def signature(self):
         """Gets the signature of this MessageCEP.  # noqa: E501
 
-        Firma del Cep  # noqa: E501
+        Firma del CEP  # noqa: E501
 
         :return: The signature of this MessageCEP.  # noqa: E501
         :rtype: str
@@ -595,7 +595,7 @@ class MessageCEP(object):
     def signature(self, signature):
         """Sets the signature of this MessageCEP.
 
-        Firma del Cep  # noqa: E501
+        Firma del CEP  # noqa: E501
 
         :param signature: The signature of this MessageCEP.  # noqa: E501
         :type: str
@@ -607,7 +607,7 @@ class MessageCEP(object):
     def url_zip(self):
         """Gets the url_zip of this MessageCEP.  # noqa: E501
 
-        Url que contiene el PDF y XML del CEP proporcionado por banxico  # noqa: E501
+        Dirección URL de descarga del archivo ZIP que contiene el PDF y XML del CEP proporcionado por BANXICO  # noqa: E501
 
         :return: The url_zip of this MessageCEP.  # noqa: E501
         :rtype: str
@@ -618,7 +618,7 @@ class MessageCEP(object):
     def url_zip(self, url_zip):
         """Sets the url_zip of this MessageCEP.
 
-        Url que contiene el PDF y XML del CEP proporcionado por banxico  # noqa: E501
+        Dirección URL de descarga del archivo ZIP que contiene el PDF y XML del CEP proporcionado por BANXICO  # noqa: E501
 
         :param url_zip: The url_zip of this MessageCEP.  # noqa: E501
         :type: str

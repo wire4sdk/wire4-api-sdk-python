@@ -32,6 +32,121 @@ class TransferenciasSPEIApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def create_authorization_transactions_group(self, body, authorization, subscription, **kwargs):  # noqa: E501
+        """Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar  # noqa: E501
+
+        Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_authorization_transactions_group(body, authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param AuthorizationTransactionGroup body: authorizationTransactionsGroupRequestDTO (required)
+        :param str authorization: Header para token (required)
+        :param str subscription: Identificador de la suscripcion (required)
+        :return: TokenRequiredResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_authorization_transactions_group_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_authorization_transactions_group_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
+            return data
+
+    def create_authorization_transactions_group_with_http_info(self, body, authorization, subscription, **kwargs):  # noqa: E501
+        """Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar  # noqa: E501
+
+        Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_authorization_transactions_group_with_http_info(body, authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param AuthorizationTransactionGroup body: authorizationTransactionsGroupRequestDTO (required)
+        :param str authorization: Header para token (required)
+        :param str subscription: Identificador de la suscripcion (required)
+        :return: TokenRequiredResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body', 'authorization', 'subscription']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_authorization_transactions_group" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `create_authorization_transactions_group`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `create_authorization_transactions_group`")  # noqa: E501
+        # verify the required parameter 'subscription' is set
+        if ('subscription' not in params or
+                params['subscription'] is None):
+            raise ValueError("Missing the required parameter `subscription` when calling `create_authorization_transactions_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription' in params:
+            path_params['subscription'] = params['subscription']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/subscriptions/{subscription}/transactions/group', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TokenRequiredResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def drop_transactions_pending_using_delete(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
         """Eliminación de transferencias SPEI® pendientes  # noqa: E501
 
@@ -45,6 +160,7 @@ class TransferenciasSPEIApi(object):
         :param str authorization: Header para token (required)
         :param str request_id: Identificador de las transferencias a eliminar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
+        :param str order_id: Listado de identificadores dentro del request_id para eliminar
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,12 +185,13 @@ class TransferenciasSPEIApi(object):
         :param str authorization: Header para token (required)
         :param str request_id: Identificador de las transferencias a eliminar (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
+        :param str order_id: Listado de identificadores dentro del request_id para eliminar
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['authorization', 'request_id', 'subscription']  # noqa: E501
+        all_params = ['authorization', 'request_id', 'subscription', 'order_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -111,6 +228,8 @@ class TransferenciasSPEIApi(object):
             path_params['subscription'] = params['subscription']  # noqa: E501
 
         query_params = []
+        if 'order_id' in params:
+            query_params.append(('order_id', params['order_id']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in params:

@@ -87,7 +87,7 @@ class MessageWebHook(object):
     def api_version(self):
         """Gets the api_version of this MessageWebHook.  # noqa: E501
 
-        La versión de la API  # noqa: E501
+        La versión de esta API  # noqa: E501
 
         :return: The api_version of this MessageWebHook.  # noqa: E501
         :rtype: str
@@ -98,7 +98,7 @@ class MessageWebHook(object):
     def api_version(self, api_version):
         """Sets the api_version of this MessageWebHook.
 
-        La versión de la API  # noqa: E501
+        La versión de esta API  # noqa: E501
 
         :param api_version: The api_version of this MessageWebHook.  # noqa: E501
         :type: str
@@ -202,7 +202,7 @@ class MessageWebHook(object):
     def object(self):
         """Gets the object of this MessageWebHook.  # noqa: E501
 
-        Tipo de objeto  que contiene el mensaje en el atributo data los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing   # noqa: E501
+        Tipo de objeto  que contiene el mensaje en el atributo 'data' los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing, request_outgoing   # noqa: E501
 
         :return: The object of this MessageWebHook.  # noqa: E501
         :rtype: str
@@ -213,7 +213,7 @@ class MessageWebHook(object):
     def object(self, object):
         """Sets the object of this MessageWebHook.
 
-        Tipo de objeto  que contiene el mensaje en el atributo data los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing   # noqa: E501
+        Tipo de objeto  que contiene el mensaje en el atributo 'data' los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing, request_outgoing   # noqa: E501
 
         :param object: The object of this MessageWebHook.  # noqa: E501
         :type: str

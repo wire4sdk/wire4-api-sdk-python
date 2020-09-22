@@ -41,6 +41,7 @@ class AccountResponse(object):
         'numeric_reference_spei': 'str',
         'payment_concept_spei': 'str',
         'person': 'Person',
+        'register_date': 'datetime',
         'relationship': 'str',
         'rfc': 'str',
         'status': 'str'
@@ -56,12 +57,13 @@ class AccountResponse(object):
         'numeric_reference_spei': 'numeric_reference_spei',
         'payment_concept_spei': 'payment_concept_spei',
         'person': 'person',
+        'register_date': 'register_date',
         'relationship': 'relationship',
         'rfc': 'rfc',
         'status': 'status'
     }
 
-    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spei=None, payment_concept_spei=None, person=None, relationship=None, rfc=None, status=None):  # noqa: E501
+    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spei=None, payment_concept_spei=None, person=None, register_date=None, relationship=None, rfc=None, status=None):  # noqa: E501
         """AccountResponse - a model defined in Swagger"""  # noqa: E501
         self._amount_limit = None
         self._bank = None
@@ -72,6 +74,7 @@ class AccountResponse(object):
         self._numeric_reference_spei = None
         self._payment_concept_spei = None
         self._person = None
+        self._register_date = None
         self._relationship = None
         self._rfc = None
         self._status = None
@@ -91,6 +94,8 @@ class AccountResponse(object):
             self.payment_concept_spei = payment_concept_spei
         if person is not None:
             self.person = person
+        if register_date is not None:
+            self.register_date = register_date
         self.relationship = relationship
         self.rfc = rfc
         if status is not None:
@@ -215,7 +220,7 @@ class AccountResponse(object):
     def kind_of_relationship(self):
         """Gets the kind_of_relationship of this AccountResponse.  # noqa: E501
 
-        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :return: The kind_of_relationship of this AccountResponse.  # noqa: E501
         :rtype: str
@@ -226,7 +231,7 @@ class AccountResponse(object):
     def kind_of_relationship(self, kind_of_relationship):
         """Sets the kind_of_relationship of this AccountResponse.
 
-        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :param kind_of_relationship: The kind_of_relationship of this AccountResponse.  # noqa: E501
         :type: str
@@ -304,10 +309,33 @@ class AccountResponse(object):
         self._person = person
 
     @property
+    def register_date(self):
+        """Gets the register_date of this AccountResponse.  # noqa: E501
+
+        La fecha en la que se registro el beneficiario  # noqa: E501
+
+        :return: The register_date of this AccountResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._register_date
+
+    @register_date.setter
+    def register_date(self, register_date):
+        """Sets the register_date of this AccountResponse.
+
+        La fecha en la que se registro el beneficiario  # noqa: E501
+
+        :param register_date: The register_date of this AccountResponse.  # noqa: E501
+        :type: datetime
+        """
+
+        self._register_date = register_date
+
+    @property
     def relationship(self):
         """Gets the relationship of this AccountResponse.  # noqa: E501
 
-        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :return: The relationship of this AccountResponse.  # noqa: E501
         :rtype: str
@@ -318,7 +346,7 @@ class AccountResponse(object):
     def relationship(self, relationship):
         """Sets the relationship of this AccountResponse.
 
-        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :param relationship: The relationship of this AccountResponse.  # noqa: E501
         :type: str
@@ -332,7 +360,7 @@ class AccountResponse(object):
     def rfc(self):
         """Gets the rfc of this AccountResponse.  # noqa: E501
 
-        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta  # noqa: E501
+        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :return: The rfc of this AccountResponse.  # noqa: E501
         :rtype: str
@@ -343,7 +371,7 @@ class AccountResponse(object):
     def rfc(self, rfc):
         """Sets the rfc of this AccountResponse.
 
-        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta  # noqa: E501
+        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :param rfc: The rfc of this AccountResponse.  # noqa: E501
         :type: str

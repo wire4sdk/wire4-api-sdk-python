@@ -211,7 +211,7 @@ class Account(object):
     def kind_of_relationship(self):
         """Gets the kind_of_relationship of this Account.  # noqa: E501
 
-        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :return: The kind_of_relationship of this Account.  # noqa: E501
         :rtype: str
@@ -222,7 +222,7 @@ class Account(object):
     def kind_of_relationship(self, kind_of_relationship):
         """Sets the kind_of_relationship of this Account.
 
-        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :param kind_of_relationship: The kind_of_relationship of this Account.  # noqa: E501
         :type: str
@@ -303,7 +303,7 @@ class Account(object):
     def relationship(self):
         """Gets the relationship of this Account.  # noqa: E501
 
-        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :return: The relationship of this Account.  # noqa: E501
         :rtype: str
@@ -314,7 +314,7 @@ class Account(object):
     def relationship(self, relationship):
         """Sets the relationship of this Account.
 
-        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships  # noqa: E501
+        Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :param relationship: The relationship of this Account.  # noqa: E501
         :type: str
@@ -328,7 +328,7 @@ class Account(object):
     def rfc(self):
         """Gets the rfc of this Account.  # noqa: E501
 
-        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta  # noqa: E501
+        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :return: The rfc of this Account.  # noqa: E501
         :rtype: str
@@ -339,7 +339,7 @@ class Account(object):
     def rfc(self, rfc):
         """Sets the rfc of this Account.
 
-        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta  # noqa: E501
+        Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.  # noqa: E501
 
         :param rfc: The rfc of this Account.  # noqa: E501
         :type: str

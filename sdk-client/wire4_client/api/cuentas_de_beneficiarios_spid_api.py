@@ -45,7 +45,12 @@ class CuentasDeBeneficiariosSPIDApi(object):
         :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :param str account: Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+        :param str beneficiary_bank: Clave del banco beneficiario
+        :param str beneficiary_name: Nombre del beneficiario
+        :param str end_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+        :param str init_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
         :param str rfc: RFC del beneficiario
+        :param str status: Estatus de la cuenta
         :return: SpidBeneficiariesResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -70,13 +75,18 @@ class CuentasDeBeneficiariosSPIDApi(object):
         :param str authorization: Header para token (required)
         :param str subscription: El identificador de la suscripción a esta API (required)
         :param str account: Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+        :param str beneficiary_bank: Clave del banco beneficiario
+        :param str beneficiary_name: Nombre del beneficiario
+        :param str end_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+        :param str init_date: Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
         :param str rfc: RFC del beneficiario
+        :param str status: Estatus de la cuenta
         :return: SpidBeneficiariesResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['authorization', 'subscription', 'account', 'rfc']  # noqa: E501
+        all_params = ['authorization', 'subscription', 'account', 'beneficiary_bank', 'beneficiary_name', 'end_date', 'init_date', 'rfc', 'status']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -109,8 +119,18 @@ class CuentasDeBeneficiariosSPIDApi(object):
         query_params = []
         if 'account' in params:
             query_params.append(('account', params['account']))  # noqa: E501
+        if 'beneficiary_bank' in params:
+            query_params.append(('beneficiary_bank', params['beneficiary_bank']))  # noqa: E501
+        if 'beneficiary_name' in params:
+            query_params.append(('beneficiary_name', params['beneficiary_name']))  # noqa: E501
+        if 'end_date' in params:
+            query_params.append(('end_date', params['end_date']))  # noqa: E501
+        if 'init_date' in params:
+            query_params.append(('init_date', params['init_date']))  # noqa: E501
         if 'rfc' in params:
             query_params.append(('rfc', params['rfc']))  # noqa: E501
+        if 'status' in params:
+            query_params.append(('status', params['status']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in params:

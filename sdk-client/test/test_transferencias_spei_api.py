@@ -28,6 +28,13 @@ class TestTransferenciasSPEIApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_create_authorization_transactions_group(self):
+        """Test case for create_authorization_transactions_group
+
+        Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar  # noqa: E501
+        """
+        pass
+
     def test_drop_transactions_pending_using_delete(self):
         """Test case for drop_transactions_pending_using_delete
 

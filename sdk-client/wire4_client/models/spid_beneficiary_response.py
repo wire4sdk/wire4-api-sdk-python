@@ -39,8 +39,10 @@ class SpidBeneficiaryResponse(object):
         'kind_of_relationship': 'str',
         'numeric_reference_spid': 'str',
         'payment_concept_spid': 'str',
+        'register_date': 'datetime',
         'relationship': 'str',
-        'rfc': 'str'
+        'rfc': 'str',
+        'status': 'str'
     }
 
     attribute_map = {
@@ -52,11 +54,13 @@ class SpidBeneficiaryResponse(object):
         'kind_of_relationship': 'kind_of_relationship',
         'numeric_reference_spid': 'numeric_reference_spid',
         'payment_concept_spid': 'payment_concept_spid',
+        'register_date': 'register_date',
         'relationship': 'relationship',
-        'rfc': 'rfc'
+        'rfc': 'rfc',
+        'status': 'status'
     }
 
-    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spid=None, payment_concept_spid=None, relationship=None, rfc=None):  # noqa: E501
+    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spid=None, payment_concept_spid=None, register_date=None, relationship=None, rfc=None, status=None):  # noqa: E501
         """SpidBeneficiaryResponse - a model defined in Swagger"""  # noqa: E501
         self._amount_limit = None
         self._bank = None
@@ -66,8 +70,10 @@ class SpidBeneficiaryResponse(object):
         self._kind_of_relationship = None
         self._numeric_reference_spid = None
         self._payment_concept_spid = None
+        self._register_date = None
         self._relationship = None
         self._rfc = None
+        self._status = None
         self.discriminator = None
         self.amount_limit = amount_limit
         if bank is not None:
@@ -81,9 +87,13 @@ class SpidBeneficiaryResponse(object):
             self.numeric_reference_spid = numeric_reference_spid
         if payment_concept_spid is not None:
             self.payment_concept_spid = payment_concept_spid
+        if register_date is not None:
+            self.register_date = register_date
         self.relationship = relationship
         if rfc is not None:
             self.rfc = rfc
+        if status is not None:
+            self.status = status
 
     @property
     def amount_limit(self):
@@ -274,6 +284,29 @@ class SpidBeneficiaryResponse(object):
         self._payment_concept_spid = payment_concept_spid
 
     @property
+    def register_date(self):
+        """Gets the register_date of this SpidBeneficiaryResponse.  # noqa: E501
+
+        La fecha en la que se registro el beneficiario  # noqa: E501
+
+        :return: The register_date of this SpidBeneficiaryResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._register_date
+
+    @register_date.setter
+    def register_date(self, register_date):
+        """Sets the register_date of this SpidBeneficiaryResponse.
+
+        La fecha en la que se registro el beneficiario  # noqa: E501
+
+        :param register_date: The register_date of this SpidBeneficiaryResponse.  # noqa: E501
+        :type: datetime
+        """
+
+        self._register_date = register_date
+
+    @property
     def relationship(self):
         """Gets the relationship of this SpidBeneficiaryResponse.  # noqa: E501
 
@@ -320,6 +353,29 @@ class SpidBeneficiaryResponse(object):
         """
 
         self._rfc = rfc
+
+    @property
+    def status(self):
+        """Gets the status of this SpidBeneficiaryResponse.  # noqa: E501
+
+        El estado en el que se encuentra el registo del beneficiario  # noqa: E501
+
+        :return: The status of this SpidBeneficiaryResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this SpidBeneficiaryResponse.
+
+        El estado en el que se encuentra el registo del beneficiario  # noqa: E501
+
+        :param status: The status of this SpidBeneficiaryResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._status = status
 
     def to_dict(self):
         """Returns the model properties as a dict"""

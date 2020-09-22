@@ -31,6 +31,7 @@ class TransactionOutgoing(object):
     swagger_types = {
         'amount': 'float',
         'beneficiary_account': 'str',
+        'beneficiary_bank_key': 'str',
         'concept': 'str',
         'currency_code': 'str',
         'email': 'list[str]',
@@ -41,6 +42,7 @@ class TransactionOutgoing(object):
     attribute_map = {
         'amount': 'amount',
         'beneficiary_account': 'beneficiary_account',
+        'beneficiary_bank_key': 'beneficiary_bank_key',
         'concept': 'concept',
         'currency_code': 'currency_code',
         'email': 'email',
@@ -48,10 +50,11 @@ class TransactionOutgoing(object):
         'reference': 'reference'
     }
 
-    def __init__(self, amount=None, beneficiary_account=None, concept=None, currency_code=None, email=None, order_id=None, reference=None):  # noqa: E501
+    def __init__(self, amount=None, beneficiary_account=None, beneficiary_bank_key=None, concept=None, currency_code=None, email=None, order_id=None, reference=None):  # noqa: E501
         """TransactionOutgoing - a model defined in Swagger"""  # noqa: E501
         self._amount = None
         self._beneficiary_account = None
+        self._beneficiary_bank_key = None
         self._concept = None
         self._currency_code = None
         self._email = None
@@ -60,6 +63,8 @@ class TransactionOutgoing(object):
         self.discriminator = None
         self.amount = amount
         self.beneficiary_account = beneficiary_account
+        if beneficiary_bank_key is not None:
+            self.beneficiary_bank_key = beneficiary_bank_key
         self.concept = concept
         self.currency_code = currency_code
         if email is not None:
@@ -96,7 +101,7 @@ class TransactionOutgoing(object):
     def beneficiary_account(self):
         """Gets the beneficiary_account of this TransactionOutgoing.  # noqa: E501
 
-        Cuenta del beneficiario, podría ser un numero celular, TDD o Cuenta CLABE interbancaria   # noqa: E501
+        Cuenta del beneficiario, podría ser un número celular, TDD o Cuenta CLABE interbancaria   # noqa: E501
 
         :return: The beneficiary_account of this TransactionOutgoing.  # noqa: E501
         :rtype: str
@@ -107,7 +112,7 @@ class TransactionOutgoing(object):
     def beneficiary_account(self, beneficiary_account):
         """Sets the beneficiary_account of this TransactionOutgoing.
 
-        Cuenta del beneficiario, podría ser un numero celular, TDD o Cuenta CLABE interbancaria   # noqa: E501
+        Cuenta del beneficiario, podría ser un número celular, TDD o Cuenta CLABE interbancaria   # noqa: E501
 
         :param beneficiary_account: The beneficiary_account of this TransactionOutgoing.  # noqa: E501
         :type: str
@@ -116,6 +121,29 @@ class TransactionOutgoing(object):
             raise ValueError("Invalid value for `beneficiary_account`, must not be `None`")  # noqa: E501
 
         self._beneficiary_account = beneficiary_account
+
+    @property
+    def beneficiary_bank_key(self):
+        """Gets the beneficiary_bank_key of this TransactionOutgoing.  # noqa: E501
+
+        La clave del banco beneficiario, proprocionada por BANXICO, este campo solo es obligatario cuando la cuenta beneficiaria es un número celular (*).  # noqa: E501
+
+        :return: The beneficiary_bank_key of this TransactionOutgoing.  # noqa: E501
+        :rtype: str
+        """
+        return self._beneficiary_bank_key
+
+    @beneficiary_bank_key.setter
+    def beneficiary_bank_key(self, beneficiary_bank_key):
+        """Sets the beneficiary_bank_key of this TransactionOutgoing.
+
+        La clave del banco beneficiario, proprocionada por BANXICO, este campo solo es obligatario cuando la cuenta beneficiaria es un número celular (*).  # noqa: E501
+
+        :param beneficiary_bank_key: The beneficiary_bank_key of this TransactionOutgoing.  # noqa: E501
+        :type: str
+        """
+
+        self._beneficiary_bank_key = beneficiary_bank_key
 
     @property
     def concept(self):

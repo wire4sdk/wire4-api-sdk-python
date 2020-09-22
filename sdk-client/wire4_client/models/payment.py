@@ -42,9 +42,11 @@ class Payment(object):
         'confirm_date': 'datetime',
         'currency_code': 'str',
         'detention_message': 'str',
+        'error_message': 'str',
         'monex_description': 'str',
         'order_id': 'str',
         'payment_order_id': 'int',
+        'pending_reason': 'str',
         'reference': 'int',
         'status_code': 'str',
         'transaction_id': 'int'
@@ -62,15 +64,17 @@ class Payment(object):
         'confirm_date': 'confirm_date',
         'currency_code': 'currency_code',
         'detention_message': 'detention_message',
+        'error_message': 'error_message',
         'monex_description': 'monex_description',
         'order_id': 'order_id',
         'payment_order_id': 'payment_order_id',
+        'pending_reason': 'pending_reason',
         'reference': 'reference',
         'status_code': 'status_code',
         'transaction_id': 'transaction_id'
     }
 
-    def __init__(self, account=None, amount=None, beneficiary_account=None, beneficiary_bank=None, beneficiary_name=None, cep=None, clave_rastreo=None, concept=None, confirm_date=None, currency_code=None, detention_message=None, monex_description=None, order_id=None, payment_order_id=None, reference=None, status_code=None, transaction_id=None):  # noqa: E501
+    def __init__(self, account=None, amount=None, beneficiary_account=None, beneficiary_bank=None, beneficiary_name=None, cep=None, clave_rastreo=None, concept=None, confirm_date=None, currency_code=None, detention_message=None, error_message=None, monex_description=None, order_id=None, payment_order_id=None, pending_reason=None, reference=None, status_code=None, transaction_id=None):  # noqa: E501
         """Payment - a model defined in Swagger"""  # noqa: E501
         self._account = None
         self._amount = None
@@ -83,9 +87,11 @@ class Payment(object):
         self._confirm_date = None
         self._currency_code = None
         self._detention_message = None
+        self._error_message = None
         self._monex_description = None
         self._order_id = None
         self._payment_order_id = None
+        self._pending_reason = None
         self._reference = None
         self._status_code = None
         self._transaction_id = None
@@ -112,12 +118,16 @@ class Payment(object):
             self.currency_code = currency_code
         if detention_message is not None:
             self.detention_message = detention_message
+        if error_message is not None:
+            self.error_message = error_message
         if monex_description is not None:
             self.monex_description = monex_description
         if order_id is not None:
             self.order_id = order_id
         if payment_order_id is not None:
             self.payment_order_id = payment_order_id
+        if pending_reason is not None:
+            self.pending_reason = pending_reason
         if reference is not None:
             self.reference = reference
         if status_code is not None:
@@ -375,6 +385,29 @@ class Payment(object):
         self._detention_message = detention_message
 
     @property
+    def error_message(self):
+        """Gets the error_message of this Payment.  # noqa: E501
+
+        Mensaje de error, en caso de algún error se informará aquí  # noqa: E501
+
+        :return: The error_message of this Payment.  # noqa: E501
+        :rtype: str
+        """
+        return self._error_message
+
+    @error_message.setter
+    def error_message(self, error_message):
+        """Sets the error_message of this Payment.
+
+        Mensaje de error, en caso de algún error se informará aquí  # noqa: E501
+
+        :param error_message: The error_message of this Payment.  # noqa: E501
+        :type: str
+        """
+
+        self._error_message = error_message
+
+    @property
     def monex_description(self):
         """Gets the monex_description of this Payment.  # noqa: E501
 
@@ -442,6 +475,29 @@ class Payment(object):
         """
 
         self._payment_order_id = payment_order_id
+
+    @property
+    def pending_reason(self):
+        """Gets the pending_reason of this Payment.  # noqa: E501
+
+        Razón de porque esta pendiente aun cuando se autorizó la transferencia  # noqa: E501
+
+        :return: The pending_reason of this Payment.  # noqa: E501
+        :rtype: str
+        """
+        return self._pending_reason
+
+    @pending_reason.setter
+    def pending_reason(self, pending_reason):
+        """Sets the pending_reason of this Payment.
+
+        Razón de porque esta pendiente aun cuando se autorizó la transferencia  # noqa: E501
+
+        :param pending_reason: The pending_reason of this Payment.  # noqa: E501
+        :type: str
+        """
+
+        self._pending_reason = pending_reason
 
     @property
     def reference(self):

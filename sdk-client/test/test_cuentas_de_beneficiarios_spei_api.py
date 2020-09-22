@@ -28,6 +28,13 @@ class TestCuentasDeBeneficiariosSPEIApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_authorize_accounts_pending_put(self):
+        """Test case for authorize_accounts_pending_put
+
+        Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas  # noqa: E501
+        """
+        pass
+
     def test_delete_account_using_delete(self):
         """Test case for delete_account_using_delete
 

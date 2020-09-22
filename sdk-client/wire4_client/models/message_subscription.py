@@ -72,7 +72,7 @@ class MessageSubscription(object):
     def contract(self):
         """Gets the contract of this MessageSubscription.  # noqa: E501
 
-        Contrato Monex, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+        Contrato Monex, con el cuál se suscribió el cliente Monex en Wire4  # noqa: E501
 
         :return: The contract of this MessageSubscription.  # noqa: E501
         :rtype: str
@@ -83,7 +83,7 @@ class MessageSubscription(object):
     def contract(self, contract):
         """Sets the contract of this MessageSubscription.
 
-        Contrato Monex, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+        Contrato Monex, con el cuál se suscribió el cliente Monex en Wire4  # noqa: E501
 
         :param contract: The contract of this MessageSubscription.  # noqa: E501
         :type: str
@@ -95,7 +95,7 @@ class MessageSubscription(object):
     def masked_contract(self):
         """Gets the masked_contract of this MessageSubscription.  # noqa: E501
 
-        Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+        Contrato enmascarado de Monex, con el cuál se suscribió el cliente Monex en Wire4  # noqa: E501
 
         :return: The masked_contract of this MessageSubscription.  # noqa: E501
         :rtype: str
@@ -106,7 +106,7 @@ class MessageSubscription(object):
     def masked_contract(self, masked_contract):
         """Sets the masked_contract of this MessageSubscription.
 
-        Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+        Contrato enmascarado de Monex, con el cuál se suscribió el cliente Monex en Wire4  # noqa: E501
 
         :param masked_contract: The masked_contract of this MessageSubscription.  # noqa: E501
         :type: str
@@ -118,7 +118,7 @@ class MessageSubscription(object):
     def subscription(self):
         """Gets the subscription of this MessageSubscription.  # noqa: E501
 
-        Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción  # noqa: E501
+        Identificador de la suscripción, el cual se utilizará en las operaciones que solicitan una suscripción  # noqa: E501
 
         :return: The subscription of this MessageSubscription.  # noqa: E501
         :rtype: str
@@ -129,7 +129,7 @@ class MessageSubscription(object):
     def subscription(self, subscription):
         """Sets the subscription of this MessageSubscription.
 
-        Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción  # noqa: E501
+        Identificador de la suscripción, el cual se utilizará en las operaciones que solicitan una suscripción  # noqa: E501
 
         :param subscription: The subscription of this MessageSubscription.  # noqa: E501
         :type: str
@@ -141,7 +141,7 @@ class MessageSubscription(object):
     def user(self):
         """Gets the user of this MessageSubscription.  # noqa: E501
 
-        Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+        Usuario enmascardo, con el cuál se suscribió el cliente Monex en Wire4  # noqa: E501
 
         :return: The user of this MessageSubscription.  # noqa: E501
         :rtype: str
@@ -152,7 +152,7 @@ class MessageSubscription(object):
     def user(self, user):
         """Sets the user of this MessageSubscription.
 
-        Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4  # noqa: E501
+        Usuario enmascardo, con el cuál se suscribió el cliente Monex en Wire4  # noqa: E501
 
         :param user: The user of this MessageSubscription.  # noqa: E501
         :type: str
@@ -164,7 +164,7 @@ class MessageSubscription(object):
     def user_key(self):
         """Gets the user_key of this MessageSubscription.  # noqa: E501
 
-        Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción  # noqa: E501
+        Usuario proporcionado por Wire4, el cuál se debe utilizar para autenticar a esta suscripción  # noqa: E501
 
         :return: The user_key of this MessageSubscription.  # noqa: E501
         :rtype: str
@@ -175,7 +175,7 @@ class MessageSubscription(object):
     def user_key(self, user_key):
         """Sets the user_key of this MessageSubscription.
 
-        Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción  # noqa: E501
+        Usuario proporcionado por Wire4, el cuál se debe utilizar para autenticar a esta suscripción  # noqa: E501
 
         :param user_key: The user_key of this MessageSubscription.  # noqa: E501
         :type: str
@@ -187,7 +187,7 @@ class MessageSubscription(object):
     def user_secret(self):
         """Gets the user_secret of this MessageSubscription.  # noqa: E501
 
-        Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción  # noqa: E501
+        Contraseña proporcionada por Wire4, la cuál se debe utilizar para autenticar a esta suscripción  # noqa: E501
 
         :return: The user_secret of this MessageSubscription.  # noqa: E501
         :rtype: str
@@ -198,7 +198,7 @@ class MessageSubscription(object):
     def user_secret(self, user_secret):
         """Sets the user_secret of this MessageSubscription.
 
-        Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción  # noqa: E501
+        Contraseña proporcionada por Wire4, la cuál se debe utilizar para autenticar a esta suscripción  # noqa: E501
 
         :param user_secret: The user_secret of this MessageSubscription.  # noqa: E501
         :type: str
