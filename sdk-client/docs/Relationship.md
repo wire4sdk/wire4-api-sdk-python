@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind_of_relationship** | **str** | Tipo de relación | [optional] 
-**relationship** | **str** | Nombre de la  relación | [optional] 
+**kind_of_relationship** | **str** | Es el tipo de relación. | [optional] 
+**relationship** | **str** | Es el mombre de la relación. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

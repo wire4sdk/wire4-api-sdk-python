@@ -4,12 +4,14 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_all_institutions_using_get**](InstitucionesApi.md#get_all_institutions_using_get) | **GET** /institutions | Información de instituciones bancarias.
+[**get_all_institutions_using_get**](InstitucionesApi.md#get_all_institutions_using_get) | **GET** /institutions | Consulta de instituciones bancarias
 
 # **get_all_institutions_using_get**
 > InstitutionsList get_all_institutions_using_get(authorization)
 
-Información de instituciones bancarias.
+Consulta de instituciones bancarias
+
+Se obtiene un listado de las instituciones bancarias y la información de cada una de estas.
 
 ### Example
 ```python
@@ -24,7 +26,7 @@ api_instance = wire4_client.InstitucionesApi()
 authorization = 'authorization_example' # str | Header para token
 
 try:
-    # Información de instituciones bancarias.
+    # Consulta de instituciones bancarias
     api_response = api_instance.get_all_institutions_using_get(authorization)
     pprint(api_response)
 except ApiException as e:

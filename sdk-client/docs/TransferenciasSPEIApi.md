@@ -4,7 +4,7 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_authorization_transactions_group**](TransferenciasSPEIApi.md#create_authorization_transactions_group) | **POST** /subscriptions/{subscription}/transactions/group | Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+[**create_authorization_transactions_group**](TransferenciasSPEIApi.md#create_authorization_transactions_group) | **POST** /subscriptions/{subscription}/transactions/group | Agrupa transacciones bajo un request_id 
 [**drop_transactions_pending_using_delete**](TransferenciasSPEIApi.md#drop_transactions_pending_using_delete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 [**incoming_spei_transactions_report_using_get**](TransferenciasSPEIApi.md#incoming_spei_transactions_report_using_get) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
 [**out_comming_spei_request_id_transactions_report_using_get**](TransferenciasSPEIApi.md#out_comming_spei_request_id_transactions_report_using_get) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
@@ -14,9 +14,9 @@ Method | HTTP request | Description
 # **create_authorization_transactions_group**
 > TokenRequiredResponse create_authorization_transactions_group(body, authorization, subscription)
 
-Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+Agrupa transacciones bajo un request_id 
 
-Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+Agrupa transacciones SPEI/SPID en un mismo transaction_id, posteriormente genera la dirección URL del centro de autorización para la confirmación de las transacciones. <br><br>Las transacciones deben estar en estatus PENDING y pertenecer a un mismo contrato.
 
 ### Example
 ```python
@@ -28,12 +28,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = wire4_client.TransferenciasSPEIApi()
-body = wire4_client.AuthorizationTransactionGroup() # AuthorizationTransactionGroup | authorizationTransactionsGroupRequestDTO
+body = wire4_client.AuthorizationTransactionGroup() # AuthorizationTransactionGroup | Objeto con la información para agrupar transacciones existentes y autorizarlas de forma conjunta.
 authorization = 'authorization_example' # str | Header para token
-subscription = 'subscription_example' # str | Identificador de la suscripcion
+subscription = 'subscription_example' # str | Es el Identificador de la suscripción.
 
 try:
-    # Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+    # Agrupa transacciones bajo un request_id 
     api_response = api_instance.create_authorization_transactions_group(body, authorization, subscription)
     pprint(api_response)
 except ApiException as e:
@@ -44,9 +44,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AuthorizationTransactionGroup**](AuthorizationTransactionGroup.md)| authorizationTransactionsGroupRequestDTO | 
+ **body** | [**AuthorizationTransactionGroup**](AuthorizationTransactionGroup.md)| Objeto con la información para agrupar transacciones existentes y autorizarlas de forma conjunta. | 
  **authorization** | **str**| Header para token | 
- **subscription** | **str**| Identificador de la suscripcion | 
+ **subscription** | **str**| Es el Identificador de la suscripción. | 
 
 ### Return type
 
@@ -68,7 +68,7 @@ No authorization required
 
 Eliminación de transferencias SPEI® pendientes
 
-Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
+Elimina un conjunto de transferencias en estado pendiente de confirmar o autorizar, en la cuenta del cliente Monex relacionada a la suscripción.<br><br><b>Nota:</b> Las transferencias no deben haber sido confirmadas o autorizadas por el cliente.
 
 ### Example
 ```python
@@ -81,9 +81,9 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = wire4_client.TransferenciasSPEIApi()
 authorization = 'authorization_example' # str | Header para token
-request_id = 'request_id_example' # str | Identificador de las transferencias a eliminar
-subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
-order_id = 'order_id_example' # str | Listado de identificadores dentro del request_id para eliminar (optional)
+request_id = 'request_id_example' # str | Identificador de las transferencias a eliminar.
+subscription = 'subscription_example' # str | Es el identificador de la suscripción a esta API.
+order_id = 'order_id_example' # str | Listado de identificadores dentro del request_id para eliminar. (optional)
 
 try:
     # Eliminación de transferencias SPEI® pendientes
@@ -97,9 +97,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
- **request_id** | **str**| Identificador de las transferencias a eliminar | 
- **subscription** | **str**| El identificador de la suscripción a esta API | 
- **order_id** | **str**| Listado de identificadores dentro del request_id para eliminar | [optional] 
+ **request_id** | **str**| Identificador de las transferencias a eliminar. | 
+ **subscription** | **str**| Es el identificador de la suscripción a esta API. | 
+ **order_id** | **str**| Listado de identificadores dentro del request_id para eliminar. | [optional] 
 
 ### Return type
 
@@ -134,7 +134,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = wire4_client.TransferenciasSPEIApi()
 authorization = 'authorization_example' # str | Header para token
-subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
+subscription = 'subscription_example' # str | Es el identificador de la suscripción a esta API.
 
 try:
     # Consulta de transferencias recibidas
@@ -149,7 +149,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
- **subscription** | **str**| El identificador de la suscripción a esta API | 
+ **subscription** | **str**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
@@ -171,7 +171,7 @@ No authorization required
 
 Consulta de transferencias de salida por identificador de petición
 
-Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
 
 ### Example
 ```python
@@ -184,8 +184,8 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = wire4_client.TransferenciasSPEIApi()
 authorization = 'authorization_example' # str | Header para token
-request_id = 'request_id_example' # str | Identificador de la petición a buscar
-subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
+request_id = 'request_id_example' # str | Identificador de la petición a buscar.
+subscription = 'subscription_example' # str | Es el identificador de la suscripción a esta API.
 
 try:
     # Consulta de transferencias de salida por identificador de petición
@@ -200,8 +200,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
- **request_id** | **str**| Identificador de la petición a buscar | 
- **subscription** | **str**| El identificador de la suscripción a esta API | 
+ **request_id** | **str**| Identificador de la petición a buscar. | 
+ **subscription** | **str**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
@@ -236,8 +236,8 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = wire4_client.TransferenciasSPEIApi()
 authorization = 'authorization_example' # str | Header para token
-subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
-order_id = 'order_id_example' # str | Identificador de la orden a buscar (optional)
+subscription = 'subscription_example' # str | Es el identificador de la suscripción a esta API.
+order_id = 'order_id_example' # str | Es el identificador de la orden a buscar. (optional)
 
 try:
     # Consulta de transferencias realizadas
@@ -252,8 +252,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
- **subscription** | **str**| El identificador de la suscripción a esta API | 
- **order_id** | **str**| Identificador de la orden a buscar | [optional] 
+ **subscription** | **str**| Es el identificador de la suscripción a esta API. | 
+ **order_id** | **str**| Es el identificador de la orden a buscar. | [optional] 
 
 ### Return type
 
@@ -275,7 +275,7 @@ No authorization required
 
 Registro de transferencias
 
-Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.
+Se registra un conjunto de transferencias (una o más) a realizar en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).
 
 ### Example
 ```python
@@ -289,7 +289,7 @@ from pprint import pprint
 api_instance = wire4_client.TransferenciasSPEIApi()
 body = wire4_client.TransactionsOutgoingRegister() # TransactionsOutgoingRegister | Información de las transferencias SPEI de salida
 authorization = 'authorization_example' # str | Header para token
-subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
+subscription = 'subscription_example' # str | Es el identificador de la suscripción a esta API.
 
 try:
     # Registro de transferencias
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TransactionsOutgoingRegister**](TransactionsOutgoingRegister.md)| Información de las transferencias SPEI de salida | 
  **authorization** | **str**| Header para token | 
- **subscription** | **str**| El identificador de la suscripción a esta API | 
+ **subscription** | **str**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 

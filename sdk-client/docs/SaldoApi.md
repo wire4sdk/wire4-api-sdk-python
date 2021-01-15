@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 Consulta los saldo de una cuenta
 
-Obtiene el de las divisas que se manejen en el contrato.
+Obtiene el saldo de un contrato, según las divisas que se manejen en dicho contrato, ya sea peso mexicano (MXP) o dólar estadounidense (USD).
 
 ### Example
 ```python
@@ -24,7 +24,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = wire4_client.SaldoApi()
 authorization = 'authorization_example' # str | Header para token
-subscription = 'subscription_example' # str | El identificador de la suscripción a esta API
+subscription = 'subscription_example' # str | Es el identificador de la suscripción a esta API.
 
 try:
     # Consulta los saldo de una cuenta
@@ -39,7 +39,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
- **subscription** | **str**| El identificador de la suscripción a esta API | 
+ **subscription** | **str**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
