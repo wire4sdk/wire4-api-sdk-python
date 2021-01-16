@@ -5,11 +5,11 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_webhook**](WebhooksApi.md#get_webhook) | **GET** /webhooks/{id} | Consulta de Webhook
-[**get_webhooks**](WebhooksApi.md#get_webhooks) | **GET** /webhooks | Consulta de Webhooks
+[**get_webhooks**](WebhooksApi.md#get_webhooks) | **GET** /webhooks | Consulta la lista de Webhooks
 [**register_webhook**](WebhooksApi.md#register_webhook) | **POST** /webhooks | Alta de Webhook
 
 # **get_webhook**
-> WebhookResponse get_webhook(authorization, id)
+> WebhookResponse get_webhook(authorization, webhook_id)
 
 Consulta de Webhook
 
@@ -26,11 +26,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = wire4_client.WebhooksApi()
 authorization = 'authorization_example' # str | Header para token
-id = 'id_example' # str | Identificador del webhook
+webhook_id = 'webhook_id_example' # str | Es el identificador del webhook. Ejemplo: wh_54a932866f784b439bc625c0f4e04e12
 
 try:
     # Consulta de Webhook
-    api_response = api_instance.get_webhook(authorization, id)
+    api_response = api_instance.get_webhook(authorization, webhook_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling WebhooksApi->get_webhook: %s\n" % e)
@@ -41,7 +41,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
- **id** | **str**| Identificador del webhook | 
+ **webhook_id** | **str**| Es el identificador del webhook. Ejemplo: wh_54a932866f784b439bc625c0f4e04e12 | 
 
 ### Return type
 
@@ -61,9 +61,9 @@ No authorization required
 # **get_webhooks**
 > WebhooksList get_webhooks(authorization)
 
-Consulta de Webhooks
+Consulta la lista de Webhooks
 
-Obtiene los webhooks registrados en la plataforma que tengan estatus 'ACTIVE' e 'INACTIVE'.
+Obtiene una lista de los webhooks registrados en la plataforma que tengan el estado (estatus)  Activo (ACTIVE) e Inactivo (INACTIVE).
 
 ### Example
 ```python
@@ -78,7 +78,7 @@ api_instance = wire4_client.WebhooksApi()
 authorization = 'authorization_example' # str | Header para token
 
 try:
-    # Consulta de Webhooks
+    # Consulta la lista de Webhooks
     api_response = api_instance.get_webhooks(authorization)
     pprint(api_response)
 except ApiException as e:
@@ -111,7 +111,7 @@ No authorization required
 
 Alta de Webhook
 
-Registra un webhook en la plataforma para su uso como notificador de eventos cuando estos ocurran.
+Registra un webhook en la plataforma para su uso como notificador de eventos, cuándo estos ocurran.
 
 ### Example
 ```python
