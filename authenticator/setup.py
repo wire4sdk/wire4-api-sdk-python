@@ -27,7 +27,7 @@ VERSION = "1.0.5"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["wire4-client >= 1.0.5", "requests_oauthlib >= 1.3"]
+REQUIRES = ["wire4-client >= 1.0.11", "requests_oauthlib >= 1.3"]
 
 setup(
     name=NAME,
