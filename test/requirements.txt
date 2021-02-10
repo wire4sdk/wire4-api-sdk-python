@@ -1,0 +1,2 @@
+wire4-client >= 1.0.5
+wire4-auth >= 1.0.5

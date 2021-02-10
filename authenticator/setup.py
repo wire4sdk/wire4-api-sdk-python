@@ -27,15 +27,15 @@ VERSION = "1.0.5"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["wire4-client >= 1.0.5", "requests_oauthlib >= 1.3"]
+REQUIRES = ["requests_oauthlib >= 1.3"]
 
 setup(
     name=NAME,
     version=VERSION,
     description="Wire4Authenticator",
     author="Wire4",
-    author_email="",
-    url="",
+    author_email="speiok-team@tcpip.tech",
+    url="http://wire4.mx",
     keywords=["Swagger", "Wire4Authenticator"],
     install_requires=REQUIRES,
     packages=find_packages(),

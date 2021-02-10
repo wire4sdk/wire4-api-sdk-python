@@ -55,7 +55,7 @@ class TestAccount(unittest.TestCase):
 
     SALES_POINT_USER_SECRET = 'b7b2c43924f4612817261899eff42f'
 
-    AMBIENT: EnvironmentEnum = EnvironmentEnum.DEVELOPMENT
+    AMBIENT: EnvironmentEnum = EnvironmentEnum.SANDBOX
 
     def setUp(self):
         warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWarning)
