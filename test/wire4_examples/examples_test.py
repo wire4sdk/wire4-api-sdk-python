@@ -29,8 +29,8 @@ from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, Comproba
     Billing, FacturasApi, WebhookRequest, TransactionOutgoingSpid, TransactionsOutgoingRegister, TransactionOutgoing, \
     EmpresasCoDiApi, PuntosDeVentaCoDiApi, OperacionesCoDiApi, CompanyRequested, CertificateRequest, SalesPointRequest, \
     PeticionesDePagoPorCoDiApi, CodiCodeRequestDTO, CodiOperationsFiltersRequestDTO, ContractsDetailsApi, \
-    ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup, ServiceBanking, \
-    UseServiceBanking
+    ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup, LmitesDeMontosApi, \
+    ConfigurationsLimits, UpdateConfigurationsRequestDTO, Item, ServiceBanking, UseServiceBanking
 from wire4_client.rest import ApiException
 
 from wire4_auth.auth.oauth_wire4 import OAuthWire4
@@ -56,7 +56,7 @@ class TestAccount(unittest.TestCase):
 
     SALES_POINT_USER_SECRET = 'b7b2c43924f4612817261899eff42f'
 
-    AMBIENT: EnvironmentEnum = EnvironmentEnum.DEVELOPMENT
+    AMBIENT: EnvironmentEnum = EnvironmentEnum.SANDBOX
 
     def setUp(self):
         warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWarning)
@@ -1421,7 +1421,7 @@ class TestAccount(unittest.TestCase):
         api_instance = ContractsDetailsApi(oauth_wire.get_default_api_client())
 
         try:
-            response = api_instance.obtain_authorized_users(authorization=oauth_token_app,x_access_key='123Fake?',
+            response = api_instance.obtain_authorized_users(authorization=oauth_token_app, x_access_key='123Fake?',
                                                             request_id='4a867c6d-3787-4987-bdd6-8018a97ed87d')
             print(response)
         except ApiException as ex:
@@ -1429,6 +1429,71 @@ class TestAccount(unittest.TestCase):
             # Optional manage exception in access token flow
             return
         pass
+
+    def testObtainConfigurationsLimits(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = LmitesDeMontosApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+        subscription: str = self.SUBSCRIPTION
+
+        try:
+
+            response = api_instance.obtain_configurations_limits(authorization=oauth_token_user, suscription=subscription)
+
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testUpdateConfigurationsLimits(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = LmitesDeMontosApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+
+        configurations = ConfigurationsLimits(group='LIMIT_BY_TIME', items=[Item(key='BY_AMOUNT', value='15000.00'),
+                                                                            Item(key='BY_OPERATION', value='60')])
+        body = UpdateConfigurationsRequestDTO(configurations=[configurations])
+        subscription = self.SUBSCRIPTION
+        try:
+            response = api_instance.update_configurations_with_http_info(body, oauth_token_user, subscription)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
 
 
 if __name__ == '__main__':
