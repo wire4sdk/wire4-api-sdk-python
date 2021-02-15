@@ -30,7 +30,8 @@ from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, Comproba
     EmpresasCoDiApi, PuntosDeVentaCoDiApi, OperacionesCoDiApi, CompanyRequested, CertificateRequest, SalesPointRequest, \
     PeticionesDePagoPorCoDiApi, CodiCodeRequestDTO, CodiOperationsFiltersRequestDTO, ContractsDetailsApi, \
     ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup, LmitesDeMontosApi, \
-    ConfigurationsLimits, UpdateConfigurationsRequestDTO, Item
+    ConfigurationsLimits, UpdateConfigurationsRequestDTO, Item, ServiceBanking, UseServiceBanking
+
 from wire4_client.rest import ApiException
 
 from wire4_auth.auth.oauth_wire4 import OAuthWire4
@@ -218,6 +219,38 @@ class TestAccount(unittest.TestCase):
             return
 
         pass
+
+
+    def testChangeSubscrtiptionUsage(self):
+        # Creating the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use application flow and scope "general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = SuscripcionesApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+        subscription_id: str = "570c9ca4-c05a-4c4a-a783-8ce5d57c46af"
+        ServiceBanking(spei=UseServiceBanking(status="ACTIVE", use="WITHDRAWAL"), spid=UseServiceBanking(status="INACTIVE", use="WITHDRAWAL_DEPOSIT"))
+        request = None
+        try:
+            response = api_instance.change_subscription_use_using_patch(request,oauth_token_app,subscription_id)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        pass
+
 
     def testObtainRelationships(self):
         # Create the authenticator to obtain access token
