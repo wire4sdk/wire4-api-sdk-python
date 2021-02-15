@@ -31,6 +31,7 @@ from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, Comproba
     PeticionesDePagoPorCoDiApi, CodiCodeRequestDTO, CodiOperationsFiltersRequestDTO, ContractsDetailsApi, \
     ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup, LmitesDeMontosApi, \
     ConfigurationsLimits, UpdateConfigurationsRequestDTO, Item, ServiceBanking, UseServiceBanking
+
 from wire4_client.rest import ApiException
 
 from wire4_auth.auth.oauth_wire4 import OAuthWire4
@@ -219,6 +220,7 @@ class TestAccount(unittest.TestCase):
 
         pass
 
+
     def testChangeSubscrtiptionUsage(self):
         # Creating the authenticator to obtain access token
         # The token URL and Service URL are defined for this environment enum value.
@@ -248,6 +250,7 @@ class TestAccount(unittest.TestCase):
             return
 
         pass
+
 
     def testObtainRelationships(self):
         # Create the authenticator to obtain access token
