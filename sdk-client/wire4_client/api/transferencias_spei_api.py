@@ -3,7 +3,7 @@
 """
     Wire4RestAPI
 
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -270,6 +270,8 @@ class TransferenciasSPEIApi(object):
         :param async_req bool
         :param str authorization: Header para token (required)
         :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :param str begin_date: Fecha inicial para filtrar los depósitos, se espera en formato 'yyyy-MM-dd'
+        :param str end_date: Fecha final para filtrar los depósitos, se espera en formato 'yyyy-MM-dd'
         :return: list[Deposit]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -293,12 +295,14 @@ class TransferenciasSPEIApi(object):
         :param async_req bool
         :param str authorization: Header para token (required)
         :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :param str begin_date: Fecha inicial para filtrar los depósitos, se espera en formato 'yyyy-MM-dd'
+        :param str end_date: Fecha final para filtrar los depósitos, se espera en formato 'yyyy-MM-dd'
         :return: list[Deposit]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['authorization', 'subscription']  # noqa: E501
+        all_params = ['authorization', 'subscription', 'begin_date', 'end_date']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -329,6 +333,10 @@ class TransferenciasSPEIApi(object):
             path_params['subscription'] = params['subscription']  # noqa: E501
 
         query_params = []
+        if 'begin_date' in params:
+            query_params.append(('beginDate', params['begin_date']))  # noqa: E501
+        if 'end_date' in params:
+            query_params.append(('endDate', params['end_date']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in params:

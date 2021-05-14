@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account** | **str** | Es la uenta emisora. | [optional] 
+**account** | **str** | Es la cuenta emisora. | [optional] 
 **amount** | **float** | Es el monto de la transferencia. | [optional] 
 **beneficiary_account** | **str** | Es la cuenta del beneficiario. | [optional] 
 **beneficiary_bank** | [**Institution**](Institution.md) |  | [optional] 

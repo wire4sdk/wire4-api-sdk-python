@@ -3,7 +3,7 @@
 """
     Wire4RestAPI
 
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -34,6 +34,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
     """
 )

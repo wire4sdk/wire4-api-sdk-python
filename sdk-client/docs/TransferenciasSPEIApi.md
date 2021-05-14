@@ -117,7 +117,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **incoming_spei_transactions_report_using_get**
-> list[Deposit] incoming_spei_transactions_report_using_get(authorization, subscription)
+> list[Deposit] incoming_spei_transactions_report_using_get(authorization, subscription, begin_date=begin_date, end_date=end_date)
 
 Consulta de transferencias recibidas
 
@@ -135,10 +135,12 @@ from pprint import pprint
 api_instance = wire4_client.TransferenciasSPEIApi()
 authorization = 'authorization_example' # str | Header para token
 subscription = 'subscription_example' # str | Es el identificador de la suscripción a esta API.
+begin_date = 'begin_date_example' # str | Fecha inicial para filtrar los depósitos, se espera en formato 'yyyy-MM-dd' (optional)
+end_date = 'end_date_example' # str | Fecha final para filtrar los depósitos, se espera en formato 'yyyy-MM-dd' (optional)
 
 try:
     # Consulta de transferencias recibidas
-    api_response = api_instance.incoming_spei_transactions_report_using_get(authorization, subscription)
+    api_response = api_instance.incoming_spei_transactions_report_using_get(authorization, subscription, begin_date=begin_date, end_date=end_date)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TransferenciasSPEIApi->incoming_spei_transactions_report_using_get: %s\n" % e)
@@ -150,6 +152,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Header para token | 
  **subscription** | **str**| Es el identificador de la suscripción a esta API. | 
+ **begin_date** | **str**| Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; | [optional] 
+ **end_date** | **str**| Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; | [optional] 
 
 ### Return type
 

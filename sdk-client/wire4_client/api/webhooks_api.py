@@ -3,7 +3,7 @@
 """
     Wire4RestAPI
 
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -120,7 +120,7 @@ class WebhooksApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/webhooks/{webhook_id}', 'GET',
+            '/webhooks/{id}', 'GET',
             path_params,
             query_params,
             header_params,

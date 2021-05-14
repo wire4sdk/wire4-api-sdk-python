@@ -3,7 +3,7 @@
 """
     Wire4RestAPI
 
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -139,7 +139,7 @@ class Payment(object):
     def account(self):
         """Gets the account of this Payment.  # noqa: E501
 
-        Es la uenta emisora.  # noqa: E501
+        Es la cuenta emisora.  # noqa: E501
 
         :return: The account of this Payment.  # noqa: E501
         :rtype: str
@@ -150,7 +150,7 @@ class Payment(object):
     def account(self, account):
         """Sets the account of this Payment.
 
-        Es la uenta emisora.  # noqa: E501
+        Es la cuenta emisora.  # noqa: E501
 
         :param account: The account of this Payment.  # noqa: E501
         :type: str
