@@ -794,7 +794,12 @@ class TestAccount(unittest.TestCase):
         subscription: str = self.SUBSCRIPTION
 
         try:
-            response: list = api_instance.incoming_spei_transactions_report_using_get(oauth_token_user, subscription)
+
+            # Filtering by date is optional, but both parameters must be present when use filter by date:
+            # begin date, end date,
+            # Format: 'yyyy-MM-dd'
+            response: list = api_instance.incoming_spei_transactions_report_using_get(oauth_token_user, subscription,
+                                                                                      begin_date=None, end_date=None)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
