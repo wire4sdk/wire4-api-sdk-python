@@ -120,7 +120,7 @@ class WebhooksApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/webhooks/{id}', 'GET',
+            '/webhooks/{webhook_id}', 'GET',
             path_params,
             query_params,
             header_params,
