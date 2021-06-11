@@ -3,7 +3,7 @@
 """
     Wire4RestAPI
 
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "wire4-client"
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -34,6 +34,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
     """
 )

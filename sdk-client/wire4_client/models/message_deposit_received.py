@@ -3,7 +3,7 @@
 """
     Wire4RestAPI
 
-    Referencia de API. La API de Wire4 está organizada en torno a REST  # noqa: E501
+    Referencia de la API de Wire4  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -41,6 +41,7 @@ class MessageDepositReceived(object):
         'currency_code': 'str',
         'deposit_date': 'datetime',
         'depositant': 'str',
+        'depositant_alias': 'str',
         'depositant_clabe': 'str',
         'depositant_email': 'str',
         'depositant_rfc': 'str',
@@ -65,6 +66,7 @@ class MessageDepositReceived(object):
         'currency_code': 'currency_code',
         'deposit_date': 'deposit_date',
         'depositant': 'depositant',
+        'depositant_alias': 'depositant_alias',
         'depositant_clabe': 'depositant_clabe',
         'depositant_email': 'depositant_email',
         'depositant_rfc': 'depositant_rfc',
@@ -78,7 +80,7 @@ class MessageDepositReceived(object):
         'sender_rfc': 'sender_rfc'
     }
 
-    def __init__(self, amount=None, beneficiary_account=None, beneficiary_name=None, beneficiary_rfc=None, cep=None, clave_rastreo=None, confirm_date=None, currency_code=None, deposit_date=None, depositant=None, depositant_clabe=None, depositant_email=None, depositant_rfc=None, description=None, monex_description=None, monex_transaction_id=None, reference=None, sender_account=None, sender_bank=None, sender_name=None, sender_rfc=None):  # noqa: E501
+    def __init__(self, amount=None, beneficiary_account=None, beneficiary_name=None, beneficiary_rfc=None, cep=None, clave_rastreo=None, confirm_date=None, currency_code=None, deposit_date=None, depositant=None, depositant_alias=None, depositant_clabe=None, depositant_email=None, depositant_rfc=None, description=None, monex_description=None, monex_transaction_id=None, reference=None, sender_account=None, sender_bank=None, sender_name=None, sender_rfc=None):  # noqa: E501
         """MessageDepositReceived - a model defined in Swagger"""  # noqa: E501
         self._amount = None
         self._beneficiary_account = None
@@ -90,6 +92,7 @@ class MessageDepositReceived(object):
         self._currency_code = None
         self._deposit_date = None
         self._depositant = None
+        self._depositant_alias = None
         self._depositant_clabe = None
         self._depositant_email = None
         self._depositant_rfc = None
@@ -122,6 +125,8 @@ class MessageDepositReceived(object):
             self.deposit_date = deposit_date
         if depositant is not None:
             self.depositant = depositant
+        if depositant_alias is not None:
+            self.depositant_alias = depositant_alias
         if depositant_clabe is not None:
             self.depositant_clabe = depositant_clabe
         if depositant_email is not None:
@@ -372,6 +377,29 @@ class MessageDepositReceived(object):
         """
 
         self._depositant = depositant
+
+    @property
+    def depositant_alias(self):
+        """Gets the depositant_alias of this MessageDepositReceived.  # noqa: E501
+
+        Es el alias de la cuenta CLABE del depositante en caso que la transferencia se reciba de una cuenta de depositante  # noqa: E501
+
+        :return: The depositant_alias of this MessageDepositReceived.  # noqa: E501
+        :rtype: str
+        """
+        return self._depositant_alias
+
+    @depositant_alias.setter
+    def depositant_alias(self, depositant_alias):
+        """Sets the depositant_alias of this MessageDepositReceived.
+
+        Es el alias de la cuenta CLABE del depositante en caso que la transferencia se reciba de una cuenta de depositante  # noqa: E501
+
+        :param depositant_alias: The depositant_alias of this MessageDepositReceived.  # noqa: E501
+        :type: str
+        """
+
+        self._depositant_alias = depositant_alias
 
     @property
     def depositant_clabe(self):
