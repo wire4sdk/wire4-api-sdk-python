@@ -1,2 +1,2 @@
-wire4-client >= 1.1.1
+wire4-client >= 1.1.2
 wire4-auth >= 1.1.1

@@ -25,7 +25,7 @@ from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, Comproba
     RelationshipsResponse, AccountRequest, Account, Person, TokenRequiredResponse, BeneficiariesResponse, \
     AmountRequest, InstitucionesApi, InstitutionsList, SaldoApi, BalanceListResponse, CuentasDeBeneficiariosSPIDApi, \
     SpidClassificationsResponseDTO, TransferenciasSPIDApi, AccountSpid, BeneficiaryInstitution, DepositantesApi, \
-    DepositantsRegister, DepositantsResponse, TransferenciasSPEIApi, WebhooksApi, WebhooksList, WebhookResponse, \
+    DepositantsRegister, DepositantsResponse, DepositantCountResponse, TransferenciasSPEIApi, WebhooksApi, WebhooksList, WebhookResponse, \
     Billing, FacturasApi, WebhookRequest, TransactionOutgoingSpid, TransactionsOutgoingRegister, TransactionOutgoing, \
     EmpresasCoDiApi, PuntosDeVentaCoDiApi, OperacionesCoDiApi, CompanyRequested, CertificateRequest, SalesPointRequest, \
     PeticionesDePagoPorCoDiApi, CodiCodeRequestDTO, CodiOperationsFiltersRequestDTO, ContractsDetailsApi, \
@@ -700,6 +700,37 @@ class TestAccount(unittest.TestCase):
             #       subscription, rfc="RFCE010980AR3", account="112680000156896531")
             response: BeneficiariesResponse = api_instance.get_spid_beneficiaries_for_account(
                 oauth_token_user, subscription)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        pass
+
+
+    def testGetDepositantsTotals(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = DepositantesApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+        subscription: str = self.SUBSCRIPTION
+
+        try:
+            response: DepositantCountResponse = api_instance.get_depositants_totals_using_get(oauth_token_user, subscription)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)

@@ -50,6 +50,7 @@ from wire4_client.models.deposit import Deposit
 from wire4_client.models.deposit_authorization_request import DepositAuthorizationRequest
 from wire4_client.models.depositant import Depositant
 from wire4_client.models.depositants_register import DepositantsRegister
+from wire4_client.models.depositant_count_response import DepositantCountResponse
 from wire4_client.models.depositants_response import DepositantsResponse
 from wire4_client.models.deposits_authorization_response import DepositsAuthorizationResponse
 from wire4_client.models.detailed_error_response import DetailedErrorResponse
