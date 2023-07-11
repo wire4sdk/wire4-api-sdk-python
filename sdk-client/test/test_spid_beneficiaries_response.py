@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.spid_beneficiaries_response import SpidBeneficiariesResponse  # noqa: E501
+from wire4_client.models.spid_beneficiaries_response import SpidBeneficiariesResponse  # noqa: E501
 from wire4_client.rest import ApiException
 
 

@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.cep_response import CepResponse  # noqa: E501
+from wire4_client.models.cep_response import CepResponse  # noqa: E501
 from wire4_client.rest import ApiException
 
 

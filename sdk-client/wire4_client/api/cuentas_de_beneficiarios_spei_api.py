@@ -485,7 +485,9 @@ class CuentasDeBeneficiariosSPEIApi(object):
         :param str beneficiary_name: Es el nombre del beneficiario.
         :param str end_date: Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy.
         :param str init_date: Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy.
+        :param str page: Es el número de página.
         :param str rfc: Es el Registro Federal de Controbuyentes (RFC) del beneficiario.
+        :param str size: Es el tamaño de página.
         :param str status: Es el estado (estatus) de la cuenta. Los valores pueden ser <b>PENDING</b> y <b>REGISTERED</b>.
         :return: BeneficiariesResponse
                  If the method is called asynchronously,
@@ -515,14 +517,16 @@ class CuentasDeBeneficiariosSPEIApi(object):
         :param str beneficiary_name: Es el nombre del beneficiario.
         :param str end_date: Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy.
         :param str init_date: Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy.
+        :param str page: Es el número de página.
         :param str rfc: Es el Registro Federal de Controbuyentes (RFC) del beneficiario.
+        :param str size: Es el tamaño de página.
         :param str status: Es el estado (estatus) de la cuenta. Los valores pueden ser <b>PENDING</b> y <b>REGISTERED</b>.
         :return: BeneficiariesResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['authorization', 'subscription', 'account', 'beneficiary_bank', 'beneficiary_name', 'end_date', 'init_date', 'rfc', 'status']  # noqa: E501
+        all_params = ['authorization', 'subscription', 'account', 'beneficiary_bank', 'beneficiary_name', 'end_date', 'init_date', 'page', 'rfc', 'size', 'status']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -563,8 +567,12 @@ class CuentasDeBeneficiariosSPEIApi(object):
             query_params.append(('end_date', params['end_date']))  # noqa: E501
         if 'init_date' in params:
             query_params.append(('init_date', params['init_date']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
         if 'rfc' in params:
             query_params.append(('rfc', params['rfc']))  # noqa: E501
+        if 'size' in params:
+            query_params.append(('size', params['size']))  # noqa: E501
         if 'status' in params:
             query_params.append(('status', params['status']))  # noqa: E501
 

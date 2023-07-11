@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.cuentas_de_beneficiarios_spid_api import CuentasDeBeneficiariosSPIDApi  # noqa: E501
+from wire4_client.api.cuentas_de_beneficiarios_spid_api import CuentasDeBeneficiariosSPIDApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestCuentasDeBeneficiariosSPIDApi(unittest.TestCase):
     """CuentasDeBeneficiariosSPIDApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.cuentas_de_beneficiarios_spid_api.CuentasDeBeneficiariosSPIDApi()  # noqa: E501
+        self.api = CuentasDeBeneficiariosSPIDApi()  # noqa: E501
 
     def tearDown(self):
         pass

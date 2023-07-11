@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.transactions_outgoing_register import TransactionsOutgoingRegister  # noqa: E501
+from wire4_client.models.transactions_outgoing_register import TransactionsOutgoingRegister  # noqa: E501
 from wire4_client.rest import ApiException
 
 

@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.contacto_api import ContactoApi  # noqa: E501
+from wire4_client.api.contacto_api import ContactoApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestContactoApi(unittest.TestCase):
     """ContactoApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.contacto_api.ContactoApi()  # noqa: E501
+        self.api = ContactoApi()  # noqa: E501
 
     def tearDown(self):
         pass

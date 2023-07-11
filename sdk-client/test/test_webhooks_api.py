@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.webhooks_api import WebhooksApi  # noqa: E501
+from wire4_client.api.webhooks_api import WebhooksApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestWebhooksApi(unittest.TestCase):
     """WebhooksApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.webhooks_api.WebhooksApi()  # noqa: E501
+        self.api = WebhooksApi()  # noqa: E501
 
     def tearDown(self):
         pass

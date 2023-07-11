@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.suscripciones_api import SuscripcionesApi  # noqa: E501
+from wire4_client.api.suscripciones_api import SuscripcionesApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestSuscripcionesApi(unittest.TestCase):
     """SuscripcionesApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.suscripciones_api.SuscripcionesApi()  # noqa: E501
+        self.api = SuscripcionesApi()  # noqa: E501
 
     def tearDown(self):
         pass

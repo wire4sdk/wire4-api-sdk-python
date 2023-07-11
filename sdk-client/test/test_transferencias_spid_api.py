@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.transferencias_spid_api import TransferenciasSPIDApi  # noqa: E501
+from wire4_client.api.transferencias_spid_api import TransferenciasSPIDApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestTransferenciasSPIDApi(unittest.TestCase):
     """TransferenciasSPIDApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.transferencias_spid_api.TransferenciasSPIDApi()  # noqa: E501
+        self.api = TransferenciasSPIDApi()  # noqa: E501
 
     def tearDown(self):
         pass

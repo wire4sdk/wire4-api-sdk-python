@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.message_configurations_limits import MessageConfigurationsLimits  # noqa: E501
+from wire4_client.models.message_configurations_limits import MessageConfigurationsLimits  # noqa: E501
 from wire4_client.rest import ApiException
 
 

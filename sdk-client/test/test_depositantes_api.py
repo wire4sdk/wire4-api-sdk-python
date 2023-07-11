@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.depositantes_api import DepositantesApi  # noqa: E501
+from wire4_client.api.depositantes_api import DepositantesApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,9 +23,16 @@ class TestDepositantesApi(unittest.TestCase):
     """DepositantesApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.depositantes_api.DepositantesApi()  # noqa: E501
+        self.api = DepositantesApi()  # noqa: E501
 
     def tearDown(self):
+        pass
+
+    def test_get_depositants_totals_using_get(self):
+        """Test case for get_depositants_totals_using_get
+
+        Número de depositantes por suscripción  # noqa: E501
+        """
         pass
 
     def test_get_depositants_using_get(self):

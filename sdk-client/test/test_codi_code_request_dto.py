@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.codi_code_request_dto import CodiCodeRequestDTO  # noqa: E501
+from wire4_client.models.codi_code_request_dto import CodiCodeRequestDTO  # noqa: E501
 from wire4_client.rest import ApiException
 
 

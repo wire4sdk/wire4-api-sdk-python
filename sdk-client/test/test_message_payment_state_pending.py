@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.message_payment_state_pending import MessagePaymentStatePending  # noqa: E501
+from wire4_client.models.message_payment_state_pending import MessagePaymentStatePending  # noqa: E501
 from wire4_client.rest import ApiException
 
 

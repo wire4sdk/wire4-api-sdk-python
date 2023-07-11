@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.operaciones_co_di_api import OperacionesCoDiApi  # noqa: E501
+from wire4_client.api.operaciones_co_di_api import OperacionesCoDiApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestOperacionesCoDiApi(unittest.TestCase):
     """OperacionesCoDiApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.operaciones_co_di_api.OperacionesCoDiApi()  # noqa: E501
+        self.api = OperacionesCoDiApi()  # noqa: E501
 
     def tearDown(self):
         pass

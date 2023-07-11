@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.lmites_de_montos_api import LmitesDeMontosApi  # noqa: E501
+from wire4_client.api.lmites_de_montos_api import LmitesDeMontosApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestLmitesDeMontosApi(unittest.TestCase):
     """LmitesDeMontosApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.lmites_de_montos_api.LmitesDeMontosApi()  # noqa: E501
+        self.api = LmitesDeMontosApi()  # noqa: E501
 
     def tearDown(self):
         pass
