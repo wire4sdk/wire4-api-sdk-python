@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.transaction_error_code import TransactionErrorCode  # noqa: E501
+from wire4_client.models.transaction_error_code import TransactionErrorCode  # noqa: E501
 from wire4_client.rest import ApiException
 
 

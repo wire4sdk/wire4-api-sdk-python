@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.token_required_response import TokenRequiredResponse  # noqa: E501
+from wire4_client.models.token_required_response import TokenRequiredResponse  # noqa: E501
 from wire4_client.rest import ApiException
 
 

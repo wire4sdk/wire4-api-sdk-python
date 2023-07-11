@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.facturas_api import FacturasApi  # noqa: E501
+from wire4_client.api.facturas_api import FacturasApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestFacturasApi(unittest.TestCase):
     """FacturasApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.facturas_api.FacturasApi()  # noqa: E501
+        self.api = FacturasApi()  # noqa: E501
 
     def tearDown(self):
         pass

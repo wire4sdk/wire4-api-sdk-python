@@ -480,6 +480,224 @@ class TransferenciasSPEIApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def out_comming_spei_spid_order_id_transaction_report_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
+        """Consulta de transferencias realizadas por order_id  # noqa: E501
+
+        Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el <strong>order_id</strong> proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. <br> Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.out_comming_spei_spid_order_id_transaction_report_using_get(authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: Header para token (required)
+        :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :param str order_id: Es el identificador de la orden a buscar.
+        :return: PaymentsSpeiAndSpidOrderId
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.out_comming_spei_spid_order_id_transaction_report_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
+        else:
+            (data) = self.out_comming_spei_spid_order_id_transaction_report_using_get_with_http_info(authorization, subscription, **kwargs)  # noqa: E501
+            return data
+
+    def out_comming_spei_spid_order_id_transaction_report_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
+        """Consulta de transferencias realizadas por order_id  # noqa: E501
+
+        Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el <strong>order_id</strong> proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. <br> Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.out_comming_spei_spid_order_id_transaction_report_using_get_with_http_info(authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: Header para token (required)
+        :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :param str order_id: Es el identificador de la orden a buscar.
+        :return: PaymentsSpeiAndSpidOrderId
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'subscription', 'order_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method out_comming_spei_spid_order_id_transaction_report_using_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `out_comming_spei_spid_order_id_transaction_report_using_get`")  # noqa: E501
+        # verify the required parameter 'subscription' is set
+        if ('subscription' not in params or
+                params['subscription'] is None):
+            raise ValueError("Missing the required parameter `subscription` when calling `out_comming_spei_spid_order_id_transaction_report_using_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription' in params:
+            path_params['subscription'] = params['subscription']  # noqa: E501
+
+        query_params = []
+        if 'order_id' in params:
+            query_params.append(('order_id', params['order_id']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/subscriptions/{subscription}/transactions/outcoming', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PaymentsSpeiAndSpidOrderId',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def out_comming_spei_spid_request_id_transactions_report_using_get(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
+        """Consulta de transferencias de salida por identificador de petición  # noqa: E501
+
+        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.out_comming_spei_spid_request_id_transactions_report_using_get(authorization, request_id, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: Header para token (required)
+        :param str request_id: Identificador de la petición a buscar. (required)
+        :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :return: PaymentsSpeiAndSpidRequestId
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.out_comming_spei_spid_request_id_transactions_report_using_get_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
+        else:
+            (data) = self.out_comming_spei_spid_request_id_transactions_report_using_get_with_http_info(authorization, request_id, subscription, **kwargs)  # noqa: E501
+            return data
+
+    def out_comming_spei_spid_request_id_transactions_report_using_get_with_http_info(self, authorization, request_id, subscription, **kwargs):  # noqa: E501
+        """Consulta de transferencias de salida por identificador de petición  # noqa: E501
+
+        Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.out_comming_spei_spid_request_id_transactions_report_using_get_with_http_info(authorization, request_id, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: Header para token (required)
+        :param str request_id: Identificador de la petición a buscar. (required)
+        :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :return: PaymentsSpeiAndSpidRequestId
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'request_id', 'subscription']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method out_comming_spei_spid_request_id_transactions_report_using_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `out_comming_spei_spid_request_id_transactions_report_using_get`")  # noqa: E501
+        # verify the required parameter 'request_id' is set
+        if ('request_id' not in params or
+                params['request_id'] is None):
+            raise ValueError("Missing the required parameter `request_id` when calling `out_comming_spei_spid_request_id_transactions_report_using_get`")  # noqa: E501
+        # verify the required parameter 'subscription' is set
+        if ('subscription' not in params or
+                params['subscription'] is None):
+            raise ValueError("Missing the required parameter `subscription` when calling `out_comming_spei_spid_request_id_transactions_report_using_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'request_id' in params:
+            path_params['requestId'] = params['request_id']  # noqa: E501
+        if 'subscription' in params:
+            path_params['subscription'] = params['subscription']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/subscriptions/{subscription}/transactions/outcoming/{requestId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PaymentsSpeiAndSpidRequestId',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def outgoing_spei_transactions_report_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de transferencias realizadas  # noqa: E501
 
@@ -688,6 +906,121 @@ class TransferenciasSPEIApi(object):
 
         return self.api_client.call_api(
             '/subscriptions/{subscription}/transactions/outcoming/spei', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TokenRequiredResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def register_spei_spid_outgoing_transactions_using_post(self, body, authorization, subscription, **kwargs):  # noqa: E501
+        """Registro de transferencias SPEI y SPID  # noqa: E501
+
+        Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).<br>  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.register_spei_spid_outgoing_transactions_using_post(body, authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TransactionsRegister body: Información de las transferencias SPEI y SPID de salida (required)
+        :param str authorization: Header para token (required)
+        :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :return: TokenRequiredResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.register_spei_spid_outgoing_transactions_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
+        else:
+            (data) = self.register_spei_spid_outgoing_transactions_using_post_with_http_info(body, authorization, subscription, **kwargs)  # noqa: E501
+            return data
+
+    def register_spei_spid_outgoing_transactions_using_post_with_http_info(self, body, authorization, subscription, **kwargs):  # noqa: E501
+        """Registro de transferencias SPEI y SPID  # noqa: E501
+
+        Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).<br>  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.register_spei_spid_outgoing_transactions_using_post_with_http_info(body, authorization, subscription, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TransactionsRegister body: Información de las transferencias SPEI y SPID de salida (required)
+        :param str authorization: Header para token (required)
+        :param str subscription: Es el identificador de la suscripción a esta API. (required)
+        :return: TokenRequiredResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body', 'authorization', 'subscription']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method register_spei_spid_outgoing_transactions_using_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `register_spei_spid_outgoing_transactions_using_post`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `register_spei_spid_outgoing_transactions_using_post`")  # noqa: E501
+        # verify the required parameter 'subscription' is set
+        if ('subscription' not in params or
+                params['subscription'] is None):
+            raise ValueError("Missing the required parameter `subscription` when calling `register_spei_spid_outgoing_transactions_using_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription' in params:
+            path_params['subscription'] = params['subscription']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/subscriptions/{subscription}/transactions/outcoming', 'POST',
             path_params,
             query_params,
             header_params,

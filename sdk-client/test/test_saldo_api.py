@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.saldo_api import SaldoApi  # noqa: E501
+from wire4_client.api.saldo_api import SaldoApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestSaldoApi(unittest.TestCase):
     """SaldoApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.saldo_api.SaldoApi()  # noqa: E501
+        self.api = SaldoApi()  # noqa: E501
 
     def tearDown(self):
         pass

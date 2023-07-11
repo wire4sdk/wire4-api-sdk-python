@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.peticiones_de_pago_por_co_di_api import PeticionesDePagoPorCoDiApi  # noqa: E501
+from wire4_client.api.peticiones_de_pago_por_co_di_api import PeticionesDePagoPorCoDiApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestPeticionesDePagoPorCoDiApi(unittest.TestCase):
     """PeticionesDePagoPorCoDiApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.peticiones_de_pago_por_co_di_api.PeticionesDePagoPorCoDiApi()  # noqa: E501
+        self.api = PeticionesDePagoPorCoDiApi()  # noqa: E501
 
     def tearDown(self):
         pass

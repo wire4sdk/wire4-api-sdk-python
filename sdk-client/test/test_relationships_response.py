@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.relationships_response import RelationshipsResponse  # noqa: E501
+from wire4_client.models.relationships_response import RelationshipsResponse  # noqa: E501
 from wire4_client.rest import ApiException
 
 

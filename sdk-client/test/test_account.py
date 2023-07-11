@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.account import Account  # noqa: E501
+from wire4_client.models.account import Account  # noqa: E501
 from wire4_client.rest import ApiException
 
 

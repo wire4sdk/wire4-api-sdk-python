@@ -33,7 +33,7 @@ class DepositantesApi(object):
         self.api_client = api_client
 
     def get_depositants_totals_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
-        """Consulta cuantas cuentas de depositantes existen  # noqa: E501
+        """Número de depositantes por suscripción  # noqa: E501
 
         Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -56,7 +56,7 @@ class DepositantesApi(object):
             return data
 
     def get_depositants_totals_using_get_with_http_info(self, authorization, subscription, **kwargs):  # noqa: E501
-        """Consulta cuantas cuentas de depositantes existen  # noqa: E501
+        """Número de depositantes por suscripción  # noqa: E501
 
         Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -134,7 +134,6 @@ class DepositantesApi(object):
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
-
 
     def get_depositants_using_get(self, authorization, subscription, **kwargs):  # noqa: E501
         """Consulta de cuentas de depositantes  # noqa: E501
@@ -242,7 +241,7 @@ class DepositantesApi(object):
     def register_depositants_using_post(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Registra un nuevo depositante  # noqa: E501
 
-        Registra un nuevo depositante en el contrato asociado a la suscripción.  # noqa: E501
+        Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.register_depositants_using_post(body, authorization, subscription, async_req=True)
@@ -266,7 +265,7 @@ class DepositantesApi(object):
     def register_depositants_using_post_with_http_info(self, body, authorization, subscription, **kwargs):  # noqa: E501
         """Registra un nuevo depositante  # noqa: E501
 
-        Registra un nuevo depositante en el contrato asociado a la suscripción.  # noqa: E501
+        Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.register_depositants_using_post_with_http_info(body, authorization, subscription, async_req=True)

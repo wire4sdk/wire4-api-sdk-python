@@ -219,7 +219,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_beneficiaries_for_account_using_get**
-> BeneficiariesResponse get_beneficiaries_for_account_using_get(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, rfc=rfc, status=status)
+> BeneficiariesResponse get_beneficiaries_for_account_using_get(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, page=page, rfc=rfc, size=size, status=status)
 
 Consulta los beneficiarios registrados
 
@@ -242,12 +242,14 @@ beneficiary_bank = 'beneficiary_bank_example' # str | Es la clave del banco bene
 beneficiary_name = 'beneficiary_name_example' # str | Es el nombre del beneficiario. (optional)
 end_date = 'end_date_example' # str | Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)
 init_date = 'init_date_example' # str | Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)
+page = '0' # str | Es el número de página. (optional) (default to 0)
 rfc = 'rfc_example' # str | Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)
+size = '20' # str | Es el tamaño de página. (optional) (default to 20)
 status = 'status_example' # str | Es el estado (estatus) de la cuenta. Los valores pueden ser <b>PENDING</b> y <b>REGISTERED</b>. (optional)
 
 try:
     # Consulta los beneficiarios registrados
-    api_response = api_instance.get_beneficiaries_for_account_using_get(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, rfc=rfc, status=status)
+    api_response = api_instance.get_beneficiaries_for_account_using_get(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, page=page, rfc=rfc, size=size, status=status)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPEIApi->get_beneficiaries_for_account_using_get: %s\n" % e)
@@ -264,7 +266,9 @@ Name | Type | Description  | Notes
  **beneficiary_name** | **str**| Es el nombre del beneficiario. | [optional] 
  **end_date** | **str**| Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. | [optional] 
  **init_date** | **str**| Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. | [optional] 
+ **page** | **str**| Es el número de página. | [optional] [default to 0]
  **rfc** | **str**| Es el Registro Federal de Controbuyentes (RFC) del beneficiario. | [optional] 
+ **size** | **str**| Es el tamaño de página. | [optional] [default to 20]
  **status** | **str**| Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. | [optional] 
 
 ### Return type

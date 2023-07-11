@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.pager_response_dto import PagerResponseDto  # noqa: E501
+from wire4_client.models.pager_response_dto import PagerResponseDto  # noqa: E501
 from wire4_client.rest import ApiException
 
 

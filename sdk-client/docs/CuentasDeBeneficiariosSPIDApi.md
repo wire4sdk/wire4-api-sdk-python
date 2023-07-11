@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**pre_register_accounts_using_post1**](CuentasDeBeneficiariosSPIDApi.md#pre_register_accounts_using_post1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID®
 
 # **get_spid_beneficiaries_for_account**
-> SpidBeneficiariesResponse get_spid_beneficiaries_for_account(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, rfc=rfc, status=status)
+> SpidBeneficiariesResponse get_spid_beneficiaries_for_account(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, page=page, rfc=rfc, size=size, status=status)
 
 Consulta los beneficiarios SPID registrados
 
@@ -31,12 +31,14 @@ beneficiary_bank = 'beneficiary_bank_example' # str | Es la clave del banco bene
 beneficiary_name = 'beneficiary_name_example' # str | Es el nombre del beneficiario. (optional)
 end_date = 'end_date_example' # str | Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)
 init_date = 'init_date_example' # str | Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)
+page = '0' # str | Es el número de página. (optional) (default to 0)
 rfc = 'rfc_example' # str | Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)
+size = '20' # str | Es el tamaño de página. (optional) (default to 20)
 status = 'status_example' # str | Es el estado (estatus) de la cuenta, Los valores pueden ser <b>PENDING</b> y <b>REGISTERED</b>. (optional)
 
 try:
     # Consulta los beneficiarios SPID registrados
-    api_response = api_instance.get_spid_beneficiaries_for_account(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, rfc=rfc, status=status)
+    api_response = api_instance.get_spid_beneficiaries_for_account(authorization, subscription, account=account, beneficiary_bank=beneficiary_bank, beneficiary_name=beneficiary_name, end_date=end_date, init_date=init_date, page=page, rfc=rfc, size=size, status=status)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CuentasDeBeneficiariosSPIDApi->get_spid_beneficiaries_for_account: %s\n" % e)
@@ -53,7 +55,9 @@ Name | Type | Description  | Notes
  **beneficiary_name** | **str**| Es el nombre del beneficiario. | [optional] 
  **end_date** | **str**| Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. | [optional] 
  **init_date** | **str**| Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. | [optional] 
+ **page** | **str**| Es el número de página. | [optional] [default to 0]
  **rfc** | **str**| Es el Registro Federal de Contribuyentes (RFC) del beneficiario. | [optional] 
+ **size** | **str**| Es el tamaño de página. | [optional] [default to 20]
  **status** | **str**| Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. | [optional] 
 
 ### Return type

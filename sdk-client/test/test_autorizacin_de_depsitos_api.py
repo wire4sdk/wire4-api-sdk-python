@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from api.autorizacin_de_depsitos_api import AutorizacinDeDepsitosApi  # noqa: E501
+from wire4_client.api.autorizacin_de_depsitos_api import AutorizacinDeDepsitosApi  # noqa: E501
 from wire4_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestAutorizacinDeDepsitosApi(unittest.TestCase):
     """AutorizacinDeDepsitosApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.autorizacin_de_depsitos_api.AutorizacinDeDepsitosApi()  # noqa: E501
+        self.api = AutorizacinDeDepsitosApi()  # noqa: E501
 
     def tearDown(self):
         pass

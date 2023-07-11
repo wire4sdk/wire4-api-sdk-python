@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.subscription_change_status_request import SubscriptionChangeStatusRequest  # noqa: E501
+from wire4_client.models.subscription_change_status_request import SubscriptionChangeStatusRequest  # noqa: E501
 from wire4_client.rest import ApiException
 
 

@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.beneficiaries_query_register_status import BeneficiariesQueryRegisterStatus  # noqa: E501
+from wire4_client.models.beneficiaries_query_register_status import BeneficiariesQueryRegisterStatus  # noqa: E501
 from wire4_client.rest import ApiException
 
 

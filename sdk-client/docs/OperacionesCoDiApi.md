@@ -26,9 +26,9 @@ api_instance = wire4_client.OperacionesCoDiApi()
 authorization = 'authorization_example' # str | Header para token
 body = wire4_client.CodiOperationsFiltersRequestDTO() # CodiOperationsFiltersRequestDTO | Filtros de busqueda (optional)
 company_id = 'company_id_example' # str | Es el identificador de empresa CODI®. (optional)
-page = 'page_example' # str | Es el número de pago. (optional)
+page = '0' # str | Es el número de pago. (optional) (default to 0)
 sales_point_id = 'sales_point_id_example' # str | Es el identificador del punto de venta. (optional)
-size = 'size_example' # str | Es el tamaño de página. (optional)
+size = '20' # str | Es el tamaño de página. (optional) (default to 20)
 
 try:
     # Consulta de operaciones
@@ -45,9 +45,9 @@ Name | Type | Description  | Notes
  **authorization** | **str**| Header para token | 
  **body** | [**CodiOperationsFiltersRequestDTO**](CodiOperationsFiltersRequestDTO.md)| Filtros de busqueda | [optional] 
  **company_id** | **str**| Es el identificador de empresa CODI®. | [optional] 
- **page** | **str**| Es el número de pago. | [optional] 
+ **page** | **str**| Es el número de pago. | [optional] [default to 0]
  **sales_point_id** | **str**| Es el identificador del punto de venta. | [optional] 
- **size** | **str**| Es el tamaño de página. | [optional] 
+ **size** | **str**| Es el tamaño de página. | [optional] [default to 20]
 
 ### Return type
 

@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.billing_transaction import BillingTransaction  # noqa: E501
+from wire4_client.models.billing_transaction import BillingTransaction  # noqa: E501
 from wire4_client.rest import ApiException
 
 

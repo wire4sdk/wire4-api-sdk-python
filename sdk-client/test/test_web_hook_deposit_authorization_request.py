@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.web_hook_deposit_authorization_request import WebHookDepositAuthorizationRequest  # noqa: E501
+from wire4_client.models.web_hook_deposit_authorization_request import WebHookDepositAuthorizationRequest  # noqa: E501
 from wire4_client.rest import ApiException
 
 
