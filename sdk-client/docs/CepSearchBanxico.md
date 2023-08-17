@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **reference** | **str** | Es la referencia numérica de la transferencia. Se valida hasta 7 dígitos. | [optional] 
 **sender_account** | **str** | Es la cuenta ordenante, es requerida cuando se no se envía la clave del banco ordenante. | [optional] 
 **sender_bank_key** | **str** | Es la clave del banco ordenante, es requerida cuando no se envía la cuenta ordenante.  Se puede obtener del recurso de las &lt;a href&#x3D;\&quot;#operation/getAllInstitutionsUsingGET\&quot;&gt;instituciones.&lt;/a&gt; | [optional] 
+**type** | **str** | Es el tipo de cep a consultar, puede ser SPEI o SPID. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

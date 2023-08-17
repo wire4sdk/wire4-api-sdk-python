@@ -35,7 +35,8 @@ class CepSearchBanxico(object):
         'operation_date': 'str',
         'reference': 'str',
         'sender_account': 'str',
-        'sender_bank_key': 'str'
+        'sender_bank_key': 'str',
+        'type': 'str'
     }
 
     attribute_map = {
@@ -46,10 +47,11 @@ class CepSearchBanxico(object):
         'operation_date': 'operation_date',
         'reference': 'reference',
         'sender_account': 'sender_account',
-        'sender_bank_key': 'sender_bank_key'
+        'sender_bank_key': 'sender_bank_key',
+        'type': 'type'
     }
 
-    def __init__(self, amount=None, beneficiary_account=None, beneficiary_bank_key=None, clave_rastreo=None, operation_date=None, reference=None, sender_account=None, sender_bank_key=None):  # noqa: E501
+    def __init__(self, amount=None, beneficiary_account=None, beneficiary_bank_key=None, clave_rastreo=None, operation_date=None, reference=None, sender_account=None, sender_bank_key=None, type=None):  # noqa: E501
         """CepSearchBanxico - a model defined in Swagger"""  # noqa: E501
         self._amount = None
         self._beneficiary_account = None
@@ -59,6 +61,7 @@ class CepSearchBanxico(object):
         self._reference = None
         self._sender_account = None
         self._sender_bank_key = None
+        self._type = None
         self.discriminator = None
         self.amount = amount
         self.beneficiary_account = beneficiary_account
@@ -72,6 +75,8 @@ class CepSearchBanxico(object):
             self.sender_account = sender_account
         if sender_bank_key is not None:
             self.sender_bank_key = sender_bank_key
+        if type is not None:
+            self.type = type
 
     @property
     def amount(self):
@@ -264,6 +269,35 @@ class CepSearchBanxico(object):
         """
 
         self._sender_bank_key = sender_bank_key
+
+    @property
+    def type(self):
+        """Gets the type of this CepSearchBanxico.  # noqa: E501
+
+        Es el tipo de cep a consultar, puede ser SPEI o SPID.  # noqa: E501
+
+        :return: The type of this CepSearchBanxico.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this CepSearchBanxico.
+
+        Es el tipo de cep a consultar, puede ser SPEI o SPID.  # noqa: E501
+
+        :param type: The type of this CepSearchBanxico.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["SPEI", "SPID"]  # noqa: E501
+        if type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
+
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

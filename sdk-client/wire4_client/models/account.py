@@ -341,8 +341,8 @@ class Account(object):
         :param rfc: The rfc of this Account.  # noqa: E501
         :type: str
         """
-        if rfc is None:
-            raise ValueError("Invalid value for `rfc`, must not be `None`")  # noqa: E501
+        # if rfc is None:
+        #     raise ValueError("Invalid value for `rfc`, must not be `None`")  # noqa: E501
 
         self._rfc = rfc
 
