@@ -48,6 +48,7 @@ class CepResponse(object):
         'sender_name': 'str',
         'sender_rfc': 'str',
         'signature': 'str',
+        'type': 'str',
         'url_zip': 'str'
     }
 
@@ -72,10 +73,11 @@ class CepResponse(object):
         'sender_name': 'sender_name',
         'sender_rfc': 'sender_rfc',
         'signature': 'signature',
+        'type': 'type',
         'url_zip': 'url_zip'
     }
 
-    def __init__(self, account_beneficiary=None, account_sender=None, amount=None, available=None, beneficiary_bank_key=None, beneficiary_name=None, beneficiary_rfc=None, cadena_original=None, capture_date=None, certificate_serial_number=None, clave_rastreo=None, description=None, iva=None, operation_date=None, operation_date_cep=None, reference=None, sender_bank_key=None, sender_name=None, sender_rfc=None, signature=None, url_zip=None):  # noqa: E501
+    def __init__(self, account_beneficiary=None, account_sender=None, amount=None, available=None, beneficiary_bank_key=None, beneficiary_name=None, beneficiary_rfc=None, cadena_original=None, capture_date=None, certificate_serial_number=None, clave_rastreo=None, description=None, iva=None, operation_date=None, operation_date_cep=None, reference=None, sender_bank_key=None, sender_name=None, sender_rfc=None, signature=None, type=None, url_zip=None):  # noqa: E501
         """CepResponse - a model defined in Swagger"""  # noqa: E501
         self._account_beneficiary = None
         self._account_sender = None
@@ -97,6 +99,7 @@ class CepResponse(object):
         self._sender_name = None
         self._sender_rfc = None
         self._signature = None
+        self._type = None
         self._url_zip = None
         self.discriminator = None
         if account_beneficiary is not None:
@@ -139,6 +142,8 @@ class CepResponse(object):
             self.sender_rfc = sender_rfc
         if signature is not None:
             self.signature = signature
+        if type is not None:
+            self.type = type
         if url_zip is not None:
             self.url_zip = url_zip
 
@@ -601,6 +606,35 @@ class CepResponse(object):
         """
 
         self._signature = signature
+
+    @property
+    def type(self):
+        """Gets the type of this CepResponse.  # noqa: E501
+
+        Es el tiop de CEP, puede ser: <strong>SPEI</strong> o <strong>SPID</strong>.  # noqa: E501
+
+        :return: The type of this CepResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this CepResponse.
+
+        Es el tiop de CEP, puede ser: <strong>SPEI</strong> o <strong>SPID</strong>.  # noqa: E501
+
+        :param type: The type of this CepResponse.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["SPEI", "SPID"]  # noqa: E501
+        if type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
+
+        self._type = type
 
     @property
     def url_zip(self):
