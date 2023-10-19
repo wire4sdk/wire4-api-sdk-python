@@ -1534,6 +1534,340 @@ class TestAccount(unittest.TestCase):
         pass
 
 
+    # **********************************************************************************************
+
+    def testUpdateDepositantsNoSubscriptions(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = DepositantesApi(oauth_wire.get_default_api_client())
+
+        # change these values as the ones you want to update
+        account = '112180002129375639'
+        action = 'ACTIVE'
+
+        try:
+            response = api_instance.update_status_depositants_no_suscrption_using_patch(oauth_token_user, account, action)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testGetPaymentRequestByOrderId(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = ReporteDeSolicitudesDePagosApi(oauth_wire.get_default_api_client())
+
+        # change this value as the one you want to use
+        order_id = 'Order_1'
+        try:
+            response = api_instance.payment_request_id_report_by_order_id_using_get(oauth_token_user, order_id)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testCreatePaymentRequest(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = SolicitudDePagosApi(oauth_wire.get_default_api_client())
+
+        # change this value as the one you want to create
+        body: PaymentRequestReq = PaymentRequestReq(
+            amount=1000,
+            cancel_return_url="https://your-app-url.mx/cancel",
+            return_url="https://your-app-url.mx/return",
+            costumer=[Customer(
+                email=["beneficiary@wire4.mx"],
+                name="Juan Perez",
+                mobile="+5955500000000"
+            )],
+            description="otros",
+            due_date="2023-10-21",
+            order_id="ORDER_1",
+            method="CARD")
+
+        try:
+            response = api_instance.register_payment_request_using_post(body, oauth_token_user)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testGetPaymentRequestByRequestId(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = ReporteDeSolicitudesDePagosApi(oauth_wire.get_default_api_client())
+
+        # change this value as the one you want to use
+        request_id = '1000-1000-1'
+        try:
+            response = api_instance.payment_request_id_report_using_get(oauth_token_user, request_id)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testCreateRecurringCharge(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app("charges_general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = CargosRecurrentesApi(oauth_wire.get_default_api_client())
+
+        # change this value as the one you want to create
+        body: RecurringChargeRequest = RecurringChargeRequest(
+            costumer=[Customer(
+                email=["beneficiary@wire4.mx"],
+                name="Juan Perez",
+                mobile="+5955500000000"
+            )],
+            product=[Product(
+                name="Prueba suscripcion",
+                amount=2,
+                billing_period="WEEKLY",
+                frequency=1
+            )],
+            first_charge_date="2023-10-21",
+            charges=5,
+            order_id="ORDER_1"
+            return_url="https://your-app-url.mx/return",
+            cancel_return_url="https://your-app-url.mx/cancel"
+        )
+
+        try:
+            response = api_instance.register_recurring_charge_using_post(body, oauth_token_user)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testDeleteRecurringCharge(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app("charges_general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = CargosRecurrentesApi(oauth_wire.get_default_api_client())
+
+        # change this value as the one you want to delete
+        order_id = 'ORDER_1'
+
+        try:
+            response = api_instance.delete_recurring_charge_using_delete(oauth_token_user, order_id)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testGetDepositAutorization(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = AutorizacinDeDepsitosApi(oauth_wire.get_default_api_client())
+
+        subscription = self.SUBSCRIPTION
+        
+        try:
+            response = api_instance.get_deposit_auth_configurations(oauth_token_user, subscription)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testEnableDisableDepositAutorizationConfigurations(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = AutorizacinDeDepsitosApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+
+        subscription = self.SUBSCRIPTION
+
+        # change this value as the one you want to change
+        body: DepositAuthorizationRequest = DepositAuthorizationRequest(
+            enabled=true,
+            wh_uuid="wh_30bfe7b213ea49bca4a29cc7793dda41", // tu identificador de webjook
+            webhook=[Webhook(
+                name="mio",
+                url="https://tu-url-de-webhook",
+            )]
+        )
+        
+        try:
+            response = api_instance.put_deposit_auth_configurations(body, oauth_token_user, subscription)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testUpdateDepositants(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = DepositantesApi(oauth_wire.get_default_api_client())
+
+        # change these values as the ones you want to update
+        account = '112180002129375639'
+        action = 'ACTIVE'
+
+        try:
+            response = api_instance.put_deposit_auth_configurations(oauth_token_user, account, action)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
+
+    def testGetOutcommingSPEISPIDByRequestId(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_spid_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = TransferenciasSPEIApi(oauth_wire.get_default_api_client())
+
+        subscription = self.SUBSCRIPTION
+
+        # change this value as the one you want to use
+        request_id = '1000-1000-1'
+        try:
+            response = api_instance.out_comming_spei_spid_request_id_transactions_report_using_get(oauth_token_user, request_id, subscription)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+        pass
 
 if __name__ == '__main__':
     unittest.main()
