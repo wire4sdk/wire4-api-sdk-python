@@ -93,7 +93,7 @@ except ApiException as ex:
     sys.exit(-100)
 
 # create an instance of the API class and add the bearer token to request
-api_instance = ComprobanteElectrnicoDePagoCEPApi(OAuthWire4.get_default_api_client(oauth_token_app))
+api_instance = ComprobanteElectrnicoDePagoCEPApi(OAuthWire4.get_default_api_client(oauth_wire))
 
 # build body with info (check references for more info: types, required fields, etc.)
 body = CepSearchBanxico(amount="8963.25", beneficiary_account="072680004657656853",
@@ -101,7 +101,7 @@ body = CepSearchBanxico(amount="8963.25", beneficiary_account="07268000465765685
                         reference="1122334", sender_account="112680000156896531", sender_bank_key="40112")
 
 try:
-    response = api_instance.obtain_transaction_cep_using_post(body)
+    response = api_instance.obtain_transaction_cep_using_post(body, oauth_token_app)
     print(response)
 except ApiException as ex:
     print("Exception when calling the API %s\n" % ex, file=sys.stderr)
